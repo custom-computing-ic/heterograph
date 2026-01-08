@@ -1,0 +1,56 @@
+{% set pyproject = load_file_data("pyproject.toml") %}
+{% set project = pyproject.get("project", {}) %}
+{% set version = project.get("version", "0.0.0") %}
+{% set description = project.get("description", "") %}
+{% set urls = project.get("urls", {}) %}
+{% set repo_url = urls.get("repository", "") %}
+
+{% set env_data = load_file_data("environment.yml") %}
+{% set name = env_data.get("name", "module") %}
+{% set conda_deps = env_data.get("dependencies", []) %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  path: ..
+
+build:
+  number: 0
+
+requirements:
+
+  build:
+    - pip
+    - toml
+{% for dep in conda_deps %}
+{% set trimmed_dep = dep | trim %}
+{% if dep is string and trimmed_dep[:7] == 'python=' %}
+    - {{ dep }}
+{% endif %}
+{% endfor %}    
+
+
+  run:
+    - pip
+{% for dep in env_data.get('dependencies', []) %}
+{% if dep is string %}
+    - {{ dep }}
+{% endif %}
+{% endfor %} 
+
+test:
+  imports:
+    - {{ name }}
+
+about:
+  home: "{{ repo_url }}"
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: "{{ description }}"
+
+extra:
+  recipe-maintainers:
+    - ckiddo74

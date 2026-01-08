@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=62.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imperial-cc-heterograph"
+version = "2.0"
+authors = [
+  { name="Gabriel Figueiredo", email="gabriel.figueiredo@imperial.ac.uk" },
+]
+description = "A graph library to support high-level software descriptions (AST), neural-networks and dataflow graphs."
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+#    "typing_extensions==4.5", # because of tensorflow/qkeras
+#    "ipython==8.18.1", # because of typing_extensions
+    "notebook",
+    "colorama",
+    "flask",
+    "furo",
+    "ipywidgets",
+    "lark",
+    "myst_parser",
+    "nbsphinx",
+    "nbval",
+    "pytest",
+    "pytest-xdist",
+    "pytest-mock",
+    "pygments",
+    "pyyaml",
+    "sphinx",
+    "sphinx-autoapi",
+    "sphinx-copybutton",
+    "sphinx-rtd-theme",
+    "tabulate",
+    "wrapt"
+]
+
+[project.urls]
+repository = "https://github.com/custom-computing-ic/heterograph"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where=["."]
+include = ["heterograph", "heterograph.*"]
+
+
+

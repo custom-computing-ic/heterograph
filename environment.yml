@@ -1,0 +1,21 @@
+name: heterograph
+
+channels:
+   - conda-forge
+
+dependencies:
+   - python=3.12 
+   - pip
+   - graph-tool
+   - graphviz
+   - libboost
+   - libboost-headers
+   - python-graphviz
+   - pandoc
+
+   - pip:
+      - -e .
+
+
+
+
