@@ -29,10 +29,6 @@
   * Custom initialization hooks for graphs, vertices, and edges
   * Property system (`HGraphProps`) for clean metadata handling
 
-* **Well-tested core**
-
-  * Pytest-based test suite covering vertices, edges, queries, DFS, and topology
-
 ---
 
 ## Project Structure
@@ -57,8 +53,6 @@ heterograph/
 ## Installation
 
 ### Create the Conda environment (recommended)
-
-`graph-tool` is easiest to install via Conda.
 
 ```bash
 conda env create -f environment.yml
