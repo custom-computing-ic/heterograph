@@ -1,7 +1,5 @@
-CC DART project
-===============
-
-This project is at an early the stage.
+Heterograph project
+===================
 
 
 Contents
