@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="143pt" height="133pt" viewBox="0.00 0.00 143.00 133.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 129.25)">
+<polygon fill="white" stroke="none" points="-4,4 -4,-129.25 139.25,-129.25 139.25,4 -4,4"/>
+<!-- 0 -->
+<g id="node1" class="node">
+<title>0</title>
+<polygon fill="#ffd39b" stroke="black" points="131.75,-125.25 0.75,-125.25 0.75,-121.25 -3.25,-121.25 -3.25,-117.25 0.75,-117.25 0.75,-97.25 -3.25,-97.25 -3.25,-93.25 0.75,-93.25 0.75,-89.25 131.75,-89.25 131.75,-125.25"/>
+<polyline fill="none" stroke="black" points="0.75,-121.25 4.75,-121.25 4.75,-117.25 0.75,-117.25"/>
+<polyline fill="none" stroke="black" points="0.75,-97.25 4.75,-97.25 4.75,-93.25 0.75,-93.25"/>
+<text xml:space="preserve" text-anchor="start" x="10.75" y="-103.58" font-family="Times,serif" font-weight="bold" font-size="14.00">a:</text>
+<text xml:space="preserve" text-anchor="start" x="25" y="-103.58" font-family="Times,serif" font-size="14.00">0 ('name': 'A')</text>
+</g>
+<!-- 1 -->
+<g id="node2" class="node">
+<title>1</title>
+<polygon fill="#ffd39b" stroke="black" points="132.5,-36 0,-36 0,-32 -4,-32 -4,-28 0,-28 0,-8 -4,-8 -4,-4 0,-4 0,0 132.5,0 132.5,-36"/>
+<polyline fill="none" stroke="black" points="0,-32 4,-32 4,-28 0,-28"/>
+<polyline fill="none" stroke="black" points="0,-8 4,-8 4,-4 0,-4"/>
+<text xml:space="preserve" text-anchor="start" x="10" y="-14.32" font-family="Times,serif" font-weight="bold" font-size="14.00">b:</text>
+<text xml:space="preserve" text-anchor="start" x="25" y="-14.32" font-family="Times,serif" font-size="14.00">1 ('name': 'B')</text>
+</g>
+<!-- 0&#45;&gt;1 -->
+<g id="edge1" class="edge">
+<title>0-&gt;1</title>
+<path fill="none" stroke="#777777" d="M66.25,-89.01C66.25,-77.06 66.25,-60.88 66.25,-47.08"/>
+<polygon fill="#777777" stroke="#777777" points="66.25,-37.42 70.75,-47.42 66.25,-41.2 66.25,-47.42 66.25,-47.42 66.25,-47.42 66.25,-41.2 61.75,-47.42 66.25,-37.42"/>
+<text xml:space="preserve" text-anchor="middle" x="100.75" y="-57.95" font-family="Times,serif" font-size="14.00">('d': True)</text>
+</g>
+</g>
+</svg>

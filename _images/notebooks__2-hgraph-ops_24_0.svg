@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="62pt" height="118pt" viewBox="0.00 0.00 62.00 118.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 114)">
+<polygon fill="white" stroke="none" points="-4,4 -4,-114 58,-114 58,4 -4,4"/>
+<!-- 0 -->
+<g id="node1" class="node">
+<title>0</title>
+<path fill="#99ccff" stroke="black" d="M12,-73.5C12,-73.5 42,-73.5 42,-73.5 48,-73.5 54,-79.5 54,-85.5 54,-85.5 54,-97.5 54,-97.5 54,-103.5 48,-109.5 42,-109.5 42,-109.5 12,-109.5 12,-109.5 6,-109.5 0,-103.5 0,-97.5 0,-97.5 0,-85.5 0,-85.5 0,-79.5 6,-73.5 12,-73.5"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-86.83" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- 1 -->
+<g id="node2" class="node">
+<title>1</title>
+<path fill="#99ccff" stroke="black" d="M12,-0.5C12,-0.5 42,-0.5 42,-0.5 48,-0.5 54,-6.5 54,-12.5 54,-12.5 54,-24.5 54,-24.5 54,-30.5 48,-36.5 42,-36.5 42,-36.5 12,-36.5 12,-36.5 6,-36.5 0,-30.5 0,-24.5 0,-24.5 0,-12.5 0,-12.5 0,-6.5 6,-0.5 12,-0.5"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-13.82" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- 0&#45;&gt;1 -->
+<g id="edge1" class="edge">
+<title>0-&gt;1</title>
+<path fill="none" stroke="#777777" d="M27,-73.31C27,-65.64 27,-56.39 27,-47.74"/>
+<polygon fill="#777777" stroke="#777777" points="27,-37.75 31.5,-47.75 27,-41.53 27,-47.75 27,-47.75 27,-47.75 27,-41.53 22.5,-47.75 27,-37.75"/>
+</g>
+</g>
+</svg>
