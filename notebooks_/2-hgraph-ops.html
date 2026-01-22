@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heterograph: graph operations &mdash; heterograph 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/label.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="heterograph: property maps" href="3-hgraph-pmaps.html" />
+    <link rel="prev" title="heterograph: basics" href="1-hgraph-basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            heterograph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-hgraph-basics.html">heterograph: basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">heterograph: graph operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neighbour-ordering">neighbour ordering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#implicit-ordering">implicit ordering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-ordering">custom ordering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-a-graph">cloning a graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#depth-first-search-(DFS)">depth-first search (DFS)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#collecting-all-paths">collecting all paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visiting-nodes">visiting nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graph-traversal">graph traversal</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#erasing-a-graph">erasing a graph</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="3-hgraph-pmaps.html">heterograph: property maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-hgraph-visualisation.html">heterograph: visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-hgraph-queries.html">heterograph: queries</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">heterograph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Notebooks</a></li>
+      <li class="breadcrumb-item active">heterograph: graph operations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks_/2-hgraph-ops.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="heterograph:-graph-operations">
+<h1>heterograph: graph operations<a class="headerlink" href="#heterograph:-graph-operations" title="Link to this heading"></a></h1>
+<section id="neighbour-ordering">
+<h2>neighbour ordering<a class="headerlink" href="#neighbour-ordering" title="Link to this heading"></a></h2>
+<p>When capturing programming models, it is often crucial to preserve the order of incoming or outgoing edges. For example, maintaining the order is essential for parameter lists or statement lists. When using <code class="docutils literal notranslate"><span class="pre">add_edge</span></code>, the insertion order determines the neighbor ordering.</p>
+<section id="implicit-ordering">
+<h3>implicit ordering<a class="headerlink" href="#implicit-ordering" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">HGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">out_vx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[3, 1, 2]
+</pre></div></div>
+</div>
+</section>
+<section id="custom-ordering">
+<h3>custom ordering<a class="headerlink" href="#custom-ordering" title="Link to this heading"></a></h3>
+<p>The methods <code class="docutils literal notranslate"><span class="pre">in_vx(vx)</span></code> and <code class="docutils literal notranslate"><span class="pre">out_vx(vx)</span></code> include three optional parameters to configure the ordering:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">order</span></code> (list of int): A list of vertex IDs specifying the desired order. This list can be a subset of the neighbors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">anchor</span></code> (int, default: None): A vertex ID indicating where to insert the subset provided in <code class="docutils literal notranslate"><span class="pre">order</span></code>. If the anchor is <code class="docutils literal notranslate"><span class="pre">None</span></code>, the subset is inserted at the end of the list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">after</span></code> (bool, default: True): Determines whether to insert the sublist before or after the anchor.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">HGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">out_vx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, 3, 4]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify the order [2, 1, 3, 4]</span>
+<span class="n">g</span><span class="o">.</span><span class="n">out_vx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[2, 1, 3, 4]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify subset [3, 2] (by default after the last element)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">out_vx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 4, 3, 2]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify subset before [3, 2] before 4</span>
+<span class="n">g</span><span class="o">.</span><span class="n">out_vx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">after</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 3, 2, 4]
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="cloning-a-graph">
+<h2>cloning a graph<a class="headerlink" href="#cloning-a-graph" title="Link to this heading"></a></h2>
+<p>To clone a graph, we use the <code class="docutils literal notranslate"><span class="pre">copy(vs=None,</span> <span class="pre">g=None,</span> <span class="pre">induced=True,</span> <span class="pre">ret_map=False)</span></code> method, which offers the following optional parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vs</span></code>: A list of IDs specifying which vertices should be included in the copy. If not provided, all vertices will be copied.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g</span></code>: If supplied, vertices will be copied and added to the specified graph <code class="docutils literal notranslate"><span class="pre">g</span></code>. Otherwise, a new graph is created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">induced</span></code>: If set to True, any edge between two copied vertices will also be copied, allowing for the cloning of a subgraph.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ret_map</span></code>: If True, the method returns a tuple <code class="docutils literal notranslate"><span class="pre">(cg,</span> <span class="pre">map)</span></code>, where <code class="docutils literal notranslate"><span class="pre">cg</span></code> is the graph where vertices were copied, and <code class="docutils literal notranslate"><span class="pre">map</span></code> provides a mapping from old to new vertices in the form of a dictionary <code class="docutils literal notranslate"><span class="pre">{old</span> <span class="pre">vertex:</span> <span class="pre">new</span> <span class="pre">vertex}</span></code>.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">HGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_9_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_9_0.svg" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone the whole graph</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">h</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_10_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_10_0.svg" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone only vertices</span>
+<span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">rmap</span><span class="p">)</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">induced</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ret_map</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rmap</span><span class="p">)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{0: 0, 2: 1, 4: 2}
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_11_1.svg" src="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_11_1.svg" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone subgraph (induced)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">h</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_12_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_12_0.svg" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone full graph</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># clone subgraph into graph h1</span>
+<span class="p">(</span><span class="n">h2</span><span class="p">,</span> <span class="n">rmap</span><span class="p">)</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">g</span><span class="o">=</span><span class="n">h1</span><span class="p">,</span> <span class="n">ret_map</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rmap</span><span class="p">)</span>
+<span class="c1"># connect first copy with second copy</span>
+<span class="n">h2</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">h2</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{0: 5, 2: 6, 4: 7}
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_13_1.svg" src="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_13_1.svg" />
+</div>
+</div>
+</section>
+<section id="depth-first-search-(DFS)">
+<h2>depth-first search (DFS)<a class="headerlink" href="#depth-first-search-(DFS)" title="Link to this heading"></a></h2>
+<p>DFS, or Depth-First Search, is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root (selecting some arbitrary node as the root in the case of a graph) and explores as far as possible along each branch before backtracking.</p>
+<p>Let us look at the following example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">HGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_15_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_15_0.svg" />
+</div>
+</div>
+<section id="collecting-all-paths">
+<h3>collecting all paths<a class="headerlink" href="#collecting-all-paths" title="Link to this heading"></a></h3>
+<p>To gather all paths, we utilize the function <code class="docutils literal notranslate"><span class="pre">get_paths(g,</span> <span class="pre">vs=None)</span></code>:</p>
+<ul class="simple">
+<li><p>if vs is not provided (default), then all source vertices in the graph (vertices without inputs) are taken into account.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_paths</span>
+<span class="n">get_paths</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="c1"># root is 0 (graph source)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[0, 1, 3, 4], [0, 2, 3, 4]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_paths</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># root: 1 and 2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1, 3, 4], [2, 3, 4]]
+</pre></div></div>
+</div>
+</section>
+<section id="visiting-nodes">
+<h3>visiting nodes<a class="headerlink" href="#visiting-nodes" title="Link to this heading"></a></h3>
+<p>To visit all nodes of a graph using depth-first search, you can use <code class="docutils literal notranslate"><span class="pre">dfs_visitor(g,</span> <span class="pre">vs=None,</span> <span class="pre">pre=None,</span> <span class="pre">post=None,</span> <span class="pre">data=None)</span></code> function:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">g</span></code> (HGraph): The graph to perform the depth-first search on.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vs</span></code> (list, optional): The starting vertices for the search. If not provided, the source vertices of the graph will be used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre</span></code> (function, optional): A function to be called before visiting each vertex. It takes four arguments: the graph, the current vertex, the current path, and the additional data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post</span></code> (function, optional): A function to be called after visiting each vertex. It takes four arguments: the graph, the current vertex, the current path, and the additional data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (any, optional): Additional data to be passed to the pre and post functions.</p></li>
+</ul>
+<p>Note: functions <code class="docutils literal notranslate"><span class="pre">pre</span></code> or <code class="docutils literal notranslate"><span class="pre">post</span></code> can gracefully stop search at any time by raising <code class="docutils literal notranslate"><span class="pre">StopSearch</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_visitor</span><span class="p">,</span> <span class="n">StopSearch</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pre</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bye vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pre_stops_at_3</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello again vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">vx</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">StopSearch</span><span class="p">()</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="c1"># pass data as reference instead of value in order to change it</span>
+<span class="n">dfs_visitor</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">counter</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===&quot;</span><span class="p">)</span>
+<span class="n">dfs_visitor</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre_stops_at_3</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Hello vertex 0: 0
+Hello vertex 1: 1
+Hello vertex 3: 2
+Hello vertex 4: 3
+Bye vertex 4
+Bye vertex 3
+Bye vertex 1
+Hello vertex 2: 4
+Hello vertex 3: 5
+Hello vertex 4: 6
+Bye vertex 4
+Bye vertex 3
+Bye vertex 2
+Bye vertex 0
+===
+Hello again vertex 0
+Hello again vertex 1
+Hello again vertex 3
+</pre></div></div>
+</div>
+</section>
+<section id="graph-traversal">
+<h3>graph traversal<a class="headerlink" href="#graph-traversal" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">dfs_traversal(g,</span> <span class="pre">vx,</span> <span class="pre">pre=None,</span> <span class="pre">post=None,</span> <span class="pre">inh=None)</span></code> function provides an advanced mechanism for depth-first search (DFS) traversal:</p>
+<ul class="simple">
+<li><p>It is more efficient than <code class="docutils literal notranslate"><span class="pre">dfs_visitor</span></code>, making it ideal for large graphs.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">inh</span></code> parameter allows you to pass initial data that can be inherited by the child nodes during traversal.</p></li>
+<li><p>If supplied, the <code class="docutils literal notranslate"><span class="pre">pre(g,</span> <span class="pre">vx,</span> <span class="pre">inh)</span></code> function is invoked prior to the visitation of <code class="docutils literal notranslate"><span class="pre">vx</span></code>. The <code class="docutils literal notranslate"><span class="pre">inh</span></code> parameter is optional and represents the value inherited from the parent node.</p></li>
+<li><p>If supplied, the <code class="docutils literal notranslate"><span class="pre">post(g,</span> <span class="pre">vx,</span> <span class="pre">synth)</span></code> function is invoked following the visitation of <code class="docutils literal notranslate"><span class="pre">vx</span></code>. The <code class="docutils literal notranslate"><span class="pre">synth</span></code> parameter is optional and represents a list of values, each of which is returned by a child node.</p></li>
+</ul>
+<p>In the example below, we use the inheritance feature to assign a depth to each vertex and the synthesis feature to count the number of vertices visited.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_traversal</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pre_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">inh</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inh</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">post_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">synth</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">synth</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">dfs_traversal</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre_visit</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post_visit</span><span class="p">,</span> <span class="n">inh</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Pre-visit: 0, inherited: 0
+Pre-visit: 1, inherited: 1
+Pre-visit: 3, inherited: 2
+Pre-visit: 4, inherited: 3
+Post-visit: 4, synthesized: []
+Post-visit: 3, synthesized: [1]
+Post-visit: 1, synthesized: [2]
+Pre-visit: 2, inherited: 1
+Post-visit: 2, synthesized: [2]
+Post-visit: 0, synthesized: [3, 3]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+7
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="erasing-a-graph">
+<h2>erasing a graph<a class="headerlink" href="#erasing-a-graph" title="Link to this heading"></a></h2>
+<p>To remove parts of the graph, we use the <code class="docutils literal notranslate"><span class="pre">remove_subgraph(vx)</span></code> method, where <code class="docutils literal notranslate"><span class="pre">vx</span></code> is the root vertex of the subgraph. All graph elements connected directly and indirectly to <code class="docutils literal notranslate"><span class="pre">vx</span></code> are removed.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from the graph above</span>
+<span class="n">g</span><span class="o">.</span><span class="n">remove_subgraph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_24_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__2-hgraph-ops_24_0.svg" />
+</div>
+</div>
+<p>To remove all graph elements and reset the graph, we can use the method <code class="docutils literal notranslate"><span class="pre">erase()</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="1-hgraph-basics.html" class="btn btn-neutral float-left" title="heterograph: basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3-hgraph-pmaps.html" class="btn btn-neutral float-right" title="heterograph: property maps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Custom Computing Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

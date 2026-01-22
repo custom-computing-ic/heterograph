@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heterograph.query.graphdef &mdash; heterograph 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/label.css" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="heterograph.query.processor_dfs" href="../processor_dfs/index.html" />
+    <link rel="prev" title="heterograph.query.aql" href="../aql/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            heterograph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">heterograph</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../algorithm/index.html">heterograph.algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hgraph/index.html">heterograph.hgraph</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">heterograph.query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../webview/index.html">heterograph.webview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks.html">Notebooks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">heterograph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">heterograph</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">heterograph.query</a></li>
+      <li class="breadcrumb-item active">heterograph.query.graphdef</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/heterograph/query/graphdef/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-heterograph.query.graphdef">
+<span id="heterograph-query-graphdef"></span><h1>heterograph.query.graphdef<a class="headerlink" href="#module-heterograph.query.graphdef" title="Link to this heading"></a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#heterograph.query.graphdef.QueryGraphDef" title="heterograph.query.graphdef.QueryGraphDef"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueryGraphDef</span></code></a></p></td>
+<td><p>A class to define and build query graphs.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.query.graphdef.</span></span><span class="sig-name descname"><span class="pre">QueryGraphDef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef" title="Link to this definition"></a></dt>
+<dd><p>A class to define and build query graphs.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the QueryGraphDef instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<em>set</em><em>, </em><em>optional</em>) -- Source nodes. Defaults to an empty set.</p></li>
+<li><p><strong>snk</strong> (<em>set</em><em>, </em><em>optional</em>) -- Sink nodes. Defaults to an empty set.</p></li>
+<li><p><strong>steps</strong> (<em>list</em><em>, </em><em>optional</em>) -- Steps defining the graph structure. Defaults to an empty list.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef.src">
+<span class="sig-name descname"><span class="pre">src</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef.src" title="Link to this definition"></a></dt>
+<dd><p>set specifying the source nodes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef.snk">
+<span class="sig-name descname"><span class="pre">snk</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef.snk" title="Link to this definition"></a></dt>
+<dd><p>set specifying the sink nodes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef.steps">
+<span class="sig-name descname"><span class="pre">steps</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef.steps" title="Link to this definition"></a></dt>
+<dd><p>list of steps defining the graph structure.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef.__repr__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef.args_label">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">args_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef.args_label" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.graphdef.QueryGraphDef.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eg_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.graphdef.QueryGraphDef.build" title="Link to this definition"></a></dt>
+<dd><p>Constructs the query graph based on the defined steps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qgraph</strong> (<a class="reference internal" href="../processor_dfs/index.html#heterograph.query.processor_dfs.QGraph" title="heterograph.query.processor_dfs.QGraph"><em>QGraph</em></a>) -- An instance of QGraph to be built.</p></li>
+<li><p><strong>vx_args</strong> (<em>function</em><em>, </em><em>optional</em>) -- A function to handle vertex arguments.</p></li>
+<li><p><strong>eg_args</strong> (<em>function</em><em>, </em><em>optional</em>) -- A function to handle edge arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The constructed query graph.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../processor_dfs/index.html#heterograph.query.processor_dfs.QGraph" title="heterograph.query.processor_dfs.QGraph">QGraph</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> -- If invalid steps are provided or if arguments for a vertex or edge have already been supplied.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Steps:</dt><dd><p>The <cite>steps</cite> attribute is a list of tuples that define the elements and structure of the query graph.
+Each step can represent either a vertex or an edge.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>Vertex Step (2-tuple):</strong></dt><dd><ul class="simple">
+<li><p>Format: <cite>(vertex_id, vertex_args)</cite></p></li>
+<li><p><cite>vertex_id</cite> (str): A unique identifier for the vertex.</p></li>
+<li><p><cite>vertex_args</cite> (tuple): Arguments for the vertex, which is a tuple containing a list of positional arguments and a dictionary of keyword arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Edge Step (3-tuple):</strong></dt><dd><ul class="simple">
+<li><p>Format: <cite>(vertex_id_src, vertex_id_tgt, edge_args)</cite></p></li>
+<li><p><cite>vertex_id_src</cite> (str): The unique identifier for the source vertex of the edge.</p></li>
+<li><p><cite>vertex_id_tgt</cite> (str): The unique identifier for the target vertex of the edge.</p></li>
+<li><p><cite>edge_args</cite> (tuple): Arguments for the edge, which is a tuple containing a list of positional arguments and a dictionary of keyword arguments.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Argument <cite>vx_args</cite> is a function that has signature: <cite>vx_args(qgraph, vx, *args, **kwargs)</cite>.</p></li>
+<li><p>Argument <cite>eg_args</cite> is a function that has signature: <cite>eg_args(qgraph, eg, *args, **kwargs)</cite>.</p></li>
+<li><p>Both functions are invoked during the qgraph building process, and are used to set the arguments from the select query into the corresponding vertices and edges of the qgraph.</p></li>
+</ul>
+</div>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.query.graphdef</span><span class="w"> </span><span class="kn">import</span> <span class="n">QueryGraphDef</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.query.qgraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">QGraph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qg_def</span> <span class="o">=</span> <span class="n">QueryGraphDef</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">},</span>
+<span class="gp">... </span>   <span class="n">snk</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;B&#39;</span><span class="p">},</span>
+<span class="gp">... </span>   <span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>          <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="p">([],</span> <span class="p">{})),</span>  <span class="c1"># Vertex step: Add vertex &#39;A&#39; with no arguments</span>
+<span class="gp">... </span>          <span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">([],</span> <span class="p">{})),</span>  <span class="c1"># Vertex step: Add vertex &#39;B&#39; with no arguments</span>
+<span class="gp">... </span>          <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">{</span><span class="s1">&#39;k0&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;k1&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}))</span>  <span class="c1"># Edge step: Add an edge from vertex &#39;A&#39; to vertex &#39;B&#39; with arguments (&#39;arg1&#39;, &#39;arg2&#39;)</span>
+<span class="gp">... </span>   <span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qgraph</span> <span class="o">=</span> <span class="n">QGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qgraph</span><span class="o">=</span><span class="n">qg_def</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">qgraph</span><span class="p">)</span> <span class="c1"># builds qgraph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qgraph</span><span class="o">.</span><span class="n">vertices</span>
+<span class="go">[0, 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qgraph</span><span class="o">.</span><span class="n">edges</span>
+<span class="go">[(0, 1)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qgraph</span><span class="o">.</span><span class="n">pmap</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="go">{&#39;args&#39;: &quot;(&#39;x&#39;, &#39;y&#39;, &#39;k0&#39;: 5, &#39;k1&#39;: 10)&quot;}</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>In this example:</dt><dd><ul class="simple">
+<li><p>the first step adds a vertex with ID ‘A’ and no arguments.</p></li>
+<li><p>the second step adds a vertex with ID ‘B’ and no arguments.</p></li>
+<li><p>the third step adds an edge from vertex ‘A’ to vertex ‘B’ with arguments and key-value arguments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../aql/index.html" class="btn btn-neutral float-left" title="heterograph.query.aql" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../processor_dfs/index.html" class="btn btn-neutral float-right" title="heterograph.query.processor_dfs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Custom Computing Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

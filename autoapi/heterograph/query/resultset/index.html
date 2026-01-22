@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heterograph.query.resultset &mdash; heterograph 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/label.css" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="heterograph.query.rsutils" href="../rsutils/index.html" />
+    <link rel="prev" title="heterograph.query.qgraph" href="../qgraph/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            heterograph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">heterograph</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../algorithm/index.html">heterograph.algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hgraph/index.html">heterograph.hgraph</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">heterograph.query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../webview/index.html">heterograph.webview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks.html">Notebooks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">heterograph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">heterograph</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">heterograph.query</a></li>
+      <li class="breadcrumb-item active">heterograph.query.resultset</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/heterograph/query/resultset/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-heterograph.query.resultset">
+<span id="heterograph-query-resultset"></span><h1>heterograph.query.resultset<a class="headerlink" href="#module-heterograph.query.resultset" title="Link to this heading"></a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#heterograph.query.resultset.QueryResultSet" title="heterograph.query.resultset.QueryResultSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QueryResultSet</span></code></a></p></td>
+<td><p>Represents a result set of a query execution.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.query.resultset.</span></span><span class="sig-name descname"><span class="pre">QueryResultSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet" title="Link to this definition"></a></dt>
+<dd><p>Represents a result set of a query execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>Graph</em>) -- The graph on which the query was executed.</p></li>
+<li><p><strong>qgraph</strong> (<em>QueryGraph</em>) -- The query graph used for the execution.</p></li>
+<li><p><strong>results</strong> (<em>list</em>) -- The list of matches in the result set.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initializes the instance with a graph, a query graph, and a list of results.</p>
+<dl class="simple">
+<dt>The results can be in two formats:</dt><dd><ul class="simple">
+<li><p>A list of matches, where each match is a dictionary mapping identifiers to vertices: {‘id0’: vx0, ‘id1’: vx1… }</p></li>
+<li><p>A list of matches, where each match is a list of vertices: [vx0, vx1, …]</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> -- The graph object.</p></li>
+<li><p><strong>qgraph</strong> -- The query graph.</p></li>
+<li><p><strong>results</strong> (<em>list</em>) -- The list of results. Each result can be a dictionary mapping identifiers to vertices, or a list of vertices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> -- If an identifier from the query graph is not found in a match from the results.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.ids">
+<span class="sig-name descname"><span class="pre">ids</span></span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.ids" title="Link to this definition"></a></dt>
+<dd><p>the list of IDs in the query graph.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.matches">
+<span class="sig-name descname"><span class="pre">matches</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.matches" title="Link to this definition"></a></dt>
+<dd><p>the list of matches in the result set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.qgraph">
+<span class="sig-name descname"><span class="pre">qgraph</span></span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.qgraph" title="Link to this definition"></a></dt>
+<dd><p>The query graph used for the execution.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.g">
+<span class="sig-name descname"><span class="pre">g</span></span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.g" title="Link to this definition"></a></dt>
+<dd><p>the graph on which the query was executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.vs">
+<span class="sig-name descname"><span class="pre">vs</span></span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.vs" title="Link to this definition"></a></dt>
+<dd><p>set of vertices in the graph.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.__iter">
+<span class="sig-name descname"><span class="pre">__iter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.__iter" title="Link to this definition"></a></dt>
+<dd><p>iterator object for the result set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.apply" title="Link to this definition"></a></dt>
+<dd><p>Applies the given action to the result set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> -- The action to apply to the result set.</p></li>
+<li><p><strong>kwargs</strong> -- Additional keyword arguments to pass to the action.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of applying the action to the result set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet._create_match_obj">
+<span class="sig-name descname"><span class="pre">_create_match_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet._create_match_obj" title="Link to this definition"></a></dt>
+<dd><p>Creates a match object that represents a query result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ids</strong> (<em>list</em>) -- A list of IDs corresponding to the query result.</p></li>
+<li><p><strong>match</strong> (<em>list</em>) -- A list of matches for the query result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An instance of the Result class representing the query result.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Result</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> -- If a vertex in the query result has been removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.__repr__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.removed">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">removed</span></span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.removed" title="Link to this definition"></a></dt>
+<dd><p>Returns the set of vertices that have been removed from the result set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The set of vertices that have been removed.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.inserted">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inserted</span></span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.inserted" title="Link to this definition"></a></dt>
+<dd><p>Returns the set of vertices that were inserted into the graph since the creation of this result set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The set of inserted vertices.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.__iter__">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.__iter__" title="Link to this definition"></a></dt>
+<dd><p>Returns an iterator object for the result set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.__next__">
+<span class="sig-name descname"><span class="pre">__next__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.__next__" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the next match from the result set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A match object created using the ids and match data.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>StopIteration</strong> -- If there are no more matches in the result set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.__len__">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.__len__" title="Link to this definition"></a></dt>
+<dd><p>Returns the number of matches in the result set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The number of matches in the result set.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.resultset.QueryResultSet.__getitem__">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.resultset.QueryResultSet.__getitem__" title="Link to this definition"></a></dt>
+<dd><p>Get the item at the specified index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> (<em>int</em>) -- The index of the item to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The item at the specified index.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../qgraph/index.html" class="btn btn-neutral float-left" title="heterograph.query.qgraph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rsutils/index.html" class="btn btn-neutral float-right" title="heterograph.query.rsutils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Custom Computing Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

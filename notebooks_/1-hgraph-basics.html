@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heterograph: basics &mdash; heterograph 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/label.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="heterograph: graph operations" href="2-hgraph-ops.html" />
+    <link rel="prev" title="Notebooks" href="../notebooks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            heterograph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">heterograph: basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-graph">creating a graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vertices">vertices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-vertices">adding vertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#removing-vertices">removing vertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listing-vertices">listing vertices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-vertices">checking vertices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#edges">edges</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-edges">adding edges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#removing-edges">removing edges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listing-edges">listing edges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-edges">checking edges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#neighbours">neighbours</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#visualizing-a-graph">visualizing a graph</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="2-hgraph-ops.html">heterograph: graph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-hgraph-pmaps.html">heterograph: property maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-hgraph-visualisation.html">heterograph: visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-hgraph-queries.html">heterograph: queries</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">heterograph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Notebooks</a></li>
+      <li class="breadcrumb-item active">heterograph: basics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks_/1-hgraph-basics.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="heterograph:-basics">
+<h1>heterograph: basics<a class="headerlink" href="#heterograph:-basics" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Heterograph is a Python graph library designed to capture model descriptions, from neural network architectures to software programs. It provides a uniform program abstraction for both analysis and manipulation.</p>
+<p>Built on top of <a class="reference external" href="https://graph-tool.skewed.de/">graph-tool</a>, a scalable and fast graph library with a core engine written in C++, Heterograph extends graph-tool by adding several unique features:</p>
+<ul class="simple">
+<li><p><strong>Persistent Identifiers</strong>: Ensures that vertices and edges retain their identifiers across sessions.</p></li>
+<li><p><strong>Custom Neighbor Ordering</strong>: Allows ordering between input and output neighbors of any vertex.</p></li>
+<li><p><strong>Read-Only Graphs</strong>: Enables the creation of graphs that cannot be modified, ensuring data integrity.</p></li>
+<li><p><strong>Property Maps</strong>: Captures arbitrary data for graphs, vertices, and edges, enhancing the ability to store and retrieve complex information.</p></li>
+<li><p><strong>Graph Styles</strong>: Facilitates the creation of richly styled graphs for better visualization and interpretation.</p></li>
+<li><p><strong>Web App Visualization</strong>: Provides tools for visualizing graphs within a web application, making it easier to explore and understand graph structures interactively.</p></li>
+</ul>
+</section>
+<section id="creating-a-graph">
+<h2>creating a graph<a class="headerlink" href="#creating-a-graph" title="Link to this heading"></a></h2>
+<p>To create a graph, we import <code class="docutils literal notranslate"><span class="pre">heterograph</span></code> module and instantiate <code class="docutils literal notranslate"><span class="pre">HGraph</span></code> class as follows:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">HGraph</span><span class="p">()</span> <span class="c1"># create HGraph</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="vertices">
+<h2>vertices<a class="headerlink" href="#vertices" title="Link to this heading"></a></h2>
+<p>Each vertex in <code class="docutils literal notranslate"><span class="pre">HGraph</span></code> is identified by an integer. It remains persistent and unique within the graph, even if other parts of the graph are changed. Therefore, the vertex ID can be safely used as an index.</p>
+<section id="adding-vertices">
+<h3>adding vertices<a class="headerlink" href="#adding-vertices" title="Link to this heading"></a></h3>
+<p>To add one or more vertices, we use <code class="docutils literal notranslate"><span class="pre">add_vx</span></code> and specify <code class="docutils literal notranslate"><span class="pre">n</span></code> - the number of vertices to add:</p>
+<ul class="simple">
+<li><p>if <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">1</span></code> (or no argument is specified): one vertex is added, returning the vertex ID as an integer.</p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>: <code class="docutils literal notranslate"><span class="pre">n</span></code> vertices are added, returning a list of corresponding vertex IDs.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">()</span> <span class="c1"># adds one vertex, identified by ID 0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># adds two vertices, identified by IDs 1 to 3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, 3, 4]
+</pre></div></div>
+</div>
+</section>
+<section id="removing-vertices">
+<h3>removing vertices<a class="headerlink" href="#removing-vertices" title="Link to this heading"></a></h3>
+<p>To remove one or more vertices, we use <code class="docutils literal notranslate"><span class="pre">rm_vx(vs,</span> <span class="pre">verify=True)</span></code> and specify either the vertex ID (<code class="docutils literal notranslate"><span class="pre">int</span></code>) or a <code class="docutils literal notranslate"><span class="pre">list</span></code> of vertex IDs to be removed. By default, the <code class="docutils literal notranslate"><span class="pre">verify</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, meaning that any vertex ID not found raises an exception. Otherwise, any vertex not found is ignored.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">rm_vx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># remove vertex 0</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">rm_vx</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># remove vertices 3 and 4</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="listing-vertices">
+<h3>listing vertices<a class="headerlink" href="#listing-vertices" title="Link to this heading"></a></h3>
+<p>To retrieve the list of available vertices, we use the <code class="docutils literal notranslate"><span class="pre">vertices</span></code> property.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">vertices</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2]
+</pre></div></div>
+</div>
+</section>
+<section id="checking-vertices">
+<h3>checking vertices<a class="headerlink" href="#checking-vertices" title="Link to this heading"></a></h3>
+<p>To verify whether a vertex (or a set of vertices) exists, we utilize the <code class="docutils literal notranslate"><span class="pre">check_vx(vs,</span> <span class="pre">verify=False)</span></code> method. By default, it returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all specified vertices exist and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. However, when the <code class="docutils literal notranslate"><span class="pre">verify</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, it raises an exception if any vertex is not found. This is particularly useful in pre-condition checks.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">check_vx</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">check_vx</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+   <span class="n">g</span><span class="o">.</span><span class="n">check_vx</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pre-check failed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pre-check failed!
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="edges">
+<h2>edges<a class="headerlink" href="#edges" title="Link to this heading"></a></h2>
+<p>An edge connects a source vertex <code class="docutils literal notranslate"><span class="pre">s</span></code> to a target vertex <code class="docutils literal notranslate"><span class="pre">t</span></code> and is identified by the tuple <code class="docutils literal notranslate"><span class="pre">(s,</span> <span class="pre">t)</span></code>, where <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code> represent the vertex IDs. The following types of edges are not supported by <code class="docutils literal notranslate"><span class="pre">HGraph</span></code>:</p>
+<ul class="simple">
+<li><p>self-loop edges, i.e., <code class="docutils literal notranslate"><span class="pre">(vx,</span> <span class="pre">vx)</span></code>, where an edge has the same source and target vertex.</p></li>
+<li><p>two edges with the same source and target. Hence, <code class="docutils literal notranslate"><span class="pre">(s,</span> <span class="pre">t)</span></code> uniquely identifies an edge.</p></li>
+</ul>
+<section id="adding-edges">
+<h3>adding edges<a class="headerlink" href="#adding-edges" title="Link to this heading"></a></h3>
+<p>To add one or more edges, we use the <code class="docutils literal notranslate"><span class="pre">add_edge(s,</span> <span class="pre">t)</span></code> method:</p>
+<ul class="simple">
+<li><p>both <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code> can be either integers or lists of integers denoting vertex IDs.</p></li>
+<li><p>a cartesian product is performed if either <code class="docutils literal notranslate"><span class="pre">s</span></code> or <code class="docutils literal notranslate"><span class="pre">t</span></code> are lists.</p></li>
+<li><p>ignores if edge is a self-loop <code class="docutils literal notranslate"><span class="pre">(s,</span> <span class="pre">s)</span></code> or if edge already exists</p></li>
+<li><p>returns a list of added edge IDs</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">HGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(0, 1), (0, 2)]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(1, 3), (2, 3)]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(3, 4)]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># ignores if self-loop</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># ignores if adding an existing edge</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[]
+</pre></div></div>
+</div>
+</section>
+<section id="removing-edges">
+<h3>removing edges<a class="headerlink" href="#removing-edges" title="Link to this heading"></a></h3>
+<p>To remove one or more edge, we use <code class="docutils literal notranslate"><span class="pre">rm_edge(edge,</span> <span class="pre">verify=True)</span></code> and specify either an edge ID (tuple <code class="docutils literal notranslate"><span class="pre">(s,</span> <span class="pre">t)</span></code>) or a list of edge IDs to be removed. By default, the <code class="docutils literal notranslate"><span class="pre">verify</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, meaning that any edge ID not found raises an exception. Otherwise, any edge not found is ignored.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">rm_edge</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="listing-edges">
+<h3>listing edges<a class="headerlink" href="#listing-edges" title="Link to this heading"></a></h3>
+<p>To retrieve the list of available edges, we use the <code class="docutils literal notranslate"><span class="pre">edges</span></code> property.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">edges</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(0, 1), (0, 2), (1, 3), (2, 3)]
+</pre></div></div>
+</div>
+</section>
+<section id="checking-edges">
+<h3>checking edges<a class="headerlink" href="#checking-edges" title="Link to this heading"></a></h3>
+<p>To verify whether an edge (or a set of edges) exists, we utilize the <code class="docutils literal notranslate"><span class="pre">check_edge(vs,</span> <span class="pre">verify=False)</span></code> method. By default, it returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all specified edges exist and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. However, when the <code class="docutils literal notranslate"><span class="pre">verify</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, it raises an exception if any edge is not found. This is particularly useful in pre-condition checks.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">check_edge</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+</section>
+<section id="neighbours">
+<h3>neighbours<a class="headerlink" href="#neighbours" title="Link to this heading"></a></h3>
+<p>To return adjacent vertices of a vertex <code class="docutils literal notranslate"><span class="pre">vx</span></code>, use the <code class="docutils literal notranslate"><span class="pre">in_vx(vx)</span></code> method for input vertices (vertices that have an edge pointing to <code class="docutils literal notranslate"><span class="pre">vx</span></code>) and the <code class="docutils literal notranslate"><span class="pre">out_vx(vx)</span></code> method for output vertices (vertices that <code class="docutils literal notranslate"><span class="pre">vx</span></code> points to).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">HGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[(0, 1), (0, 2)]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">in_vx</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">out_vx</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2]
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="visualizing-a-graph">
+<h2>visualizing a graph<a class="headerlink" href="#visualizing-a-graph" title="Link to this heading"></a></h2>
+<p>To visualize a graph, use the <code class="docutils literal notranslate"><span class="pre">view(host='0.0.0.0',</span> <span class="pre">port='8888')</span></code> method. This launches a web app that can be accessed at <code class="docutils literal notranslate"><span class="pre">http://localhost:8888</span></code>. The web app allows to zoom and pan the graph for detailed examination. When this method is invoked inside a Jupyter Notebook, the graph is displayed directly within the notebook. More details about visualisation can be found <a class="reference internal" href="4-hgraph-visualisation.html"><span class="doc">here</span></a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__1-hgraph-basics_34_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__1-hgraph-basics_34_0.svg" />
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../notebooks.html" class="btn btn-neutral float-left" title="Notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="2-hgraph-ops.html" class="btn btn-neutral float-right" title="heterograph: graph operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Custom Computing Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

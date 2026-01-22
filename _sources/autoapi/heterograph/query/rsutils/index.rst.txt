@@ -1,0 +1,58 @@
+heterograph.query.rsutils
+=========================
+
+.. py:module:: heterograph.query.rsutils
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   heterograph.query.rsutils.RSet
+
+
+Module Contents
+---------------
+
+.. py:class:: RSet
+
+   Represents a set of query results.
+
+
+   .. py:method:: distinct(rs, target=None)
+      :staticmethod:
+
+
+      Returns a new query result set with distinct matches based on the specified target.
+
+      :param rs: The original query result set.
+      :type rs: QueryResultSet
+      :param target: The target identifier(s) to consider for distinctness. None means all identifiers.
+      :type target: str or list
+
+      :returns: A new query result set with distinct matches.
+      :rtype: QueryResultSet
+
+      :raises ValueError: If the target identifier does not exist in the query results.
+
+
+
+   .. py:method:: disjoint(rs, target)
+      :staticmethod:
+
+
+      Returns a new query result set with matches that are disjoint with the specified target.
+
+      :param rs: The original query result set.
+      :type rs: QueryResultSet
+      :param target: The target identifier to check for disjointness.
+      :type target: str
+
+      :returns: A new query result set with disjoint matches.
+      :rtype: QueryResultSet
+
+      :raises ValueError: If the target identifier does not exist in the query results.
+
+
+

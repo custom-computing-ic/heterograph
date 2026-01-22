@@ -1,0 +1,163 @@
+heterograph.query.resultset
+===========================
+
+.. py:module:: heterograph.query.resultset
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   heterograph.query.resultset.QueryResultSet
+
+
+Module Contents
+---------------
+
+.. py:class:: QueryResultSet(g, qgraph, results: list)
+
+   Represents a result set of a query execution.
+
+   :param g: The graph on which the query was executed.
+   :type g: Graph
+   :param qgraph: The query graph used for the execution.
+   :type qgraph: QueryGraph
+   :param results: The list of matches in the result set.
+   :type results: list
+
+
+   .. py:method:: __init__(g, qgraph, results: list)
+
+      Initializes the instance with a graph, a query graph, and a list of results.
+
+      The results can be in two formats:
+         - A list of matches, where each match is a dictionary mapping identifiers to vertices: {'id0': vx0, 'id1': vx1... }
+         - A list of matches, where each match is a list of vertices: [vx0, vx1, ...]
+
+      :param g: The graph object.
+      :param qgraph: The query graph.
+      :param results: The list of results. Each result can be a dictionary mapping identifiers to vertices, or a list of vertices.
+      :type results: list
+
+      :raises RuntimeError: If an identifier from the query graph is not found in a match from the results.
+
+
+
+   .. py:attribute:: ids
+
+      the list of IDs in the query graph.
+
+
+   .. py:attribute:: matches
+      :value: None
+
+
+      the list of matches in the result set.
+
+
+   .. py:attribute:: qgraph
+
+      The query graph used for the execution.
+
+
+   .. py:attribute:: g
+
+      the graph on which the query was executed.
+
+
+   .. py:attribute:: vs
+
+      set of vertices in the graph.
+
+
+   .. py:attribute:: __iter
+      :value: None
+
+
+      iterator object for the result set.
+
+
+   .. py:method:: apply(action, **kwargs)
+
+      Applies the given action to the result set.
+
+      :param action: The action to apply to the result set.
+      :param kwargs: Additional keyword arguments to pass to the action.
+
+      :returns: The result of applying the action to the result set.
+
+
+
+   .. py:method:: _create_match_obj(ids, match)
+
+      Creates a match object that represents a query result.
+
+      :param ids: A list of IDs corresponding to the query result.
+      :type ids: list
+      :param match: A list of matches for the query result.
+      :type match: list
+
+      :returns: An instance of the Result class representing the query result.
+      :rtype: Result
+
+      :raises RuntimeError: If a vertex in the query result has been removed.
+
+
+
+   .. py:method:: __repr__()
+
+
+   .. py:property:: removed
+
+      Returns the set of vertices that have been removed from the result set.
+
+      :returns: The set of vertices that have been removed.
+      :rtype: set
+
+
+   .. py:property:: inserted
+
+      Returns the set of vertices that were inserted into the graph since the creation of this result set.
+
+      :returns: The set of inserted vertices.
+      :rtype: set
+
+
+   .. py:method:: __iter__()
+
+      Returns an iterator object for the result set.
+
+
+
+   .. py:method:: __next__()
+
+      Retrieves the next match from the result set.
+
+      :returns: A match object created using the ids and match data.
+
+      :raises StopIteration: If there are no more matches in the result set.
+
+
+
+   .. py:method:: __len__()
+
+      Returns the number of matches in the result set.
+
+      :returns: The number of matches in the result set.
+      :rtype: int
+
+
+
+   .. py:method:: __getitem__(item)
+
+      Get the item at the specified index.
+
+      :param item: The index of the item to retrieve.
+      :type item: int
+
+      :returns: The item at the specified index.
+      :rtype: object
+
+
+

@@ -1,0 +1,1748 @@
+heterograph.query.qgraph
+========================
+
+.. py:module:: heterograph.query.qgraph
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   heterograph.query.qgraph.HGraph
+   heterograph.query.qgraph.QueryAQL
+   heterograph.query.qgraph.QueryTransformer
+   heterograph.query.qgraph.QGraph
+
+
+Module Contents
+---------------
+
+.. py:class:: HGraph(*, ginit=None, vinit=None, einit=None)
+
+   Provides a high-level interface to analyse and manipulate arbitrary graph data structures.
+
+   :class:`HGraph` encapsulates complex functionalities of the `graph-tool` library, and adds additional features like property maps for vertices and edges to capture arbitrary data and styling options.  Unlike `graph-tool`, vertices and edges maintain their original references when the graph is manipulated.
+
+   Here are some key benefits:
+
+   - **Property Mapping**: Each vertex and edge in the graph can have a custom property map associated with it. This allows you to associate arbitrary data with each element of your graph.
+
+   - **Read-Only Mode**: You can set the graph into read-only mode, which will make any modifications fail with an error, preventing accidental changes.
+
+   - **Styling Support**: The class provides support for styling both at a high level and individual elements. It uses Graphviz's Digraph module to generate SVG files of the graph, and it also supports viewing graphs directly on a webpage with interactive features such as zooming and panning.
+
+   - **Subgraph Operations**: The class provides methods for adding/removing vertices and edges from the graph, which includes checking if a vertex or edge is valid before performing operations. It also supports copying of subgraphs, removal of subgraphs, and other operations.
+
+   - **DFS Support**: It uses the DFS algorithm to find connected components, which can be useful for various tasks like graph partitioning.
+
+   - **Rendering and Viewing**: The class provides methods for rendering the graph into different formats (like SVG) and viewing it directly on a webpage through a built-in HTTP server with interactive features.
+
+
+
+   .. py:method:: __init__(*, ginit=None, vinit=None, einit=None)
+
+      Initializes an instance of HGraph.
+
+      This function sets up the initial state of the graph. It also allows optional initialization functions for graph, vertices, and edges to intialize the corresponding attributes in property maps. Note that a graph is initialized as **not** read-only.
+
+      :param ginit: A function that takes in the HGraph instance and initializes it. Defaults to None.
+      :type ginit: function, optional
+      :param vinit: A function that takes in the HGraph instance and a vertex ID, and initializes the properties of this vertex. Defaults to None.
+      :type vinit: function, optional
+      :param einit: A function that takes in the HGraph instance and an edge tuple, and initializes the properties of this edge. Defaults to None.
+      :type einit: function, optional
+
+
+
+   .. py:attribute:: __g
+
+      an instance of graph_tool's Graph object which represents the actual directed graph.
+
+
+   .. py:attribute:: __ginit
+      :value: None
+
+
+      stores initial user-defined graph properties.
+
+
+   .. py:attribute:: __vinit
+      :value: None
+
+
+      stores initial user-defined vertex properties.
+
+
+   .. py:attribute:: __einit
+      :value: None
+
+
+      stores initial user-defined edge properties.
+
+
+   .. py:attribute:: __vx_counter
+      :value: None
+
+
+      keeps track of the total number of vertices added to the graph. Each vertex gets a unique id generated from this counter.
+
+
+   .. py:attribute:: __ivx
+      :value: None
+
+
+      a dictionary that maps internal vertex IDs (as used by graph_tool) to persistent vertex IDs (as seen by users).
+
+
+   .. py:attribute:: __vx
+      :value: None
+
+
+      the reverse of __ivx, mapping persistent vertex IDs (as seen by users) to internal vertex IDs (as used by graph_tool).
+
+
+   .. py:attribute:: __in
+      :value: None
+
+
+      dictionary that stores incoming neighbors of each vertex.
+
+
+   .. py:attribute:: __out
+      :value: None
+
+
+      dictionary that stores outgoing neighbors of each vertex.
+
+
+   .. py:attribute:: __properties
+      :value: None
+
+
+      an instance of HGraphProps that manages property maps for graph, vertices and edges.
+
+
+   .. py:attribute:: read_only
+      :value: None
+
+
+      indicates whether the graph is in read-only mode. If True, any graph modification raises an error.
+
+
+   .. py:property:: igraph
+
+      Returns the internal Graph (graph-tool) object.
+
+
+   .. py:property:: to_ivx
+
+      Returns a dictionary mapping internal vertex IDs to persistent vertex IDs.
+
+
+   .. py:property:: to_vx
+
+      Returns a dictionary mapping persistent vertex IDs to internal vertex IDs.
+
+
+   .. py:property:: style
+
+      Get or set the `graph` style.
+
+      When setting the style to ``None``, the current style is cleared.
+      Otherwise, the provided style is added or updated.
+
+
+   .. py:property:: vstyle
+
+      Get or set the `vertex` style.
+
+      When setting the style to ``None``, the current style is cleared.
+      Otherwise, the provided style is added or updated.
+
+
+   .. py:property:: estyle
+
+      Get or set the `edge` style.
+
+      When setting the style to ``None``, the current style is cleared.
+      Otherwise, the provided style is added or updated.
+
+
+   .. py:property:: pmap
+
+      Gets/sets property maps of graph, vertices and edges.
+
+      * ``g.pmap``: get/set graph properties
+      * ``g.pmap[vx]``: get/set vertex ``vx`` properties
+      * ``g.pmap[edge]``: get/set edge ``edge`` properties
+
+
+   .. py:property:: num_vx
+
+      This property returns the total number of vertices in the graph.
+
+
+   .. py:property:: vertices
+
+      This property returns a list of all vertex IDs in the graph.
+
+
+   .. py:property:: source
+
+      Get list of source vertices (vertices with no incoming edges) in the graph.
+
+
+   .. py:property:: sink
+
+      Get list of sink vertices (vertices with no outgoing edges) in the graph.
+
+
+   .. py:method:: num_in_vx(vx)
+
+      Calculates and returns the number of incoming edges for a given vertex.
+
+      :param vx: The ID of the vertex whose in-degree is to be calculated.
+      :type vx: int
+
+      :returns: Number of incoming edges for the specified vertex `vx`.
+      :rtype: int
+
+      :raises RuntimeError: If the provided vertex ID `vx` does not exist.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> v1 = g.add_vx()
+      >>> v2 = g.add_vx()
+      >>> e = g.add_edge(v1, v2)
+      >>> g.num_in_vx(v2)
+      1
+
+
+
+   .. py:method:: num_out_vx(vx)
+
+      Returns the number of vertices that are connected to this vertex
+      via outgoing edges.
+
+      :param vx: The ID of the vertex whose out-degree is to be calculated.
+      :type vx: int
+
+      :returns: Number of vertices that are connected to the specified vertex `vx`.
+      :rtype: int
+
+      :raises RuntimeError: If the provided vertex ID `vx` does not exist.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3)
+      >>> e = g.add_edge(0, [1, 2])
+      >>> g.num_out_vx(0)
+      2
+
+
+
+   .. py:method:: out_vx(vx, *, order=None, after=True, anchor=None)
+
+      Returns a list of vertices that are connected to vertex `vx` via outgoing edges.
+      This includes all vertices that can be reached by following directed edges starting from `vx`.
+      The ordering is controlled by the `order` parameter.
+
+      If `order` is provided, this method will first remove the list of vertices specified in `order`, and then
+      append after or before the `anchor` according to the value of `after`. If the `anchor` is None,
+      then the `anchor` is assumed to be the last element.
+
+      :param vx: The ID of the vertex whose out-neighbours are to be retrieved.
+      :type vx: int
+      :param order: A list of neighbouring vertices in their desired order. Defaults to None.
+      :type order: list of ints, optional
+      :param after: If True and an anchor is provided, append the ordered neighbours to it,
+                    else prepend them. Defaults to True.
+      :type after: bool, optional
+      :param anchor: The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
+      :type anchor: int, optional
+
+      :returns: A list of vertices that are connected to the specified `vx` via outgoing edges in the requested order (if any).
+      :rtype: list of ints
+
+      :raises RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
+          Also raised if an invalid anchor is specified (not an integer).
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(4)  # adds 4 vertices and returns their IDs in a list [0, 1, 2, 3]
+      >>> e = g.add_edge(0, [1, 2, 3])  # connects vertex 0 to vertices [1, 2, 3]
+      >>> g.out_vx(0)  # gets the out-neighbours of vertex 0
+      [1, 2, 3]
+      >>> g.out_vx(0, order=[2,1,3])
+      [2, 1, 3]
+      >>> g.out_vx(0, order=[3,2], after=True, anchor=1)
+      [1, 3, 2]
+      >>> g.out_vx(0, order=[3,2], after=False, anchor=1)
+      [3, 2, 1]
+      >>> g.out_vx(0, order=[2,3], after=True)
+      [1, 2, 3]
+
+
+
+   .. py:method:: in_vx(vx, *, order=None, after=True, anchor=None)
+
+      Returns a list of vertices that are connected to vertex `vx` via incoming edges.
+
+      This includes all vertices from which directed edges point to `vx`. The ordering is
+      controlled by the `order` parameter.
+
+      If `order` is provided, this method will first remove the list of vertices specified in `order`, and then
+      append after or before the `anchor` according to the value of `after`. If the `anchor` is None,
+      then the `anchor` is assumed to be the last element.
+
+      :param vx: The ID of the vertex whose in-neighbours are to be retrieved.
+      :type vx: int
+      :param order: A list of neighbouring vertices in their desired order. Defaults to None.
+      :type order: list of ints, optional
+      :param after: If True and an anchor is provided, append the ordered neighbours to it,
+                    else prepend them. Defaults to True.
+      :type after: bool, optional
+      :param anchor: The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
+      :type anchor: int, optional
+
+      :returns: A list of vertices that are connected to the specified `vx` via incoming edges in the requested order (if any).
+      :rtype: list of ints
+
+      :raises RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
+          Also raised if an invalid anchor is specified (not an integer).
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(4)  # adds 4 vertices and returns their IDs in a list [0, 1, 2, 3]
+      >>> e = g.add_edge([1, 2, 3], 0)  # connects vertices [1, 2, 3] to 0
+      >>> g.in_vx(0)  # gets the in-neighbours of vertex 0
+      [1, 2, 3]
+      >>> g.in_vx(0, order=[3,2], after=False, anchor=1)
+      [3, 2, 1]
+      >>> g.in_vx(0, order=[2], after=False)
+      [2, 3, 1]
+
+
+
+   .. py:method:: add_vx(n=1)
+
+      Add a new vertex to the graph.
+
+      :param n: The number of vertices to add. Default is 1.
+      :type n: int
+
+      :returns:
+
+                * if `n` == 1: returns the ID (int) of newly added vertex
+                * if `n` > 1`: returns a list of IDs (list of int) of the newly added vertices.
+      :rtype: int or list
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> g.add_vx()  # adds one new vertex
+      0
+      >>> g.add_vx(3)  # adds three new vertices
+      [1, 2, 3]
+      >>> g.num_vx
+      4
+
+
+
+   .. py:method:: rm_vx(vs, verify=True)
+
+      Remove one or more vertices from the graph and disconnect all edges connected to them.
+
+      This function removes a specified vertex (or multiple vertices) along with all the edges that are incident
+      on it in both directions i.e., incoming and outgoing edges. It also updates the internal dictionaries tracking
+      neighbours of each vertex, so these changes will reflect in the `in_vx` and `out_vx` methods when called for
+      this same vertices.
+
+      :param vs: The ID(s) of the vertex to be removed. If it's a single integer, then it represents one
+                 vertex. If it's a list, then it contains multiple vertices.
+      :type vs: int or list
+      :param verify: If True, raises an exception if any specified
+                     vertex does not exist in the graph. Otherwise, any vertex not found is
+                     ignored. Default is True.
+      :type verify: bool, optional
+
+      :raises RuntimeError: If any of the provided vertex IDs `vs` do not exist in the graph.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> g.add_vx(3)  # adds three vertices
+      [0, 1, 2]
+      >>> g.rm_vx(1)
+      >>> g.vertices
+      [0, 2]
+      >>> g.rm_vx([0, 2])
+      >>> g.vertices
+      []
+
+
+
+   .. py:method:: check_vx(vs, verify=False)
+
+      Checks if a vertex (or set of vertices) exist in the graph.
+
+      This function checks whether one or more vertices specified by their IDs exist in the graph or not. It returns True if all vertices are present and False otherwise. If `verify` is set to True, it raises an exception with an error message specifying which vertex does not exist (if any).
+
+      :param vs: The ID(s) of the vertex/vertices to be checked. Can be a single integer or a list of integers.
+      :type vs: int or list of ints
+      :param verify: If True, raises an exception if any specified vertex does not exist in the graph. Default is False.
+      :type verify: bool, optional
+
+      :returns: True if all vertices are present and False otherwise.
+      :rtype: bool
+
+      :raises RuntimeError: If `verify` is set to True and any of the provided vertices do not exist in the graph. The error message contains the ID of that vertex that does not exist.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3) # adds vertices [0, 1, 2]
+      >>> g.check_vx([0, 2])
+      True
+      >>> g.check_vx(4)
+      False
+
+
+
+   .. py:property:: num_edges
+
+      Returns the total number of edges present in the graph.
+
+
+   .. py:property:: edges
+
+      Returns a list of all edges as tuples (v1, v2) where each tuple represents an edge
+      connecting vertex v1 and v2 in the graph instance. The vertices are identified by their integer IDs.
+
+
+   .. py:method:: add_edge(s, t)
+
+      Adds a new edge to the graph connecting two vertices `s` and `t`.
+
+      Adds one or more edges between vertices. Notes:
+         * adding a self-loop where vertex `s` == vertex `t` is ignored. Use vertex property maps.
+         * adding multiple edges between any two vertices is ignored. Use edge property maps.
+
+      :param s: The source vertex ID(s). If 's' is an integer, it represents one
+                source vertex. If 's' is a list, it contains multiple source vertices.
+      :type s: int or list of ints
+      :param t: The target vertex ID(s). Similar to 's', if 't' is an integer it
+                represents one target vertex and if 't' is a list, it contains multiple
+                target vertices.
+      :type t: int or list of ints
+
+      :returns:
+
+                A list of edges added as tuples in the format (source_vertex, target_vertex).
+                            Each tuple represents an edge connecting source_vertex to target_vertex in the graph instance.
+      :rtype: list of tuples
+
+      :raises RuntimeError: If 's' and/or 't' do not exist in the graph.
+          Also, raised if any of the provided vertex IDs are invalid.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(4)  # [0, 1, 2, 3]
+      >>> g.add_edge(0, [1, 2])  # connects vertex 0 to vertices [1,2]
+      [(0, 1), (0, 2)]
+      >>> g.add_edge([1, 2], 0) # connects vertices [1,2] to vertex 0
+      [(1, 0), (2, 0)]
+      >>> g.add_edge(2, 3)
+      [(2, 3)]
+      >>> g.edges
+      [(0, 1), (0, 2), (1, 0), (2, 0), (2, 3)]
+
+
+
+   .. py:method:: check_edge(edge, verify=False)
+
+      Check if one or more edges exist in the graph.
+
+      :param edge: The ID(s) of the edge/edges to be checked.
+                   If `edge` is a tuple, it represents one edge. If `edge` is a list,
+                   it contains multiple edges.
+      :type edge: tuple or list of tuples
+      :param verify: If True, raises an exception if any specified
+                     edge does not exist in the graph. Default is False.
+      :type verify: bool, optional
+
+      :returns: Whether all edges are present and valid or not.
+      :rtype: bool
+
+      :raises RuntimeError: If `verify` is True, and one or more edges are not found in the graph.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> g.add_vx(3)
+      [0, 1, 2]
+      >>> g.add_edge(0, [1, 2])
+      [(0, 1), (0, 2)]
+      >>> g.check_edge((0, 1))
+      True
+      >>> g.check_edge([(0, 1), (0, 2)])
+      True
+      >>> g.check_edge([(0, 1), (0, 4)])
+      False
+
+
+
+   .. py:method:: rm_edge(edge, verify=True)
+
+      Removes one or more edges from the graph.
+
+      :param edge: The ID(s) of the edge/edges to be removed.
+                   If `edge` is a tuple, it represents one edge. If `edge` is a list,
+                   it contains multiple edges.
+      :type edge: tuple or list of tuples
+      :param verify: If True, raises an exception if any specified
+                     edge does not exist in the graph. Otherwise, any edge not found is
+                     ignored. Default is True.
+      :type verify: bool, optional
+
+      :returns: None
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3) # adds 3 vertices
+      >>> g.add_edge(0, [1, 2])
+      [(0, 1), (0, 2)]
+      >>> g.rm_edge((0,1)) # removes edge between vertex 0 and 1
+      >>> g.edges
+      [(0, 2)]
+
+      :raises RuntimeError: If `verify` is True and one or more edges are not found in the graph.
+
+
+
+   .. py:method:: erase()
+
+      Resets the graph to its initial state, clearing all vertices and edges.
+
+      The properties of the graph will be reset as well, returning them to their default values.
+      Read-only status is also set back to False.
+
+      This function does not accept any arguments and does not return anything.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3)   # adds three vertices
+      >>> e = g.add_edge(0, 1)  # connects vertex 0 to vertex 1
+      >>> g.num_vx
+      3
+      >>> g.num_edges
+      1
+      >>> g.erase()
+      >>> g.num_vx
+      0
+      >>> g.num_edges
+      0
+
+
+
+   .. py:method:: copy(*, vs=None, g=None, induced=True, ret_map=False)
+
+      Creates a copy of the current graph.
+
+      This function creates an independent clone of the current graph instance. The cloned graph is optionally restricted to a subset of vertices (`vs`) or can be copied as an induced subgraph. An induced subgraph means that edges from any two nodes included in the copy are also copied automatically. Properties are automatically copied.
+
+      :param vs: A list of vertex IDs specifying which vertices should be included in the copy. If not provided, all vertices will be copied. Default is None.
+      :type vs: list of ints
+      :param g: The HGraph instance to store the clone. If provided, the clone is added. If not provided, a new HGraph instance is created. Default is None.
+      :type g: HGraph instance, optional
+      :param induced: A flag indicating whether an induced subgraph should be copied or all edges should be copied. Default is True.
+      :type induced: bool, optional
+      :param ret_map: A flag indicating whether the vertex mapping from old to new graph should be returned. Default is False.
+      :type ret_map: bool, optional
+
+      :returns:    * If `ret_map` is False, returns a copy of the cloned graph.
+                   * If `ret_map` is True, returns a tuple containing both a copy of the current graph and a mapping from old to new vertices in the form of {old vertex: new vertex}.
+      :rtype: HGraph instance
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3)   # adds three vertices, returns their IDs [0, 1, 2]
+      >>> e = g.add_edge(0, [1, 2])   # connects vertex 0 to vertices [1, 2]
+      >>> (h, map_cp) = g.copy(vs=[0, 2], induced=True, ret_map=True)   # creates a copy of the graph
+      >>> map_cp # 0 => 0, 2 => 1
+      {0: 0, 2: 1}
+      >>> h.vertices
+      [0, 1]
+      >>> h.edges
+      [(0, 1)]
+
+
+
+   .. py:method:: remove_subgraph(vx)
+
+      Remove a subgraph rooted at a specified vertex.
+
+      This method removes all vertices and edges connected to the provided vertex and its descendants in the graph.
+
+      :param vx: The ID of the vertex from where the subgraph starts being removed.
+      :type vx: int
+
+      :returns: The function doesn't return any value, it directly modifies the graph by removing vertices and edges.
+      :rtype: None
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(5)  # adds five vertices with IDs [0, 1, 2, 3, 4]
+      >>> e = g.add_edge(0, [1, 2])  # connects vertex 0 to vertices 1 and 2
+      >>> e = g.add_edge(1, 3)  # connects vertex 1 to vertex 3
+      >>> e = g.add_edge(2, 4)  # connects vertex 2 to vertex 4
+      >>> g.remove_subgraph(0)  # removes the subgraph rooted at vertex 0
+      >>> g.vertices
+      []
+      >>> g.edges
+      []
+
+
+
+   .. py:method:: render(*, filename='graph.svg', format='svg', pipe=False, vs=None, induced=True, gstyle=None, vstyle=None, estyle=None, **kwargs)
+
+      Renders the graph (or part of the graph). The rendering style can be specified without changing the internal graph style.
+
+      :param filename: The output filename. Defaults to 'graph.svg'.
+      :type filename: str, optional
+      :param format: The format of the generated images ('png', 'pdf', etc). Defaults to 'svg'.
+      :type format: str, optional
+      :param pipe: If True, return a string representation of the graph in specified format instead of saving an image file. Defaults to False.
+      :type pipe: bool, optional
+      :param vs: A list of vertex IDs specifying which vertices should be included in the rendering. If not provided, all vertices will be included. Defaults to None.
+      :type vs: list of ints, optional
+      :param induced: Whether or not only the edges within the subgraph specified by `vs` should be rendered. Defaults to True.
+      :type induced: bool, optional
+      :param gstyle: The graph style as a dictionary where keys are property names and values are their new values. Defaults to None.
+      :type gstyle: dict, optional
+      :param vstyle: The vertex style as a dictionary where keys are property names and values are their new values. Defaults to None.
+      :type vstyle: dict, optional
+      :param estyle: The edge style as a dictionary where keys are property names and values are their new values. Defaults to None.
+      :type estyle: dict, optional
+      :param \*\*kwargs: Additional keyword arguments to pass to the rendering engine.
+
+      :returns:     * If `pipe` is True, returns a string representation of the graph in specified format.
+                    * Otherwise (if `pipe` is False), no return value. The rendered image file will be saved to disk with the filename provided.
+      :rtype: str or None
+
+
+
+   .. py:method:: view(host='0.0.0.0', port='8888', viewer=None, **kwargs)
+
+      Open an interactive web interface to visualize this graph.
+
+      This method opens a local server and displays the graph in a user-friendly way. It allows users to interact with the graph, such as zooming and panning.
+
+      :param host: The address where the web interface should be hosted. Default is '0.0.0.0'.
+      :type host: str, optional
+      :param port: The port on which to run the server. Default is 8888.
+      :type port: int, optional
+      :param viewer: An existing HGraphViewer instance to use for visualization. If not provided, a new instance will be created. Default is None.
+      :type viewer: HGraphViewer instance, optional
+      :param \*\*kwargs: Additional arguments passed directly to the viewer's run method.
+
+      :returns: None
+
+
+
+   .. py:method:: __reset()
+
+      Private method. Resets the graph to its initial state.
+      Used by :meth:`__init__` and :meth:`erase` methods.
+
+
+
+   .. py:method:: __gen_vx_id()
+
+      Private method. Generates a unique integer ID for a new vertex in the graph.
+
+
+
+   .. py:method:: __to_ivs(vs)
+
+      Private method which maps persistent vertex IDs to graph-tool vertex IDs (ivx).
+
+
+
+   .. py:method:: __neighbours(_in, vx, order=None, after=True, anchor=None)
+
+      Private method which outputs and orders input/output neighbours. Used by :meth:`in_vx` and :meth:`out_vx` methods.
+
+
+
+.. py:class:: QueryAQL
+
+   A class for processing AQL queries and transforming them into graph definitions.
+
+   This class takes in queries and transforms them into graph definitions. The attributes associated with nodes and edges can be either key-value pairs or arguments.
+
+   The AQL grammar in BNF format:
+       .. code-block:: text
+
+           <id> ::= /[a-zA-Z][a-zA-Z0-9_]*/
+           <pair> ::= <id> ":" <value>
+
+           <value> ::= <pair>             -- map
+                   | ESCAPED_STRING     -- string
+                   | SIGNED_INT         -- number_int
+                   | SIGNED_FLOAT       -- number_float
+                   | "True"             -- true_val
+                   | "False"            -- false_val
+                   | <id>               -- string
+
+           <args> ::= <value>
+                   | <args> ("," <value>)*
+
+           <node> ::= <id>
+                   | <id> "{" <args> "}"
+
+           <edge> ::= "=>"
+                   | "={" <args> "}>"
+
+           <graph> ::= "(" <graph> ("|" <graph>)* ")"   -- group_graph
+                   | "0"                             -- empty_graph
+                   | <node>                          -- node_graph
+                   | <graph> <edge> <graph>          -- edge_graph
+
+           <WS> ::= " "  -- whitespace
+
+           <ESCAPED_STRING> ::= """ ( "\" . | ~["\])* """
+
+           <SIGNED_INT> ::= ["-"] [0-9]+
+
+           <SIGNED_FLOAT> ::= ["-"] [0-9]+ "." [0-9]+
+
+
+   .. note::
+
+      Attributes associated to nodes (**id{attr}**) and edges (**id0 ={attr}> id1**) can be either:
+       - key-values: a:2, b:"abc" OR
+       - arguments: a,b,c
+
+   .. rubric:: Example
+
+   >>> from heterograph.query.aql import QueryAQL
+   >>> aql = QueryAQL()
+   >>> lst = [
+   ...     "0",   # empty graph
+   ...     "abc", # single node
+   ...     'abc { a: 1, b: 2.4, c: "3"}', # node with key-value arguments
+   ...     'abc { a, b, c}', # node with arguments
+   ...     'abc ={ weight: 3.14 }> def', # edge with key-value arguments
+   ...     'abc ={ weight: 3.14, color: "black" }> def{ a: 1, b: 2.4, c: "3"}',
+   ...     'q => (a|b|c)=>d' # graph with nodes and edges
+   ... ]
+   >>> for i in lst:
+   ...     r = aql.grammar.parse(i)
+
+
+   .. py:method:: __init__()
+
+      Initializes with the specified grammar and transformer.
+
+
+
+   .. py:attribute:: grammar
+
+      the grammar used to parse the queries.
+
+
+   .. py:attribute:: transformer
+
+      the transformer used to transform the parsed queries.
+
+      :type: (QueryTransformer)
+
+
+.. py:class:: QueryTransformer(visit_tokens: bool = True)
+
+   Bases: :py:obj:`lark.Transformer`
+
+
+   A class used to transform parsed queries using the LARK grammar defined in :class:`QueryAQL<heterograph.query.aql.QueryAQL>`  into a more usable format.
+
+   This class extends the lark.Transformer class and overrides its methods to provide custom transformations for different types of parsed query components. It basically transforms a string query into a QueryGraphDef object. The format of a QueryGraphDef object is as follows:
+       * src (set): The set of source vertices.
+       * snk (set): The set of sink vertices.
+       * steps (list): The list of steps in the query graph.
+
+   Each step helps construct the QGraph, and is represented by:
+      * A vertex (2-tuple): `(vertex_id, vertex_args)`
+      * An edge (3-tuple): `(vertex_id_src, vertex_id_tgt, edge_args)`
+
+   Vertex and edge arguments are represented as a tuple containing a list of positional arguments and a dictionary of keyword arguments.
+
+
+   .. py:attribute:: true_val
+
+
+   .. py:attribute:: false_val
+
+
+   .. py:method:: string(str)
+
+      Converts a string representation to a Python string.
+
+      :param str: A list containing a single string.
+      :type str: list
+
+      :returns: The converted Python string.
+      :rtype: str
+
+
+
+   .. py:method:: number_int(n)
+
+      Converts the first element of the input list `n` to an integer.
+
+      :param n: A list containing a single element.
+      :type n: list
+
+      :returns: The first element of the input list `n`, converted to an integer.
+      :rtype: int
+
+
+
+   .. py:method:: number_float(n)
+
+      Converts the first element of the input list `n` to a float.
+
+      :param n: A list containing a single element.
+      :type n: list
+
+      :returns: The first element of the input list `n` converted to a float.
+      :rtype: float
+
+
+
+   .. py:method:: args(items)
+
+      Returns the arguments passed to the method.
+
+      :param items: A list of items.
+      :type items: list
+
+      :returns:
+
+                If the list contains only one item, that item is returned.
+                        Otherwise, the entire list is returned.
+      :rtype: object
+
+
+
+   .. py:method:: pair(items)
+
+      Create a dictionary with the first item as the key and the second item as the value.
+
+      :param items: A list of two items.
+      :type items: list
+
+      :returns: A dictionary with the first item as the key and the second item as the value.
+      :rtype: dict
+
+
+
+   .. py:method:: map(items)
+
+      Maps the given items and returns the first item.
+
+      :param items: A list of items to be mapped.
+      :type items: list
+
+      :returns: The first item in the list.
+
+
+
+   .. py:method:: id(items)
+
+      Converts the first item in the given list to a string representation.
+
+      :param items: A list of items.
+      :type items: list
+
+      :returns: The string representation of the first item in the list.
+      :rtype: str
+
+
+
+   .. py:method:: process_args(items)
+
+      Process the arguments passed to the method.
+
+      :param items: The arguments to be processed. It can be a single item or a list of items.
+      :type items: list or any
+
+      :returns: A tuple containing two elements - a list of positional arguments and a dictionary of keyword arguments.
+      :rtype: tuple
+
+
+
+   .. py:method:: node(items)
+
+      Create a node tuple with arguments.
+
+      :param items: A list of items.
+      :type items: list
+
+      :returns: A tuple containing the first item as the node and the second item as a tuple of arguments.
+      :rtype: tuple
+
+
+
+   .. py:method:: edge(items)
+
+      Process a list of items and return a tuple containing the processed arguments and keyword arguments.
+
+      :param items: A list of items to be processed.
+      :type items: list
+
+      :returns: A tuple containing the processed arguments and keyword arguments. If the list is empty, the tuple will contain `None` for both elements.
+      :rtype: tuple
+
+
+
+   .. py:method:: empty_graph(items)
+
+      Creates and returns an empty QueryGraphDef object.
+
+      Parameters:
+      - items: A list of items to initialize the graph with.
+
+      Returns:
+      - An empty QueryGraphDef object.
+
+
+
+
+   .. py:method:: node_graph(items)
+
+      Create a query graph definition based on the given items.
+
+      :param items: A list of items representing the graph.
+      :type items: list
+
+      :returns: The query graph definition.
+      :rtype: QueryGraphDef
+
+
+
+   .. py:method:: edge_graph(items)
+
+      Constructs a new query graph by connecting the sink nodes of the first graph (`g1`) with the source nodes of the second graph (`g2`) using the specified edge argument.
+
+      :param items: A list of items containing the two graphs (`g1` and `g2`) and the edge argument.
+      :type items: list
+
+      :returns: The new query graph with the connected nodes and the updated steps.
+      :rtype: QueryGraphDef
+
+
+
+   .. py:method:: merge_graphs(items)
+      :staticmethod:
+
+
+      Merge multiple graphs into a single graph.
+
+      :param items: A list of graphs to be merged.
+      :type items: list
+
+      :returns: The merged graph.
+      :rtype: QueryGraphDef
+
+
+
+   .. py:method:: group_graph(items)
+
+      Groups the given list of items into a single graph.
+
+      :param items: A list of graphs to be merged.
+      :type items: list
+
+      :returns: The merged graph containing all the items.
+      :rtype: Graph
+
+
+
+   .. py:attribute:: __visit_tokens__
+      :value: True
+
+
+
+   .. py:method:: __init__(visit_tokens: bool = True) -> None
+
+
+   .. py:method:: _call_userfunc(tree, new_children=None)
+
+
+   .. py:method:: _call_userfunc_token(token)
+
+
+   .. py:method:: _transform_children(children)
+
+
+   .. py:method:: _transform_tree(tree)
+
+
+   .. py:method:: transform(tree: lark.tree.Tree[_Leaf_T]) -> _Return_T
+
+      Transform the given tree, and return the final result
+
+
+
+   .. py:method:: __mul__(other: Union[Transformer[_Leaf_U, _Return_V], TransformerChain[_Leaf_U, _Return_V,]]) -> TransformerChain[_Leaf_T, _Return_V]
+
+      Chain two transformers together, returning a new transformer.
+
+
+
+
+   .. py:method:: __default__(data, children, meta)
+
+      Default function that is called if there is no attribute matching ``data``
+
+      Can be overridden. Defaults to creating a new copy of the tree node (i.e. ``return Tree(data, children, meta)``)
+
+
+
+   .. py:method:: __default_token__(token)
+
+      Default function that is called if there is no attribute matching ``token.type``
+
+      Can be overridden. Defaults to returning the token as-is.
+
+
+
+   .. py:method:: _apply_v_args(visit_wrapper)
+      :classmethod:
+
+
+
+   .. py:method:: __class_getitem__(_)
+      :classmethod:
+
+
+
+   .. py:attribute:: __slots__
+      :value: ()
+
+
+
+.. py:class:: QGraph(pattern=None, vx_args=None, eg_args=None)
+
+   Bases: :py:obj:`heterograph.hgraph.HGraph`
+
+
+   A class used to represent a query graph.
+
+   This class extends the HGraph class and adds functionality for processing queries and transforming them into graph definitions.
+
+   .. note::
+
+      * Argument `vx_args` is a function that has signature: `vx_args(qgraph, vx, *args, **kwargs)`.
+      * Argument `eg_args` is a function that has signature: `eg_args(qgraph, eg, *args, **kwargs)`.
+      * Both functions are invoked during the qgraph building process, and are used to set the arguments from the pattern into the corresponding vertices and edges of the qgraph.
+
+   .. rubric:: Example
+
+   >>> from heterograph.query.qgraph import QGraph
+   >>> qgraph = QGraph(pattern="A{1} ={ weight: 3.14 }> B{2}")
+   >>> print(qgraph.pattern)
+   A{1} ={ weight: 3.14 }> B{2}
+   >>> print(qgraph.graph_def)
+   QueryGraphDef (src: {'A'}, snk: {'B'}, steps: [('A', ([1], {})), ('B', ([2], {})), ('A', 'B', ([], {'weight': 3.14}))])
+
+
+   .. py:method:: __init__(pattern=None, vx_args=None, eg_args=None)
+
+      Constructs all the necessary attributes for the QGraph object.
+
+      :param pattern: The query to be processed. Defaults to "0".
+      :type pattern: str
+      :param vx_args: The vertex arguments. Defaults to None.
+      :type vx_args: dict
+      :param eg_args: The edge arguments. Defaults to None.
+      :type eg_args: dict
+
+
+
+   .. py:attribute:: pattern
+      :value: None
+
+
+      pattern to be processed and translated to a graph.
+
+      :type: (str)
+
+
+   .. py:attribute:: engine
+
+      engine used to translate the pattern
+
+      :type: (QueryAQL)
+
+
+   .. py:attribute:: graph_def
+      :value: None
+
+
+      graph object resulting from processing the query.
+
+
+   .. py:method:: _process(vx_args, eg_args)
+
+      Processes the query and transforms it into a graph definition.
+
+      :param vx_args: A function to handle vertex arguments.
+      :param eg_args: A function to handle edge arguments.
+
+      :returns: The graph definition resulting from processing the query.
+      :rtype: QueryGraphDef
+
+
+
+   .. py:attribute:: __g
+
+      an instance of graph_tool's Graph object which represents the actual directed graph.
+
+
+   .. py:attribute:: __ginit
+      :value: None
+
+
+      stores initial user-defined graph properties.
+
+
+   .. py:attribute:: __vinit
+      :value: None
+
+
+      stores initial user-defined vertex properties.
+
+
+   .. py:attribute:: __einit
+      :value: None
+
+
+      stores initial user-defined edge properties.
+
+
+   .. py:attribute:: __vx_counter
+      :value: None
+
+
+      keeps track of the total number of vertices added to the graph. Each vertex gets a unique id generated from this counter.
+
+
+   .. py:attribute:: __ivx
+      :value: None
+
+
+      a dictionary that maps internal vertex IDs (as used by graph_tool) to persistent vertex IDs (as seen by users).
+
+
+   .. py:attribute:: __vx
+      :value: None
+
+
+      the reverse of __ivx, mapping persistent vertex IDs (as seen by users) to internal vertex IDs (as used by graph_tool).
+
+
+   .. py:attribute:: __in
+      :value: None
+
+
+      dictionary that stores incoming neighbors of each vertex.
+
+
+   .. py:attribute:: __out
+      :value: None
+
+
+      dictionary that stores outgoing neighbors of each vertex.
+
+
+   .. py:attribute:: __properties
+      :value: None
+
+
+      an instance of HGraphProps that manages property maps for graph, vertices and edges.
+
+
+   .. py:attribute:: read_only
+      :value: None
+
+
+      indicates whether the graph is in read-only mode. If True, any graph modification raises an error.
+
+
+   .. py:property:: igraph
+
+      Returns the internal Graph (graph-tool) object.
+
+
+   .. py:property:: to_ivx
+
+      Returns a dictionary mapping internal vertex IDs to persistent vertex IDs.
+
+
+   .. py:property:: to_vx
+
+      Returns a dictionary mapping persistent vertex IDs to internal vertex IDs.
+
+
+   .. py:property:: style
+
+      Get or set the `graph` style.
+
+      When setting the style to ``None``, the current style is cleared.
+      Otherwise, the provided style is added or updated.
+
+
+   .. py:property:: vstyle
+
+      Get or set the `vertex` style.
+
+      When setting the style to ``None``, the current style is cleared.
+      Otherwise, the provided style is added or updated.
+
+
+   .. py:property:: estyle
+
+      Get or set the `edge` style.
+
+      When setting the style to ``None``, the current style is cleared.
+      Otherwise, the provided style is added or updated.
+
+
+   .. py:property:: pmap
+
+      Gets/sets property maps of graph, vertices and edges.
+
+      * ``g.pmap``: get/set graph properties
+      * ``g.pmap[vx]``: get/set vertex ``vx`` properties
+      * ``g.pmap[edge]``: get/set edge ``edge`` properties
+
+
+   .. py:property:: num_vx
+
+      This property returns the total number of vertices in the graph.
+
+
+   .. py:property:: vertices
+
+      This property returns a list of all vertex IDs in the graph.
+
+
+   .. py:property:: source
+
+      Get list of source vertices (vertices with no incoming edges) in the graph.
+
+
+   .. py:property:: sink
+
+      Get list of sink vertices (vertices with no outgoing edges) in the graph.
+
+
+   .. py:method:: num_in_vx(vx)
+
+      Calculates and returns the number of incoming edges for a given vertex.
+
+      :param vx: The ID of the vertex whose in-degree is to be calculated.
+      :type vx: int
+
+      :returns: Number of incoming edges for the specified vertex `vx`.
+      :rtype: int
+
+      :raises RuntimeError: If the provided vertex ID `vx` does not exist.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> v1 = g.add_vx()
+      >>> v2 = g.add_vx()
+      >>> e = g.add_edge(v1, v2)
+      >>> g.num_in_vx(v2)
+      1
+
+
+
+   .. py:method:: num_out_vx(vx)
+
+      Returns the number of vertices that are connected to this vertex
+      via outgoing edges.
+
+      :param vx: The ID of the vertex whose out-degree is to be calculated.
+      :type vx: int
+
+      :returns: Number of vertices that are connected to the specified vertex `vx`.
+      :rtype: int
+
+      :raises RuntimeError: If the provided vertex ID `vx` does not exist.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3)
+      >>> e = g.add_edge(0, [1, 2])
+      >>> g.num_out_vx(0)
+      2
+
+
+
+   .. py:method:: out_vx(vx, *, order=None, after=True, anchor=None)
+
+      Returns a list of vertices that are connected to vertex `vx` via outgoing edges.
+      This includes all vertices that can be reached by following directed edges starting from `vx`.
+      The ordering is controlled by the `order` parameter.
+
+      If `order` is provided, this method will first remove the list of vertices specified in `order`, and then
+      append after or before the `anchor` according to the value of `after`. If the `anchor` is None,
+      then the `anchor` is assumed to be the last element.
+
+      :param vx: The ID of the vertex whose out-neighbours are to be retrieved.
+      :type vx: int
+      :param order: A list of neighbouring vertices in their desired order. Defaults to None.
+      :type order: list of ints, optional
+      :param after: If True and an anchor is provided, append the ordered neighbours to it,
+                    else prepend them. Defaults to True.
+      :type after: bool, optional
+      :param anchor: The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
+      :type anchor: int, optional
+
+      :returns: A list of vertices that are connected to the specified `vx` via outgoing edges in the requested order (if any).
+      :rtype: list of ints
+
+      :raises RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
+          Also raised if an invalid anchor is specified (not an integer).
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(4)  # adds 4 vertices and returns their IDs in a list [0, 1, 2, 3]
+      >>> e = g.add_edge(0, [1, 2, 3])  # connects vertex 0 to vertices [1, 2, 3]
+      >>> g.out_vx(0)  # gets the out-neighbours of vertex 0
+      [1, 2, 3]
+      >>> g.out_vx(0, order=[2,1,3])
+      [2, 1, 3]
+      >>> g.out_vx(0, order=[3,2], after=True, anchor=1)
+      [1, 3, 2]
+      >>> g.out_vx(0, order=[3,2], after=False, anchor=1)
+      [3, 2, 1]
+      >>> g.out_vx(0, order=[2,3], after=True)
+      [1, 2, 3]
+
+
+
+   .. py:method:: in_vx(vx, *, order=None, after=True, anchor=None)
+
+      Returns a list of vertices that are connected to vertex `vx` via incoming edges.
+
+      This includes all vertices from which directed edges point to `vx`. The ordering is
+      controlled by the `order` parameter.
+
+      If `order` is provided, this method will first remove the list of vertices specified in `order`, and then
+      append after or before the `anchor` according to the value of `after`. If the `anchor` is None,
+      then the `anchor` is assumed to be the last element.
+
+      :param vx: The ID of the vertex whose in-neighbours are to be retrieved.
+      :type vx: int
+      :param order: A list of neighbouring vertices in their desired order. Defaults to None.
+      :type order: list of ints, optional
+      :param after: If True and an anchor is provided, append the ordered neighbours to it,
+                    else prepend them. Defaults to True.
+      :type after: bool, optional
+      :param anchor: The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
+      :type anchor: int, optional
+
+      :returns: A list of vertices that are connected to the specified `vx` via incoming edges in the requested order (if any).
+      :rtype: list of ints
+
+      :raises RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
+          Also raised if an invalid anchor is specified (not an integer).
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(4)  # adds 4 vertices and returns their IDs in a list [0, 1, 2, 3]
+      >>> e = g.add_edge([1, 2, 3], 0)  # connects vertices [1, 2, 3] to 0
+      >>> g.in_vx(0)  # gets the in-neighbours of vertex 0
+      [1, 2, 3]
+      >>> g.in_vx(0, order=[3,2], after=False, anchor=1)
+      [3, 2, 1]
+      >>> g.in_vx(0, order=[2], after=False)
+      [2, 3, 1]
+
+
+
+   .. py:method:: add_vx(n=1)
+
+      Add a new vertex to the graph.
+
+      :param n: The number of vertices to add. Default is 1.
+      :type n: int
+
+      :returns:
+
+                * if `n` == 1: returns the ID (int) of newly added vertex
+                * if `n` > 1`: returns a list of IDs (list of int) of the newly added vertices.
+      :rtype: int or list
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> g.add_vx()  # adds one new vertex
+      0
+      >>> g.add_vx(3)  # adds three new vertices
+      [1, 2, 3]
+      >>> g.num_vx
+      4
+
+
+
+   .. py:method:: rm_vx(vs, verify=True)
+
+      Remove one or more vertices from the graph and disconnect all edges connected to them.
+
+      This function removes a specified vertex (or multiple vertices) along with all the edges that are incident
+      on it in both directions i.e., incoming and outgoing edges. It also updates the internal dictionaries tracking
+      neighbours of each vertex, so these changes will reflect in the `in_vx` and `out_vx` methods when called for
+      this same vertices.
+
+      :param vs: The ID(s) of the vertex to be removed. If it's a single integer, then it represents one
+                 vertex. If it's a list, then it contains multiple vertices.
+      :type vs: int or list
+      :param verify: If True, raises an exception if any specified
+                     vertex does not exist in the graph. Otherwise, any vertex not found is
+                     ignored. Default is True.
+      :type verify: bool, optional
+
+      :raises RuntimeError: If any of the provided vertex IDs `vs` do not exist in the graph.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> g.add_vx(3)  # adds three vertices
+      [0, 1, 2]
+      >>> g.rm_vx(1)
+      >>> g.vertices
+      [0, 2]
+      >>> g.rm_vx([0, 2])
+      >>> g.vertices
+      []
+
+
+
+   .. py:method:: check_vx(vs, verify=False)
+
+      Checks if a vertex (or set of vertices) exist in the graph.
+
+      This function checks whether one or more vertices specified by their IDs exist in the graph or not. It returns True if all vertices are present and False otherwise. If `verify` is set to True, it raises an exception with an error message specifying which vertex does not exist (if any).
+
+      :param vs: The ID(s) of the vertex/vertices to be checked. Can be a single integer or a list of integers.
+      :type vs: int or list of ints
+      :param verify: If True, raises an exception if any specified vertex does not exist in the graph. Default is False.
+      :type verify: bool, optional
+
+      :returns: True if all vertices are present and False otherwise.
+      :rtype: bool
+
+      :raises RuntimeError: If `verify` is set to True and any of the provided vertices do not exist in the graph. The error message contains the ID of that vertex that does not exist.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3) # adds vertices [0, 1, 2]
+      >>> g.check_vx([0, 2])
+      True
+      >>> g.check_vx(4)
+      False
+
+
+
+   .. py:property:: num_edges
+
+      Returns the total number of edges present in the graph.
+
+
+   .. py:property:: edges
+
+      Returns a list of all edges as tuples (v1, v2) where each tuple represents an edge
+      connecting vertex v1 and v2 in the graph instance. The vertices are identified by their integer IDs.
+
+
+   .. py:method:: add_edge(s, t)
+
+      Adds a new edge to the graph connecting two vertices `s` and `t`.
+
+      Adds one or more edges between vertices. Notes:
+         * adding a self-loop where vertex `s` == vertex `t` is ignored. Use vertex property maps.
+         * adding multiple edges between any two vertices is ignored. Use edge property maps.
+
+      :param s: The source vertex ID(s). If 's' is an integer, it represents one
+                source vertex. If 's' is a list, it contains multiple source vertices.
+      :type s: int or list of ints
+      :param t: The target vertex ID(s). Similar to 's', if 't' is an integer it
+                represents one target vertex and if 't' is a list, it contains multiple
+                target vertices.
+      :type t: int or list of ints
+
+      :returns:
+
+                A list of edges added as tuples in the format (source_vertex, target_vertex).
+                            Each tuple represents an edge connecting source_vertex to target_vertex in the graph instance.
+      :rtype: list of tuples
+
+      :raises RuntimeError: If 's' and/or 't' do not exist in the graph.
+          Also, raised if any of the provided vertex IDs are invalid.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(4)  # [0, 1, 2, 3]
+      >>> g.add_edge(0, [1, 2])  # connects vertex 0 to vertices [1,2]
+      [(0, 1), (0, 2)]
+      >>> g.add_edge([1, 2], 0) # connects vertices [1,2] to vertex 0
+      [(1, 0), (2, 0)]
+      >>> g.add_edge(2, 3)
+      [(2, 3)]
+      >>> g.edges
+      [(0, 1), (0, 2), (1, 0), (2, 0), (2, 3)]
+
+
+
+   .. py:method:: check_edge(edge, verify=False)
+
+      Check if one or more edges exist in the graph.
+
+      :param edge: The ID(s) of the edge/edges to be checked.
+                   If `edge` is a tuple, it represents one edge. If `edge` is a list,
+                   it contains multiple edges.
+      :type edge: tuple or list of tuples
+      :param verify: If True, raises an exception if any specified
+                     edge does not exist in the graph. Default is False.
+      :type verify: bool, optional
+
+      :returns: Whether all edges are present and valid or not.
+      :rtype: bool
+
+      :raises RuntimeError: If `verify` is True, and one or more edges are not found in the graph.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> g.add_vx(3)
+      [0, 1, 2]
+      >>> g.add_edge(0, [1, 2])
+      [(0, 1), (0, 2)]
+      >>> g.check_edge((0, 1))
+      True
+      >>> g.check_edge([(0, 1), (0, 2)])
+      True
+      >>> g.check_edge([(0, 1), (0, 4)])
+      False
+
+
+
+   .. py:method:: rm_edge(edge, verify=True)
+
+      Removes one or more edges from the graph.
+
+      :param edge: The ID(s) of the edge/edges to be removed.
+                   If `edge` is a tuple, it represents one edge. If `edge` is a list,
+                   it contains multiple edges.
+      :type edge: tuple or list of tuples
+      :param verify: If True, raises an exception if any specified
+                     edge does not exist in the graph. Otherwise, any edge not found is
+                     ignored. Default is True.
+      :type verify: bool, optional
+
+      :returns: None
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3) # adds 3 vertices
+      >>> g.add_edge(0, [1, 2])
+      [(0, 1), (0, 2)]
+      >>> g.rm_edge((0,1)) # removes edge between vertex 0 and 1
+      >>> g.edges
+      [(0, 2)]
+
+      :raises RuntimeError: If `verify` is True and one or more edges are not found in the graph.
+
+
+
+   .. py:method:: erase()
+
+      Resets the graph to its initial state, clearing all vertices and edges.
+
+      The properties of the graph will be reset as well, returning them to their default values.
+      Read-only status is also set back to False.
+
+      This function does not accept any arguments and does not return anything.
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3)   # adds three vertices
+      >>> e = g.add_edge(0, 1)  # connects vertex 0 to vertex 1
+      >>> g.num_vx
+      3
+      >>> g.num_edges
+      1
+      >>> g.erase()
+      >>> g.num_vx
+      0
+      >>> g.num_edges
+      0
+
+
+
+   .. py:method:: copy(*, vs=None, g=None, induced=True, ret_map=False)
+
+      Creates a copy of the current graph.
+
+      This function creates an independent clone of the current graph instance. The cloned graph is optionally restricted to a subset of vertices (`vs`) or can be copied as an induced subgraph. An induced subgraph means that edges from any two nodes included in the copy are also copied automatically. Properties are automatically copied.
+
+      :param vs: A list of vertex IDs specifying which vertices should be included in the copy. If not provided, all vertices will be copied. Default is None.
+      :type vs: list of ints
+      :param g: The HGraph instance to store the clone. If provided, the clone is added. If not provided, a new HGraph instance is created. Default is None.
+      :type g: HGraph instance, optional
+      :param induced: A flag indicating whether an induced subgraph should be copied or all edges should be copied. Default is True.
+      :type induced: bool, optional
+      :param ret_map: A flag indicating whether the vertex mapping from old to new graph should be returned. Default is False.
+      :type ret_map: bool, optional
+
+      :returns:    * If `ret_map` is False, returns a copy of the cloned graph.
+                   * If `ret_map` is True, returns a tuple containing both a copy of the current graph and a mapping from old to new vertices in the form of {old vertex: new vertex}.
+      :rtype: HGraph instance
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(3)   # adds three vertices, returns their IDs [0, 1, 2]
+      >>> e = g.add_edge(0, [1, 2])   # connects vertex 0 to vertices [1, 2]
+      >>> (h, map_cp) = g.copy(vs=[0, 2], induced=True, ret_map=True)   # creates a copy of the graph
+      >>> map_cp # 0 => 0, 2 => 1
+      {0: 0, 2: 1}
+      >>> h.vertices
+      [0, 1]
+      >>> h.edges
+      [(0, 1)]
+
+
+
+   .. py:method:: remove_subgraph(vx)
+
+      Remove a subgraph rooted at a specified vertex.
+
+      This method removes all vertices and edges connected to the provided vertex and its descendants in the graph.
+
+      :param vx: The ID of the vertex from where the subgraph starts being removed.
+      :type vx: int
+
+      :returns: The function doesn't return any value, it directly modifies the graph by removing vertices and edges.
+      :rtype: None
+
+      .. rubric:: Example
+
+      >>> g = HGraph()
+      >>> vs = g.add_vx(5)  # adds five vertices with IDs [0, 1, 2, 3, 4]
+      >>> e = g.add_edge(0, [1, 2])  # connects vertex 0 to vertices 1 and 2
+      >>> e = g.add_edge(1, 3)  # connects vertex 1 to vertex 3
+      >>> e = g.add_edge(2, 4)  # connects vertex 2 to vertex 4
+      >>> g.remove_subgraph(0)  # removes the subgraph rooted at vertex 0
+      >>> g.vertices
+      []
+      >>> g.edges
+      []
+
+
+
+   .. py:method:: render(*, filename='graph.svg', format='svg', pipe=False, vs=None, induced=True, gstyle=None, vstyle=None, estyle=None, **kwargs)
+
+      Renders the graph (or part of the graph). The rendering style can be specified without changing the internal graph style.
+
+      :param filename: The output filename. Defaults to 'graph.svg'.
+      :type filename: str, optional
+      :param format: The format of the generated images ('png', 'pdf', etc). Defaults to 'svg'.
+      :type format: str, optional
+      :param pipe: If True, return a string representation of the graph in specified format instead of saving an image file. Defaults to False.
+      :type pipe: bool, optional
+      :param vs: A list of vertex IDs specifying which vertices should be included in the rendering. If not provided, all vertices will be included. Defaults to None.
+      :type vs: list of ints, optional
+      :param induced: Whether or not only the edges within the subgraph specified by `vs` should be rendered. Defaults to True.
+      :type induced: bool, optional
+      :param gstyle: The graph style as a dictionary where keys are property names and values are their new values. Defaults to None.
+      :type gstyle: dict, optional
+      :param vstyle: The vertex style as a dictionary where keys are property names and values are their new values. Defaults to None.
+      :type vstyle: dict, optional
+      :param estyle: The edge style as a dictionary where keys are property names and values are their new values. Defaults to None.
+      :type estyle: dict, optional
+      :param \*\*kwargs: Additional keyword arguments to pass to the rendering engine.
+
+      :returns:     * If `pipe` is True, returns a string representation of the graph in specified format.
+                    * Otherwise (if `pipe` is False), no return value. The rendered image file will be saved to disk with the filename provided.
+      :rtype: str or None
+
+
+
+   .. py:method:: view(host='0.0.0.0', port='8888', viewer=None, **kwargs)
+
+      Open an interactive web interface to visualize this graph.
+
+      This method opens a local server and displays the graph in a user-friendly way. It allows users to interact with the graph, such as zooming and panning.
+
+      :param host: The address where the web interface should be hosted. Default is '0.0.0.0'.
+      :type host: str, optional
+      :param port: The port on which to run the server. Default is 8888.
+      :type port: int, optional
+      :param viewer: An existing HGraphViewer instance to use for visualization. If not provided, a new instance will be created. Default is None.
+      :type viewer: HGraphViewer instance, optional
+      :param \*\*kwargs: Additional arguments passed directly to the viewer's run method.
+
+      :returns: None
+
+
+
+   .. py:method:: __reset()
+
+      Private method. Resets the graph to its initial state.
+      Used by :meth:`__init__` and :meth:`erase` methods.
+
+
+
+   .. py:method:: __gen_vx_id()
+
+      Private method. Generates a unique integer ID for a new vertex in the graph.
+
+
+
+   .. py:method:: __to_ivs(vs)
+
+      Private method which maps persistent vertex IDs to graph-tool vertex IDs (ivx).
+
+
+
+   .. py:method:: __neighbours(_in, vx, order=None, after=True, anchor=None)
+
+      Private method which outputs and orders input/output neighbours. Used by :meth:`in_vx` and :meth:`out_vx` methods.
+
+
+

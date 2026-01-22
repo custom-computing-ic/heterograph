@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heterograph: visualisation &mdash; heterograph 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/label.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="heterograph: queries" href="5-hgraph-queries.html" />
+    <link rel="prev" title="heterograph: property maps" href="3-hgraph-pmaps.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            heterograph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../autoapi/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../notebooks.html">Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-hgraph-basics.html">heterograph: basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-hgraph-ops.html">heterograph: graph operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-hgraph-pmaps.html">heterograph: property maps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">heterograph: visualisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rendering">rendering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#single-graph">single graph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-graphs">multiple graphs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#graph-styles">graph styles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getting-and-setting-styles">getting and setting styles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#static-attribute-values">static attribute values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamic-attribute-values">dynamic attribute values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-part-vertex-labels">multi-part vertex labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clustering">clustering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-rendering">custom rendering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subgraph">subgraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outputs">outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5-hgraph-queries.html">heterograph: queries</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">heterograph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../notebooks.html">Notebooks</a></li>
+      <li class="breadcrumb-item active">heterograph: visualisation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/notebooks_/4-hgraph-visualisation.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="heterograph:-visualisation">
+<h1>heterograph: visualisation<a class="headerlink" href="#heterograph:-visualisation" title="Link to this heading"></a></h1>
+<p>HGraph can be visualized using a built-in web app. As an example, consider the following graph:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">g</span><span class="o">=</span><span class="n">HGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<section id="rendering">
+<h2>rendering<a class="headerlink" href="#rendering" title="Link to this heading"></a></h2>
+<section id="single-graph">
+<h3>single graph<a class="headerlink" href="#single-graph" title="Link to this heading"></a></h3>
+<p>To simplest way to visualise a graph, is to use the <code class="docutils literal notranslate"><span class="pre">view(host='0.0.0.0',</span> <span class="pre">port='8888')</span></code> method. This launches a web app that can be accessed at <code class="docutils literal notranslate"><span class="pre">http://localhost:8888</span></code>. The web app allows zooming and panning. Note that, when this method is invoked inside a Jupyter Notebook, the graph is displayed directly within the notebook.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_3_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_3_0.svg" />
+</div>
+</div>
+</section>
+<section id="multiple-graphs">
+<h3>multiple graphs<a class="headerlink" href="#multiple-graphs" title="Link to this heading"></a></h3>
+<p>The web application is capable of visualizing multiple graphs. To do this, we first need to create an instance of the <code class="docutils literal notranslate"><span class="pre">WebView</span></code> object, and then proceed to add the graphs to it.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># copy part of the graph</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="n">viewer</span><span class="o">=</span><span class="n">WebView</span><span class="p">()</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;graph g&quot;</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;graph h&quot;</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3 style='color:orange;padding: 10px; border: 1px solid orange; border-radius: 5px; text-align: center;'>graph g</h3></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_5_1.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_5_1.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3 style='color:orange;padding: 10px; border: 1px solid orange; border-radius: 5px; text-align: center;'>graph h</h3></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_5_3.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_5_3.svg" />
+</div>
+</div>
+<p>When running this code on a web browser (default: <a class="reference external" href="http://localhost:8888">http://localhost:8888</a>), the following screen appears:</p>
+<p><img alt="6086f299ee10415f804ef65c19116776" class="no-scaled-link" src="../../notebooks/images/webapp.png" style="width: 500px;" /></p>
+</section>
+</section>
+<section id="graph-styles">
+<h2>graph styles<a class="headerlink" href="#graph-styles" title="Link to this heading"></a></h2>
+<p>We can customize the rendering of the graphs by modifying the style attributes of the graph, vertex, and edge elements. Since the graphs are rendered using Graphviz, most of the attributes described in the <a class="reference external" href="https://graphviz.org/doc/info/attrs.html">Graphviz documentation</a> are supported.</p>
+<p>Styles can be directly encoded in an <code class="docutils literal notranslate"><span class="pre">HGraph</span></code> instance using the following properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">g.style</span></code>: This property controls the style attributes of the graph.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g.vstyle</span></code>: This property controls the style attributes of the vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g.estyle</span></code>: This property controls the style attributes of the edges.</p></li>
+</ul>
+<p>Each of these properties is a key-value pair structure similar to a <code class="docutils literal notranslate"><span class="pre">dict</span></code> (however, behaves differently when updating), where the key is the attribute name and the value is the corresponding attribute value. It is important to note that unlike property maps, there is only one global <code class="docutils literal notranslate"><span class="pre">vstyle</span></code> and <code class="docutils literal notranslate"><span class="pre">estyle</span></code> data structure that applies to all vertices and edges. However, as we shall see later, it is possible to customize these for specific vertices and edges.</p>
+<section id="getting-and-setting-styles">
+<h3>getting and setting styles<a class="headerlink" href="#getting-and-setting-styles" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;default graph styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;default vertex styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;default edge styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+default graph styles:
+        =&gt; {&#39;layout&#39;: &#39;dot&#39;, &#39;rankdir&#39;: &#39;TD&#39;}
+default vertex styles:
+        =&gt; {&#39;shape&#39;: &#39;Mrecord&#39;, &#39;style&#39;: &#39;filled&#39;, &#39;fillcolor&#39;: &#39;#99CCFF&#39;, &#39;label&#39;: &lt;function HGraph.__reset.&lt;locals&gt;.&lt;lambda&gt; at 0x7f0e7b607240&gt;}
+default edge styles:
+        =&gt; {&#39;color&#39;: &#39;#777777&#39;, &#39;arrowhead&#39;: &#39;open&#39;}
+</pre></div></div>
+</div>
+<p>These three properties function similarly to a <code class="docutils literal notranslate"><span class="pre">dict</span></code>. However, when you set a property using a <code class="docutils literal notranslate"><span class="pre">dict</span></code>, it doesn’t overwrite the existing values. Instead, it updates the value if the key already exists, or adds a new key-value pair if it doesn’t. Let’s add an edge <a class="reference external" href="https://graphviz.org/docs/attrs/penwidth/">penwidth</a> of “2” and change the color to red.</p>
+<p><strong>Notes</strong>:</p>
+<ul class="simple">
+<li><p>to set the [v|e]style properties to empty (<code class="docutils literal notranslate"><span class="pre">{}</span></code>), you must set them to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p>setting an attribute value to ‘’ or <code class="docutils literal notranslate"><span class="pre">None</span></code> will apply the default Graphviz attribute value (refer to the <a class="reference external" href="https://graphviz.org/doc/info/attrs.html">manual</a> for more details).</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;penwidth&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span><span class="p">)</span> <span class="c1"># arrowhead is still present</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;color&#39;: &#39;red&#39;, &#39;arrowhead&#39;: &#39;open&#39;, &#39;penwidth&#39;: &#39;3&#39;}
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_9_1.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_9_1.svg" />
+</div>
+</div>
+</section>
+<section id="static-attribute-values">
+<h3>static attribute values<a class="headerlink" href="#static-attribute-values" title="Link to this heading"></a></h3>
+<p>Static attribute values are <strong>string</strong> constants. When used for vertex or edge styles, they apply to all vertices and edges, respectively. In the example above, <code class="docutils literal notranslate"><span class="pre">penwidth</span></code> has a static value. Note that all static values must be defined as strings, even when considering integer and floating-point values.</p>
+<p>Let us change the label of the vertex to “node” using a static attribute value, and set the edge color back to the default (<code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;node&#39;</span><span class="p">}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;penwidth&#39;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_11_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_11_0.svg" />
+</div>
+</div>
+</section>
+<section id="dynamic-attribute-values">
+<h3>dynamic attribute values<a class="headerlink" href="#dynamic-attribute-values" title="Link to this heading"></a></h3>
+<p>As demonstrated, it can be beneficial to modify attribute values based on specific vertex or edge elements, such as the <code class="docutils literal notranslate"><span class="pre">label</span></code> attribute mentioned above. In these cases, instead of setting a static string, we assign a function that is evaluated when the graph is rendered. These function values are known as dynamic attribute values, and they must return a string that corresponds to the attribute value.</p>
+<p>The signature of these functions varies depending on the style element:</p>
+<ul class="simple">
+<li><p>For graph style: <code class="docutils literal notranslate"><span class="pre">fn(g:</span> <span class="pre">HGraph)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></p></li>
+<li><p>For vertex style: <code class="docutils literal notranslate"><span class="pre">fn(g:</span> <span class="pre">HGraph,</span> <span class="pre">vx:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></p></li>
+<li><p>For edge style: <code class="docutils literal notranslate"><span class="pre">fn(g:</span> <span class="pre">HGraph,</span> <span class="pre">edge:</span> <span class="pre">(int,</span> <span class="pre">int))</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></p></li>
+</ul>
+<p>In the following example, we modify the vertex label to follow the pattern A-&gt;B-&gt;C, where A represents vertex 0, and so on. We also set the label for the edge.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">id_to_label</span><span class="p">(</span><span class="n">vx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="n">vx</span><span class="o">+</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="n">id_to_label</span><span class="p">(</span><span class="n">vx</span><span class="p">)}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">→</span><span class="si">{</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_13_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_13_0.svg" />
+</div>
+</div>
+</section>
+<section id="multi-part-vertex-labels">
+<h3>multi-part vertex labels<a class="headerlink" href="#multi-part-vertex-labels" title="Link to this heading"></a></h3>
+<p>By default, vertices use <code class="docutils literal notranslate"><span class="pre">Mrecord</span></code> style to support multi-part labels. More specifically, in Graphviz, the <code class="docutils literal notranslate"><span class="pre">Mrecord</span></code> shape is used to create nodes that can have multiple rectangular regions, each containing a label. This is useful to display multiple pieces of information in a single node. One can switch between horizontal and vertical layouts by enclosing fields in braces <code class="docutils literal notranslate"><span class="pre">{...}</span></code>. By default, the top-level orientation in a <code class="docutils literal notranslate"><span class="pre">Mrecord</span></code> is horizontal. For instance, a <code class="docutils literal notranslate"><span class="pre">Mrecord</span></code> with the
+label <code class="docutils literal notranslate"><span class="pre">&quot;A</span> <span class="pre">|</span> <span class="pre">B</span> <span class="pre">|</span> <span class="pre">C</span> <span class="pre">|</span> <span class="pre">D&quot;</span></code> will display four fields from left to right. However, if these fields are enclosed in braces, like <code class="docutils literal notranslate"><span class="pre">&quot;{A</span> <span class="pre">|</span> <span class="pre">B</span> <span class="pre">|</span> <span class="pre">C</span> <span class="pre">|</span> <span class="pre">D}&quot;</span></code>, they will be displayed from top to bottom.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">|{in:</span><span class="si">%d</span><span class="s2">|out:</span><span class="si">%d</span><span class="s2">}|id:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span>
+                                   <span class="p">(</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">vx</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">num_in_vx</span><span class="p">(</span><span class="n">vx</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">num_out_vx</span><span class="p">(</span><span class="n">vx</span><span class="p">),</span> <span class="n">vx</span><span class="p">)}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_15_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_15_0.svg" />
+</div>
+</div>
+</section>
+<section id="clustering">
+<h3>clustering<a class="headerlink" href="#clustering" title="Link to this heading"></a></h3>
+<p>Clustering allows grouping vertices into distinct rectangular sections. To set up clustering, three style elements need to be configured:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">g.style['nclusters']</span></code>: This sets the number of clusters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g.style['cluster']</span></code>: This defines the style format of the clusters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">g.vstyle['cluster']</span></code>: This determines which cluster a vertex belongs to. The first cluster is identified as “0”. If a vertex is set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, it means the vertex does not belong to any cluster.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;nclusters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
+<span class="c1"># cluster 0: bgcolor: gray</span>
+<span class="c1"># cluster 1: bgcolor: red</span>
+<span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;cluster: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s2">&quot;bgcolor&quot;</span><span class="p">:</span> <span class="s2">&quot;gray&quot;</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;red&quot;</span><span class="p">}</span>
+<span class="c1"># 0: None</span>
+<span class="c1"># 1--4: cluster 0</span>
+<span class="c1"># 5: cluster 1</span>
+<span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">vx</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">vx</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="k">else</span> <span class="mi">1</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_17_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_17_0.svg" />
+</div>
+</div>
+</section>
+</section>
+<section id="custom-rendering">
+<h2>custom rendering<a class="headerlink" href="#custom-rendering" title="Link to this heading"></a></h2>
+<p>As demonstrated, HGraphs can internally encode visual styles. However, there may be instances where we want to modify the rendering—for example, during an analysis—without altering the graph’s internal style.</p>
+<p>In such cases, the renderer supports <code class="docutils literal notranslate"><span class="pre">gstyle</span></code>, <code class="docutils literal notranslate"><span class="pre">vstyle</span></code>, and <code class="docutils literal notranslate"><span class="pre">estyle</span></code> parameters. These parameters can be used to update the internal graph styles without permanently changing them. You can use these parameters in the <code class="docutils literal notranslate"><span class="pre">g.view(...)</span></code> or <code class="docutils literal notranslate"><span class="pre">viewer.add_graph(...)</span></code> methods.</p>
+<p>In the following example, we render the graph without clusters. It is important to note that while the visual representation changes, the underlying graph style remains clustered.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;nclusters&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;custom rendering&#39;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;internal style rendering&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3 style='color:orange;padding: 10px; border: 1px solid orange; border-radius: 5px; text-align: center;'>custom rendering</h3></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_19_1.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_19_1.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3 style='color:orange;padding: 10px; border: 1px solid orange; border-radius: 5px; text-align: center;'>internal style rendering</h3></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_19_3.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_19_3.svg" />
+</div>
+</div>
+<p>Moreover, original attribute values can be modified using <code class="docutils literal notranslate"><span class="pre">wrapper</span></code> attributes. These attributes are prefixed with a <code class="docutils literal notranslate"><span class="pre">#</span></code>, and are defined by a function that takes a string value as input. This function can then alter the string value. To demonstrate this, let us include the cluster number in each vertex’s label, using the original label value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cluster&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">{}},</span> <span class="c1"># remove cluster style</span>
+       <span class="n">estyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="kc">None</span> <span class="p">},</span> <span class="c1"># remove label from edges</span>
+       <span class="n">vstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;#label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1"> | cluster: %s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;0&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="k">else</span> <span class="s2">&quot;1&quot;</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_21_0.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_21_0.svg" />
+</div>
+</div>
+</section>
+<section id="subgraph">
+<h2>subgraph<a class="headerlink" href="#subgraph" title="Link to this heading"></a></h2>
+<p>Specific parts of the graph can be rendered by using the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vs</span></code>: This is a list of vertices that should be included in the rendering. By default, all vertices are included.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">induced</span></code>: This parameter determines whether to include edges that connect two vertices in the <code class="docutils literal notranslate"><span class="pre">vs</span></code> list. By default, this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, meaning all edges are included.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">WebView</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">induced</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;subgraph (induced=False)&quot;</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">induced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;subgraph (induced=True)&quot;</span><span class="p">)</span>
+
+<span class="n">viewer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3 style='color:orange;padding: 10px; border: 1px solid orange; border-radius: 5px; text-align: center;'>subgraph (induced=False)</h3></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_23_1.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_23_1.svg" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3 style='color:orange;padding: 10px; border: 1px solid orange; border-radius: 5px; text-align: center;'>subgraph (induced=True)</h3></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_23_3.svg" src="../../../build/doctrees/nbsphinx/notebooks__4-hgraph-visualisation_23_3.svg" />
+</div>
+</div>
+</section>
+<section id="outputs">
+<h2>outputs<a class="headerlink" href="#outputs" title="Link to this heading"></a></h2>
+<p>An HGraph can be rendered into various formats using the <code class="docutils literal notranslate"><span class="pre">g.render()</span></code> method. In addition to all the rendering parameters mentioned above, it also accepts the following parameters to control the output:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>: specifies the output format. Options include <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, <code class="docutils literal notranslate"><span class="pre">png</span></code>, <code class="docutils literal notranslate"><span class="pre">dot</span></code>, and <code class="docutils literal notranslate"><span class="pre">svg</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pipe</span></code>: if set to True, this returns a string containing the output in the desired format. If False, the output is written to a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: defines the name of the file where the output is stored when <code class="docutils literal notranslate"><span class="pre">pipe</span></code> is set to False.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="3-hgraph-pmaps.html" class="btn btn-neutral float-left" title="heterograph: property maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="5-hgraph-queries.html" class="btn btn-neutral float-right" title="heterograph: queries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Custom Computing Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

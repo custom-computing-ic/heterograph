@@ -1,0 +1,376 @@
+heterograph.query.aql
+=====================
+
+.. py:module:: heterograph.query.aql
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   heterograph.query.aql.QueryTransformer
+   heterograph.query.aql.QueryAQL
+
+
+Module Contents
+---------------
+
+.. py:class:: QueryTransformer(visit_tokens: bool = True)
+
+   Bases: :py:obj:`lark.Transformer`
+
+
+   A class used to transform parsed queries using the LARK grammar defined in :class:`QueryAQL<heterograph.query.aql.QueryAQL>`  into a more usable format.
+
+   This class extends the lark.Transformer class and overrides its methods to provide custom transformations for different types of parsed query components. It basically transforms a string query into a QueryGraphDef object. The format of a QueryGraphDef object is as follows:
+       * src (set): The set of source vertices.
+       * snk (set): The set of sink vertices.
+       * steps (list): The list of steps in the query graph.
+
+   Each step helps construct the QGraph, and is represented by:
+      * A vertex (2-tuple): `(vertex_id, vertex_args)`
+      * An edge (3-tuple): `(vertex_id_src, vertex_id_tgt, edge_args)`
+
+   Vertex and edge arguments are represented as a tuple containing a list of positional arguments and a dictionary of keyword arguments.
+
+
+   .. py:attribute:: true_val
+
+
+   .. py:attribute:: false_val
+
+
+   .. py:method:: string(str)
+
+      Converts a string representation to a Python string.
+
+      :param str: A list containing a single string.
+      :type str: list
+
+      :returns: The converted Python string.
+      :rtype: str
+
+
+
+   .. py:method:: number_int(n)
+
+      Converts the first element of the input list `n` to an integer.
+
+      :param n: A list containing a single element.
+      :type n: list
+
+      :returns: The first element of the input list `n`, converted to an integer.
+      :rtype: int
+
+
+
+   .. py:method:: number_float(n)
+
+      Converts the first element of the input list `n` to a float.
+
+      :param n: A list containing a single element.
+      :type n: list
+
+      :returns: The first element of the input list `n` converted to a float.
+      :rtype: float
+
+
+
+   .. py:method:: args(items)
+
+      Returns the arguments passed to the method.
+
+      :param items: A list of items.
+      :type items: list
+
+      :returns:
+
+                If the list contains only one item, that item is returned.
+                        Otherwise, the entire list is returned.
+      :rtype: object
+
+
+
+   .. py:method:: pair(items)
+
+      Create a dictionary with the first item as the key and the second item as the value.
+
+      :param items: A list of two items.
+      :type items: list
+
+      :returns: A dictionary with the first item as the key and the second item as the value.
+      :rtype: dict
+
+
+
+   .. py:method:: map(items)
+
+      Maps the given items and returns the first item.
+
+      :param items: A list of items to be mapped.
+      :type items: list
+
+      :returns: The first item in the list.
+
+
+
+   .. py:method:: id(items)
+
+      Converts the first item in the given list to a string representation.
+
+      :param items: A list of items.
+      :type items: list
+
+      :returns: The string representation of the first item in the list.
+      :rtype: str
+
+
+
+   .. py:method:: process_args(items)
+
+      Process the arguments passed to the method.
+
+      :param items: The arguments to be processed. It can be a single item or a list of items.
+      :type items: list or any
+
+      :returns: A tuple containing two elements - a list of positional arguments and a dictionary of keyword arguments.
+      :rtype: tuple
+
+
+
+   .. py:method:: node(items)
+
+      Create a node tuple with arguments.
+
+      :param items: A list of items.
+      :type items: list
+
+      :returns: A tuple containing the first item as the node and the second item as a tuple of arguments.
+      :rtype: tuple
+
+
+
+   .. py:method:: edge(items)
+
+      Process a list of items and return a tuple containing the processed arguments and keyword arguments.
+
+      :param items: A list of items to be processed.
+      :type items: list
+
+      :returns: A tuple containing the processed arguments and keyword arguments. If the list is empty, the tuple will contain `None` for both elements.
+      :rtype: tuple
+
+
+
+   .. py:method:: empty_graph(items)
+
+      Creates and returns an empty QueryGraphDef object.
+
+      Parameters:
+      - items: A list of items to initialize the graph with.
+
+      Returns:
+      - An empty QueryGraphDef object.
+
+
+
+
+   .. py:method:: node_graph(items)
+
+      Create a query graph definition based on the given items.
+
+      :param items: A list of items representing the graph.
+      :type items: list
+
+      :returns: The query graph definition.
+      :rtype: QueryGraphDef
+
+
+
+   .. py:method:: edge_graph(items)
+
+      Constructs a new query graph by connecting the sink nodes of the first graph (`g1`) with the source nodes of the second graph (`g2`) using the specified edge argument.
+
+      :param items: A list of items containing the two graphs (`g1` and `g2`) and the edge argument.
+      :type items: list
+
+      :returns: The new query graph with the connected nodes and the updated steps.
+      :rtype: QueryGraphDef
+
+
+
+   .. py:method:: merge_graphs(items)
+      :staticmethod:
+
+
+      Merge multiple graphs into a single graph.
+
+      :param items: A list of graphs to be merged.
+      :type items: list
+
+      :returns: The merged graph.
+      :rtype: QueryGraphDef
+
+
+
+   .. py:method:: group_graph(items)
+
+      Groups the given list of items into a single graph.
+
+      :param items: A list of graphs to be merged.
+      :type items: list
+
+      :returns: The merged graph containing all the items.
+      :rtype: Graph
+
+
+
+   .. py:attribute:: __visit_tokens__
+      :value: True
+
+
+
+   .. py:method:: __init__(visit_tokens: bool = True) -> None
+
+
+   .. py:method:: _call_userfunc(tree, new_children=None)
+
+
+   .. py:method:: _call_userfunc_token(token)
+
+
+   .. py:method:: _transform_children(children)
+
+
+   .. py:method:: _transform_tree(tree)
+
+
+   .. py:method:: transform(tree: lark.tree.Tree[_Leaf_T]) -> _Return_T
+
+      Transform the given tree, and return the final result
+
+
+
+   .. py:method:: __mul__(other: Union[Transformer[_Leaf_U, _Return_V], TransformerChain[_Leaf_U, _Return_V,]]) -> TransformerChain[_Leaf_T, _Return_V]
+
+      Chain two transformers together, returning a new transformer.
+
+
+
+
+   .. py:method:: __default__(data, children, meta)
+
+      Default function that is called if there is no attribute matching ``data``
+
+      Can be overridden. Defaults to creating a new copy of the tree node (i.e. ``return Tree(data, children, meta)``)
+
+
+
+   .. py:method:: __default_token__(token)
+
+      Default function that is called if there is no attribute matching ``token.type``
+
+      Can be overridden. Defaults to returning the token as-is.
+
+
+
+   .. py:method:: _apply_v_args(visit_wrapper)
+      :classmethod:
+
+
+
+   .. py:method:: __class_getitem__(_)
+      :classmethod:
+
+
+
+   .. py:attribute:: __slots__
+      :value: ()
+
+
+
+.. py:class:: QueryAQL
+
+   A class for processing AQL queries and transforming them into graph definitions.
+
+   This class takes in queries and transforms them into graph definitions. The attributes associated with nodes and edges can be either key-value pairs or arguments.
+
+   The AQL grammar in BNF format:
+       .. code-block:: text
+
+           <id> ::= /[a-zA-Z][a-zA-Z0-9_]*/
+           <pair> ::= <id> ":" <value>
+
+           <value> ::= <pair>             -- map
+                   | ESCAPED_STRING     -- string
+                   | SIGNED_INT         -- number_int
+                   | SIGNED_FLOAT       -- number_float
+                   | "True"             -- true_val
+                   | "False"            -- false_val
+                   | <id>               -- string
+
+           <args> ::= <value>
+                   | <args> ("," <value>)*
+
+           <node> ::= <id>
+                   | <id> "{" <args> "}"
+
+           <edge> ::= "=>"
+                   | "={" <args> "}>"
+
+           <graph> ::= "(" <graph> ("|" <graph>)* ")"   -- group_graph
+                   | "0"                             -- empty_graph
+                   | <node>                          -- node_graph
+                   | <graph> <edge> <graph>          -- edge_graph
+
+           <WS> ::= " "  -- whitespace
+
+           <ESCAPED_STRING> ::= """ ( "\" . | ~["\])* """
+
+           <SIGNED_INT> ::= ["-"] [0-9]+
+
+           <SIGNED_FLOAT> ::= ["-"] [0-9]+ "." [0-9]+
+
+
+   .. note::
+
+      Attributes associated to nodes (**id{attr}**) and edges (**id0 ={attr}> id1**) can be either:
+       - key-values: a:2, b:"abc" OR
+       - arguments: a,b,c
+
+   .. rubric:: Example
+
+   >>> from heterograph.query.aql import QueryAQL
+   >>> aql = QueryAQL()
+   >>> lst = [
+   ...     "0",   # empty graph
+   ...     "abc", # single node
+   ...     'abc { a: 1, b: 2.4, c: "3"}', # node with key-value arguments
+   ...     'abc { a, b, c}', # node with arguments
+   ...     'abc ={ weight: 3.14 }> def', # edge with key-value arguments
+   ...     'abc ={ weight: 3.14, color: "black" }> def{ a: 1, b: 2.4, c: "3"}',
+   ...     'q => (a|b|c)=>d' # graph with nodes and edges
+   ... ]
+   >>> for i in lst:
+   ...     r = aql.grammar.parse(i)
+
+
+   .. py:method:: __init__()
+
+      Initializes with the specified grammar and transformer.
+
+
+
+   .. py:attribute:: grammar
+
+      the grammar used to parse the queries.
+
+
+   .. py:attribute:: transformer
+
+      the transformer used to transform the parsed queries.
+
+      :type: (QueryTransformer)
+
+

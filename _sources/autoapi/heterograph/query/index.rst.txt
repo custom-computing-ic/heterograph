@@ -1,0 +1,21 @@
+heterograph.query
+=================
+
+.. py:module:: heterograph.query
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/heterograph/query/aql/index
+   /autoapi/heterograph/query/graphdef/index
+   /autoapi/heterograph/query/processor_dfs/index
+   /autoapi/heterograph/query/qgraph/index
+   /autoapi/heterograph/query/resultset/index
+   /autoapi/heterograph/query/rsutils/index
+   /autoapi/heterograph/query/transformer/index
+
+

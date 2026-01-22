@@ -1,0 +1,130 @@
+heterograph.query.graphdef
+==========================
+
+.. py:module:: heterograph.query.graphdef
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   heterograph.query.graphdef.QueryGraphDef
+
+
+Module Contents
+---------------
+
+.. py:class:: QueryGraphDef(src=None, snk=None, steps=None)
+
+   A class to define and build query graphs.
+
+
+   .. py:method:: __init__(src=None, snk=None, steps=None)
+
+      Initializes the QueryGraphDef instance.
+
+      :param src: Source nodes. Defaults to an empty set.
+      :type src: set, optional
+      :param snk: Sink nodes. Defaults to an empty set.
+      :type snk: set, optional
+      :param steps: Steps defining the graph structure. Defaults to an empty list.
+      :type steps: list, optional
+
+
+
+   .. py:attribute:: src
+      :value: None
+
+
+      set specifying the source nodes.
+
+
+   .. py:attribute:: snk
+      :value: None
+
+
+      set specifying the sink nodes.
+
+
+   .. py:attribute:: steps
+      :value: None
+
+
+      list of steps defining the graph structure.
+
+
+   .. py:method:: __repr__()
+
+
+   .. py:method:: args_label(args)
+      :staticmethod:
+
+
+
+   .. py:method:: build(qgraph, vx_args=None, eg_args=None)
+
+      Constructs the query graph based on the defined steps.
+
+      :param qgraph: An instance of QGraph to be built.
+      :type qgraph: QGraph
+      :param vx_args: A function to handle vertex arguments.
+      :type vx_args: function, optional
+      :param eg_args: A function to handle edge arguments.
+      :type eg_args: function, optional
+
+      :returns: The constructed query graph.
+      :rtype: QGraph
+
+      :raises RuntimeError: If invalid steps are provided or if arguments for a vertex or edge have already been supplied.
+
+      Steps:
+          The `steps` attribute is a list of tuples that define the elements and structure of the query graph.
+          Each step can represent either a vertex or an edge.
+
+          1. **Vertex Step (2-tuple):**
+              - Format: `(vertex_id, vertex_args)`
+              - `vertex_id` (str): A unique identifier for the vertex.
+              - `vertex_args` (tuple): Arguments for the vertex, which is a tuple containing a list of positional arguments and a dictionary of keyword arguments.
+
+          2. **Edge Step (3-tuple):**
+              - Format: `(vertex_id_src, vertex_id_tgt, edge_args)`
+              - `vertex_id_src` (str): The unique identifier for the source vertex of the edge.
+              - `vertex_id_tgt` (str): The unique identifier for the target vertex of the edge.
+              - `edge_args` (tuple): Arguments for the edge, which is a tuple containing a list of positional arguments and a dictionary of keyword arguments.
+
+      .. note::
+
+         * Argument `vx_args` is a function that has signature: `vx_args(qgraph, vx, *args, **kwargs)`.
+         * Argument `eg_args` is a function that has signature: `eg_args(qgraph, eg, *args, **kwargs)`.
+         * Both functions are invoked during the qgraph building process, and are used to set the arguments from the select query into the corresponding vertices and edges of the qgraph.
+
+      .. rubric:: Example
+
+      >>> from heterograph.query.graphdef import QueryGraphDef
+      >>> from heterograph.query.qgraph import QGraph
+      >>> qg_def = QueryGraphDef(
+      ...    src={'A'},
+      ...    snk={'B'},
+      ...    steps=[
+      ...           ('A', ([], {})),  # Vertex step: Add vertex 'A' with no arguments
+      ...           ('B', ([], {})),  # Vertex step: Add vertex 'B' with no arguments
+      ...           ('A', 'B', (['x', 'y'], {'k0': 5, 'k1': 10}))  # Edge step: Add an edge from vertex 'A' to vertex 'B' with arguments ('arg1', 'arg2')
+      ...    ]
+      ... )
+      >>> qgraph = QGraph()
+      >>> qgraph=qg_def.build(qgraph) # builds qgraph
+      >>> qgraph.vertices
+      [0, 1]
+      >>> qgraph.edges
+      [(0, 1)]
+      >>> qgraph.pmap[(0, 1)]
+      {'args': "('x', 'y', 'k0': 5, 'k1': 10)"}
+
+      In this example:
+         - the first step adds a vertex with ID 'A' and no arguments.
+         - the second step adds a vertex with ID 'B' and no arguments.
+         - the third step adds an edge from vertex 'A' to vertex 'B' with arguments and key-value arguments
+
+
+

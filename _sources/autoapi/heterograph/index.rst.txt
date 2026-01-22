@@ -1,0 +1,321 @@
+heterograph
+===========
+
+.. py:module:: heterograph
+
+.. autoapi-nested-parse::
+
+   This package implements the Heterograph API.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/heterograph/algorithm/index
+   /autoapi/heterograph/hgraph/index
+   /autoapi/heterograph/query/index
+   /autoapi/heterograph/webview/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   heterograph.WebView
+   heterograph.RSet
+
+
+Package Contents
+----------------
+
+.. py:class:: WebView(root_path=None)
+
+   A Flask-based web app that provides a graphical interface to visualize and interact with heterographs.
+
+   This class creates a web view of heterographs  using Flask, allowing users to navigate through different
+   graphs, hover over elements in the graph, and shut down the server when they are done. It also handles user
+   interaction with the graphs by executing corresponding handler functions if one exists for the current active
+   graph.
+
+
+   .. py:attribute:: obj
+      :value: None
+
+
+      Class-level variable that stores an instance of this WebView class. This is used to access its properties and methods from within static methods.
+
+      Type: WebView
+
+      .. note:: The value of this attribute should be an instance of the WebView class. If it's not set or is not a WebView instance, accessing its properties or methods may result in errors.
+
+
+   .. py:method:: __init__(root_path=None)
+
+      Initializes a WebView instance.
+
+      This method sets up a new WebView instance with Flask and adds URL rules for different routes such as index, first graph, next graph, previous graph, hovering over elements, and shutting down the server.
+
+      The class-level variable `obj` is set to this instance, which can be used to access its properties and methods from within static methods. It also initializes several lists for SVG representations of graphs, their titles, and associated hover functions.
+
+      Finally, if the application is not running in an IPython session (e.g., a Jupyter notebook), it will start the Flask web server on the specified host and port, or defaults to '0.0.0.0' and '8888' respectively. If it's running within an IPython session, it will display the SVG representations of all graphs without starting a server.
+
+      :param root_path: The path to the root directory for web application assets. Defaults to None.
+                        If not provided, it will default to the 'assets' folder in the same directory as this file.
+      :type root_path: str, optional
+
+
+
+   .. py:attribute:: svg_graphs
+      :value: []
+
+
+
+   .. py:attribute:: titles
+      :value: []
+
+
+
+   .. py:attribute:: graphs
+      :value: []
+
+
+
+   .. py:attribute:: on_hovers
+      :value: []
+
+
+
+   .. py:attribute:: hover_elem
+      :value: None
+
+
+
+   .. py:attribute:: web_app
+
+
+   .. py:attribute:: index
+      :value: -1
+
+
+
+   .. py:property:: graph
+
+      Returns the currently active graph in the WebView instance.
+
+      This is a read-only property that returns the currently active graph in the WebView instance. If no graph is selected or an invalid index is being accessed, it will raise a RuntimeError.
+
+      :returns: The current active graph.
+      :rtype: hgraph
+
+      :raises RuntimeError: If there's no currently active graph (i.e., `self.index` is -1) or if the index is out of bounds.
+
+
+   .. py:method:: add_graph(graph, title='', **kwargs)
+
+      Adds a new graph to the WebView instance.
+
+      This function adds a new graph to the WebView instance, along with its associated title and additional style information in kwargs.
+      It updates the SVG representations of all graphs, their titles, and their corresponding hover functions. If an 'on_hover' key exists in the style dictionary of the graph, it is saved as a handler function for that specific graph.
+
+      :param graph: The graph to be added to the WebView instance. This should be an instance of HGraph or its subclass.
+      :type graph: hgraph
+      :param title: Title of the graph. If not provided, it defaults to an empty string.
+                    It can be used to identify this graph in the user interface later on.
+      :type title: str, optional
+      :param \*\*kwargs: Additional style information for the graph, such as colors, sizes, or any other custom attributes.
+                         These will be passed directly to the HGraph rendering method when rendering the SVG representation of the graph.
+
+      :returns: This function does not return anything. It only modifies the WebView instance's state.
+      :rtype: None
+
+      .. note::
+
+         The `graph` argument should be an instance of HGraph or its subclass.
+         If it is not, calling this method may raise errors because certain assumptions about the graph structure are made in the rendering process.
+
+
+
+   .. py:method:: run(host='0.0.0.0', port='8888')
+
+      Starts the Flask web server or displays SVG representations if running in a Jupyter notebook.
+
+      :param host: The host address to which the server will be bound. Defaults to '0.0.0.0'.
+      :type host: str, optional
+      :param port: The port on which the server will listen for connections. Defaults to '8888'.
+      :type port: str, optional
+
+      :returns: None
+
+      .. note::
+
+         The `run` method checks if it's running in a Jupyter notebook (IPython session). If so, it displays SVG representations without starting a server.
+         If not, it starts the Flask web server on the specified host and port, or defaults to '0.0.0.0' and '8888'.
+
+
+
+   .. py:method:: req_index()
+      :staticmethod:
+
+
+      Renders and returns the HTML template for the view page.
+
+      This function is used to render and return the HTML template that represents the view page.
+      The view page usually provides a graphical interface for users to visualize and interact with heterographs.
+
+      :returns: A string representation of an HTML template which is rendered for the view page.
+      :rtype: str
+
+
+
+   .. py:method:: req_hover(elem)
+      :staticmethod:
+
+
+      Handles user hover interaction with an element in the current graph.
+
+      This function handles a request to hover over an element in the current active graph,
+      executing a handler function if one exists for that specific graph. The element is specified as
+      a string `elem`, corresponding to a vertex id (int) or an edge id (int, int).
+
+      :param elem: A string representation of the element to hover over.
+                   It can be a simple number or a tuple in string format. For example, '1' or '(2,3)'.
+      :type elem: str
+
+      :returns: An empty dictionary signifying that the event processing is complete.
+      :rtype: dict
+
+      .. note::
+
+         This method requires a handler function (`on_hover`) to be defined for the current active graph.
+         If the handler does not exist, the method will do nothing but still return an empty dictionary.
+
+
+
+   .. py:method:: req_first()
+      :staticmethod:
+
+
+      Resets and returns the next graph payload.
+
+      This function resets the index of the active graph to -1, then calls `req_next()` to get the next graph's payload.
+      The result is a dictionary containing the SVG representation of the current graph, its title, total number of graphs in the viewer, and whether or not there is an hover function for the current graph.
+
+      :returns: A dictionary containing the SVG representation of the current graph, its index, title, total number of graphs, and whether or not there is a hover function.
+      :rtype: dict
+
+
+
+   .. py:method:: req_next()
+      :staticmethod:
+
+
+      Requests the next graph and returns its payload.
+
+      This function calls a private method `_next_graph()` to get the next graph in the viewer, then uses the `payload()`
+      static method to generate a dictionary containing information about that graph.
+
+      :returns: A dictionary containing the SVG representation of the current graph, its index, title, total number of graphs,
+                and whether or not there is a hover function for the current graph.
+      :rtype: dict
+
+
+
+   .. py:method:: req_prev()
+      :staticmethod:
+
+
+      Requests the previous graph and returns its payload.
+
+      This function calls a private method `_next_graph()` to get the previous graph in the viewer,
+      then uses the `payload()` static method to generate a dictionary containing information about that graph.
+
+      :returns:
+
+                A dictionary containing the SVG representation of the current graph, its index, title, total number of graphs,
+                    and whether or not there is a hover function for the current graph.
+      :rtype: dict
+
+
+
+   .. py:method:: req_shutdown()
+      :staticmethod:
+
+
+      Shuts down the server when user interaction is done.
+
+      This function handles a request to shut down the server, usually initiated by the user once they're done with their interactions.
+      The method will retrieve the shutdown function from the Flask app environment and execute it if available. If not, an error will be raised.
+
+      :raises RuntimeError: If there is no Werkzeug Server running to shut down.
+
+      :returns:
+
+                A string indicating that the server is about to shutdown.
+                    Example output: "Server shutting down..."
+      :rtype: str
+
+
+
+   .. py:method:: payload(g)
+      :staticmethod:
+
+
+      Generates a dictionary containing the SVG representation of a graph, its index, title,
+      total number of graphs in the viewer, and whether or not there is an hover
+      function for the current graph.
+
+      :param g: The graph to be included in the payload.
+      :type g: hgraph
+
+      :returns:
+
+                A dictionary containing the following keys:
+                    - 'svg': The SVG representation of the graph.
+                    - 'index': The index of the current graph.
+                    - 'title': The title of the current graph.
+                    - 'ngraphs': The total number of graphs in the viewer.
+                    - 'hover': A boolean indicating whether or not there is an hover function for the current graph.
+      :rtype: dict
+
+      .. note:: This method requires a WebView instance to be defined and its properties should be accessible.
+
+
+
+   .. py:method:: _reset()
+
+      Resets the active graph index back to -1.
+
+
+
+   .. py:method:: _prev_graph()
+
+      Get the previous graph from the list of graphs.
+
+      This method returns the SVG representation of the previous graph in the viewer. If there are no graphs, it sets index to -1 and returns None.
+      Otherwise, it decrements the current index by 1 (with wrap-around if necessary), retrieves the new current graph from `self.svg_graphs` using the updated index, and returns it.
+
+      :returns: The SVG representation of the previous graph in the viewer or None if there are no graphs.
+
+
+
+   .. py:method:: _next_graph()
+
+      Get the next graph from the list of graphs.
+
+      This method returns the SVG representation of the next graph in the viewer. If there are no graphs, it sets index to -1 and returns None.
+      Otherwise, it increments the current index by 1 (with wrap-around if necessary), retrieves the new current graph and returns it.
+
+      :returns: The SVG representation of the next graph in the viewer or None if there are no graphs.
+
+
+
+.. py:class:: RSet
+
+   Represents a set of query results.
+
+

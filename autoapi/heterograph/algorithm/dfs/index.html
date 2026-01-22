@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>heterograph.algorithm.dfs &mdash; heterograph 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/label.css" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="heterograph.hgraph" href="../../hgraph/index.html" />
+    <link rel="prev" title="heterograph.algorithm" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            heterograph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">heterograph</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html">heterograph.algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../hgraph/index.html">heterograph.hgraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../query/index.html">heterograph.query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../webview/index.html">heterograph.webview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks.html">Notebooks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">heterograph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">heterograph</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">heterograph.algorithm</a></li>
+      <li class="breadcrumb-item active">heterograph.algorithm.dfs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/autoapi/heterograph/algorithm/dfs/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-heterograph.algorithm.dfs">
+<span id="heterograph-algorithm-dfs"></span><h1>heterograph.algorithm.dfs<a class="headerlink" href="#module-heterograph.algorithm.dfs" title="Link to this heading"></a></h1>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#heterograph.algorithm.dfs.StopSearch" title="heterograph.algorithm.dfs.StopSearch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StopSearch</span></code></a></p></td>
+<td><p>If this exception is raised from inside any search visitor object, the search is aborted.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#heterograph.algorithm.dfs.get_paths" title="heterograph.algorithm.dfs.get_paths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_paths</span></code></a>(g[, vs])</p></td>
+<td><p>Returns all DFS paths in the graph <cite>g</cite> starting from the given vertices <cite>vs</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#heterograph.algorithm.dfs.dfs_visitor" title="heterograph.algorithm.dfs.dfs_visitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dfs_visitor</span></code></a>(g[, vs, pre, post, data])</p></td>
+<td><p>Depth-first search to find all paths in a graph. User supplied functions <cite>pre</cite> and <cite>post</cite> can gracefully stop execution by raising StopSearch. Data can be optionally shared when visiting nodes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#heterograph.algorithm.dfs.dfs_traversal" title="heterograph.algorithm.dfs.dfs_traversal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dfs_traversal</span></code></a>(g, vx[, pre, post, inh])</p></td>
+<td><p>Perform a depth-first search (DFS) traversal of a graph starting from a given vertex.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.algorithm.dfs.</span></span><span class="sig-name descname"><span class="pre">StopSearch</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_tool.search.StopSearch</span></code></p>
+<p>If this exception is raised from inside any search visitor object, the search is aborted.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__cause__">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__cause__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__cause__" title="Link to this definition"></a></dt>
+<dd><p>exception cause</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__context__">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__context__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__context__" title="Link to this definition"></a></dt>
+<dd><p>exception context</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__delattr__">
+<span class="sig-name descname"><span class="pre">__delattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__delattr__" title="Link to this definition"></a></dt>
+<dd><p>Implement delattr(self, name).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__dir__">
+<span class="sig-name descname"><span class="pre">__dir__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__dir__" title="Link to this definition"></a></dt>
+<dd><p>Default dir() implementation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__eq__">
+<span class="sig-name descname"><span class="pre">__eq__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__eq__" title="Link to this definition"></a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__format__">
+<span class="sig-name descname"><span class="pre">__format__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__format__" title="Link to this definition"></a></dt>
+<dd><p>Default object formatter.</p>
+<p>Return str(self) if format_spec is empty. Raise TypeError otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__ge__">
+<span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__ge__" title="Link to this definition"></a></dt>
+<dd><p>Return self&gt;=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__getattribute__">
+<span class="sig-name descname"><span class="pre">__getattribute__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__getattribute__" title="Link to this definition"></a></dt>
+<dd><p>Return getattr(self, name).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__getstate__">
+<span class="sig-name descname"><span class="pre">__getstate__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__getstate__" title="Link to this definition"></a></dt>
+<dd><p>Helper for pickle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__gt__">
+<span class="sig-name descname"><span class="pre">__gt__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__gt__" title="Link to this definition"></a></dt>
+<dd><p>Return self&gt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__hash__">
+<span class="sig-name descname"><span class="pre">__hash__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__hash__" title="Link to this definition"></a></dt>
+<dd><p>Return hash(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__le__">
+<span class="sig-name descname"><span class="pre">__le__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__le__" title="Link to this definition"></a></dt>
+<dd><p>Return self&lt;=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__lt__">
+<span class="sig-name descname"><span class="pre">__lt__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__lt__" title="Link to this definition"></a></dt>
+<dd><p>Return self&lt;value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__ne__">
+<span class="sig-name descname"><span class="pre">__ne__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__ne__" title="Link to this definition"></a></dt>
+<dd><p>Return self!=value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__new__" title="Link to this definition"></a></dt>
+<dd><p>Create and return a new object.  See help(type) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__reduce__">
+<span class="sig-name descname"><span class="pre">__reduce__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__reduce__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__reduce_ex__">
+<span class="sig-name descname"><span class="pre">__reduce_ex__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__reduce_ex__" title="Link to this definition"></a></dt>
+<dd><p>Helper for pickle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__repr__">
+<span class="sig-name descname"><span class="pre">__repr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__repr__" title="Link to this definition"></a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__setattr__">
+<span class="sig-name descname"><span class="pre">__setattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__setattr__" title="Link to this definition"></a></dt>
+<dd><p>Implement setattr(self, name, value).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__setstate__">
+<span class="sig-name descname"><span class="pre">__setstate__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__setstate__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__sizeof__">
+<span class="sig-name descname"><span class="pre">__sizeof__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__sizeof__" title="Link to this definition"></a></dt>
+<dd><p>Size of object in memory, in bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__str__" title="Link to this definition"></a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__subclasshook__">
+<span class="sig-name descname"><span class="pre">__subclasshook__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__subclasshook__" title="Link to this definition"></a></dt>
+<dd><p>Abstract classes can override this to customize issubclass().</p>
+<p>This is invoked early on by abc.ABCMeta.__subclasscheck__().
+It should return True, False or NotImplemented.  If it returns
+NotImplemented, the normal algorithm is used.  Otherwise, it
+overrides the normal algorithm (and the outcome is cached).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__suppress_context__">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__suppress_context__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__suppress_context__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__traceback__">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__traceback__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__traceback__" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.add_note" title="Link to this definition"></a></dt>
+<dd><p>Exception.add_note(note) --
+add a note to the exception</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.args">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.args" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.with_traceback" title="Link to this definition"></a></dt>
+<dd><p>Exception.with_traceback(tb) --
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.get_paths">
+<span class="sig-prename descclassname"><span class="pre">heterograph.algorithm.dfs.</span></span><span class="sig-name descname"><span class="pre">get_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.get_paths" title="Link to this definition"></a></dt>
+<dd><p>Returns all DFS paths in the graph <cite>g</cite> starting from the given vertices <cite>vs</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<em>Graph</em>) -- The graph to search for paths.</p></li>
+<li><p><strong>vs</strong> (<em>list</em><em> or </em><em>None</em>) -- The starting vertices. If None, then graph source vertices will be considered.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of paths generated by DFS, where each path is represented as a list of vertices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_paths</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">HGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">[(0, 1)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">[(1, 2), (1, 3)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">[(2, 4), (3, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_paths</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">[[0, 1, 2, 4], [0, 1, 3, 4], [2, 4]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.dfs_visitor">
+<span class="sig-prename descclassname"><span class="pre">heterograph.algorithm.dfs.</span></span><span class="sig-name descname"><span class="pre">dfs_visitor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.dfs_visitor" title="Link to this definition"></a></dt>
+<dd><p>Depth-first search to find all paths in a graph. User supplied functions <cite>pre</cite> and <cite>post</cite> can gracefully stop execution by raising StopSearch. Data can be optionally shared when visiting nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<a class="reference internal" href="../../hgraph/index.html#heterograph.hgraph.HGraph" title="heterograph.hgraph.HGraph"><em>HGraph</em></a>) -- The graph to perform the depth-first search on.</p></li>
+<li><p><strong>vs</strong> (<em>list</em><em>, </em><em>optional</em>) -- The starting vertices for the search. If not provided, the source vertices of the graph will be used.</p></li>
+<li><p><strong>pre</strong> (<em>function</em><em>, </em><em>optional</em>) -- A function to be called before visiting each vertex. It takes four arguments: the graph, the current vertex, the current path, and the additional data.</p></li>
+<li><p><strong>post</strong> (<em>function</em><em>, </em><em>optional</em>) -- A function to be called after visiting each vertex. It takes four arguments: the graph, the current vertex, the current path, and the additional data.</p></li>
+<li><p><strong>data</strong> (<em>any</em><em>, </em><em>optional</em>) -- Additional data to be passed to the pre and post functions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Does not return anything.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_visitor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">HGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">[(0, 1)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">[(1, 2), (1, 3)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">[(2, 4), (3, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">pre</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bye vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dfs_visitor</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">)</span>
+<span class="go">Hello vertex 0</span>
+<span class="go">Hello vertex 1</span>
+<span class="go">Hello vertex 2</span>
+<span class="go">Hello vertex 4</span>
+<span class="go">Bye vertex 4</span>
+<span class="go">Bye vertex 2</span>
+<span class="go">Hello vertex 3</span>
+<span class="go">Hello vertex 4</span>
+<span class="go">Bye vertex 4</span>
+<span class="go">Bye vertex 3</span>
+<span class="go">Bye vertex 1</span>
+<span class="go">Bye vertex 0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="heterograph.algorithm.dfs.dfs_traversal">
+<span class="sig-prename descclassname"><span class="pre">heterograph.algorithm.dfs.</span></span><span class="sig-name descname"><span class="pre">dfs_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.dfs_traversal" title="Link to this definition"></a></dt>
+<dd><p>Perform a depth-first search (DFS) traversal of a graph starting from a given vertex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g</strong> (<a class="reference internal" href="../../hgraph/index.html#heterograph.hgraph.HGraph" title="heterograph.hgraph.HGraph"><em>HGraph</em></a>) -- The graph on which to perform the DFS traversal.</p></li>
+<li><p><strong>vx</strong> (<em>int</em>) -- The starting vertex for the DFS traversal.</p></li>
+<li><p><strong>pre</strong> (<em>function</em><em>, </em><em>optional</em>) -- A function to be called before visiting each vertex’s children.
+It takes two arguments: the graph <cite>g</cite> and the current vertex <cite>vx</cite>.
+An optional third argument <cite>inh</cite> can be added to receive inherited data. Defaults to None.</p></li>
+<li><p><strong>post</strong> (<em>function</em><em>, </em><em>optional</em>) -- A function to be called after visiting each vertex’s children.
+It takes two arguments: the graph <cite>g</cite> and the current vertex <cite>vx</cite>.
+An optional third argument <cite>synth</cite> can be added to receive synthesized data from its direct children. Defaults to None.</p></li>
+<li><p><strong>inh</strong> (<em>any</em><em>, </em><em>optional</em>) -- Data to be inherited by each vertex. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The synthesized data for the starting vertex, if a <cite>post</cite> function is provided and returns a value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The <cite>dfs_traversal</cite> function should be used instead of <cite>dfs_visitor</cite> to support sharing data between parent and child nodes (inheritance and/or synthesis). Furthermore, <cite>dfs_traversal</cite> is more efficient than <cite>dfs_visit</cite> and may perform better with larger graphs.</p></li>
+<li><p>The <cite>pre</cite> function is always invoked before visiting children. If data is returned, it will be inherited by its children through the <cite>inh</cite> parameter.</p></li>
+<li><p>The <cite>post</cite> function is always invoked after visiting children. It can optionally return data, which is aggregated into a list and passed to the parent as the <cite>synth</cite> parameter.</p></li>
+<li><p>The <cite>pre</cite> and <cite>post</cite> functions can raise <cite>StopSearch</cite> to halt the search.</p></li>
+<li><p>In the example below, the <cite>pre</cite> function uses inherited data to assign depth to a child vertex, while the <cite>post</cite> function uses synthesized data to count the number of visited vertices.</p></li>
+</ul>
+</div>
+<p>“”</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="n">HGraph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_traversal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">pre_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">inh</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="n">inh</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">post_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">synth</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">synth</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">HGraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">[0, 1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">[(0, 1), (0, 2)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">[(1, 3)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">[(2, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num_vs</span> <span class="o">=</span> <span class="n">dfs_traversal</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre_visit</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post_visit</span><span class="p">,</span> <span class="n">inh</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">Pre-visit: 0, inherited: 0</span>
+<span class="go">Pre-visit: 1, inherited: 1</span>
+<span class="go">Pre-visit: 3, inherited: 2</span>
+<span class="go">Post-visit: 3, synthesized: []</span>
+<span class="go">Post-visit: 1, synthesized: [1]</span>
+<span class="go">Pre-visit: 2, inherited: 1</span>
+<span class="go">Pre-visit: 4, inherited: 2</span>
+<span class="go">Post-visit: 4, synthesized: []</span>
+<span class="go">Post-visit: 2, synthesized: [1]</span>
+<span class="go">Post-visit: 0, synthesized: [2, 2]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">num_vs</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="heterograph.algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../hgraph/index.html" class="btn btn-neutral float-right" title="heterograph.hgraph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Custom Computing Group.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
