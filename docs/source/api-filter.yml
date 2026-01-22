@@ -1,0 +1,32 @@
+---
+package:
+  - "+heterograph"
+  - "+heterograph.query"
+  - "+heterograph.algorithm"
+  - "!*"
+
+module:
+  - "+heterograph.hgraph"
+  - "+heterograph.webview"
+  - "+heterograph.query.*"
+  - "+heterograph.algorithm.*"
+  - "!*"
+
+class:
+  - "!heterograph.hgraph.HGraphProps"
+  - "!heterograph.HGraph"
+
+method:
+  - "!heterograph.RSet.*"
+
+function:
+  - "!heterograph.hgraph.modifies_graph"
+
+data:
+  - "!*"
+
+
+
+
+
+
