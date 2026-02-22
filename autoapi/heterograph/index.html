@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>heterograph &mdash; heterograph 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/label.css" />
@@ -17,8 +17,8 @@
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -127,7 +127,7 @@
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="heterograph.WebView">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.</span></span><span class="sig-name descname"><span class="pre">WebView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">heterograph.</span></span><span class="sig-name descname"><span class="pre">WebView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView" title="Link to this definition"></a></dt>
 <dd><p>A Flask-based web app that provides a graphical interface to visualize and interact with heterographs.</p>
 <p>This class creates a web view of heterographs  using Flask, allowing users to navigate through different
 graphs, hover over elements in the graph, and shut down the server when they are done. It also handles user
@@ -135,7 +135,7 @@ interaction with the graphs by executing corresponding handler functions if one 
 graph.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.WebView.obj">
-<span class="sig-name descname"><span class="pre">obj</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.WebView.obj" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">obj</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.WebView.obj" title="Link to this definition"></a></dt>
 <dd><p>Class-level variable that stores an instance of this WebView class. This is used to access its properties and methods from within static methods.</p>
 <p>Type: WebView</p>
 <div class="admonition note">
@@ -161,27 +161,27 @@ If not provided, it will default to the ‘assets’ folder in the same director
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.WebView.svg_graphs">
-<span class="sig-name descname"><span class="pre">svg_graphs</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.WebView.svg_graphs" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">svg_graphs</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.WebView.svg_graphs" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.WebView.titles">
-<span class="sig-name descname"><span class="pre">titles</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.WebView.titles" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">titles</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.WebView.titles" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.WebView.graphs">
-<span class="sig-name descname"><span class="pre">graphs</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.WebView.graphs" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">graphs</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.WebView.graphs" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.WebView.on_hovers">
-<span class="sig-name descname"><span class="pre">on_hovers</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.WebView.on_hovers" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">on_hovers</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.WebView.on_hovers" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.WebView.hover_elem">
-<span class="sig-name descname"><span class="pre">hover_elem</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.WebView.hover_elem" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">hover_elem</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.WebView.hover_elem" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -191,12 +191,12 @@ If not provided, it will default to the ‘assets’ folder in the same director
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.WebView.index">
-<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#heterograph.WebView.index" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">index</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></span><a class="headerlink" href="#heterograph.WebView.index" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.WebView.graph">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#heterograph.WebView.graph" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#heterograph.WebView.graph" title="Link to this definition"></a></dt>
 <dd><p>Returns the currently active graph in the WebView instance.</p>
 <p>This is a read-only property that returns the currently active graph in the WebView instance. If no graph is selected or an invalid index is being accessed, it will raise a RuntimeError.</p>
 <dl class="field-list simple">
@@ -266,7 +266,7 @@ If not, it starts the Flask web server on the specified host and port, or defaul
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.WebView.req_index">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_index" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_index" title="Link to this definition"></a></dt>
 <dd><p>Renders and returns the HTML template for the view page.</p>
 <p>This function is used to render and return the HTML template that represents the view page.
 The view page usually provides a graphical interface for users to visualize and interact with heterographs.</p>
@@ -282,7 +282,7 @@ The view page usually provides a graphical interface for users to visualize and 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.WebView.req_hover">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_hover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_hover" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_hover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_hover" title="Link to this definition"></a></dt>
 <dd><p>Handles user hover interaction with an element in the current graph.</p>
 <p>This function handles a request to hover over an element in the current active graph,
 executing a handler function if one exists for that specific graph. The element is specified as
@@ -308,7 +308,7 @@ If the handler does not exist, the method will do nothing but still return an em
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.WebView.req_first">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_first" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_first" title="Link to this definition"></a></dt>
 <dd><p>Resets and returns the next graph payload.</p>
 <p>This function resets the index of the active graph to -1, then calls <cite>req_next()</cite> to get the next graph’s payload.
 The result is a dictionary containing the SVG representation of the current graph, its title, total number of graphs in the viewer, and whether or not there is an hover function for the current graph.</p>
@@ -324,7 +324,7 @@ The result is a dictionary containing the SVG representation of the current grap
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.WebView.req_next">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_next" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_next" title="Link to this definition"></a></dt>
 <dd><p>Requests the next graph and returns its payload.</p>
 <p>This function calls a private method <cite>_next_graph()</cite> to get the next graph in the viewer, then uses the <cite>payload()</cite>
 static method to generate a dictionary containing information about that graph.</p>
@@ -341,7 +341,7 @@ and whether or not there is a hover function for the current graph.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.WebView.req_prev">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_prev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_prev" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_prev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_prev" title="Link to this definition"></a></dt>
 <dd><p>Requests the previous graph and returns its payload.</p>
 <p>This function calls a private method <cite>_next_graph()</cite> to get the previous graph in the viewer,
 then uses the <cite>payload()</cite> static method to generate a dictionary containing information about that graph.</p>
@@ -361,7 +361,7 @@ then uses the <cite>payload()</cite> static method to generate a dictionary cont
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.WebView.req_shutdown">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_shutdown" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.req_shutdown" title="Link to this definition"></a></dt>
 <dd><p>Shuts down the server when user interaction is done.</p>
 <p>This function handles a request to shut down the server, usually initiated by the user once they’re done with their interactions.
 The method will retrieve the shutdown function from the Flask app environment and execute it if available. If not, an error will be raised.</p>
@@ -384,7 +384,7 @@ The method will retrieve the shutdown function from the Flask app environment an
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.WebView.payload">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.payload" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.WebView.payload" title="Link to this definition"></a></dt>
 <dd><p>Generates a dictionary containing the SVG representation of a graph, its index, title,
 total number of graphs in the viewer, and whether or not there is an hover
 function for the current graph.</p>
@@ -451,7 +451,7 @@ Otherwise, it increments the current index by 1 (with wrap-around if necessary),
 
 <dl class="py class">
 <dt class="sig sig-object py" id="heterograph.RSet">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.</span></span><span class="sig-name descname"><span class="pre">RSet</span></span><a class="headerlink" href="#heterograph.RSet" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">heterograph.</span></span><span class="sig-name descname"><span class="pre">RSet</span></span><a class="headerlink" href="#heterograph.RSet" title="Link to this definition"></a></dt>
 <dd><p>Represents a set of query results.</p>
 </dd></dl>
 

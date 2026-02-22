@@ -67,8 +67,6 @@ Module Contents
 
       Default object formatter.
 
-      Return str(self) if format_spec is empty. Raise TypeError otherwise.
-
 
 
    .. py:method:: __ge__()

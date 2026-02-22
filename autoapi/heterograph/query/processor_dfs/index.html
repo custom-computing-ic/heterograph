@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>heterograph.query.processor_dfs &mdash; heterograph 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/label.css" />
@@ -17,8 +17,8 @@
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../../../_static/documentation_options.js?v=f2a433a1"></script>
-      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../../_static/copybutton.js?v=f281be69"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -126,7 +126,7 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.query.processor_dfs.</span></span><span class="sig-name descname"><span class="pre">QGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eg_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">heterograph.query.processor_dfs.</span></span><span class="sig-name descname"><span class="pre">QGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eg_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../hgraph/index.html#heterograph.hgraph.HGraph" title="heterograph.hgraph.HGraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">heterograph.hgraph.HGraph</span></code></a></p>
 <p>A class used to represent a query graph.</p>
 <p>This class extends the HGraph class and adds functionality for processing queries and transforming them into graph definitions.</p>
@@ -164,7 +164,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.pattern">
-<span class="sig-name descname"><span class="pre">pattern</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.pattern" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">pattern</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.pattern" title="Link to this definition"></a></dt>
 <dd><p>pattern to be processed and translated to a graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -186,7 +186,7 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.graph_def">
-<span class="sig-name descname"><span class="pre">graph_def</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.graph_def" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">graph_def</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.graph_def" title="Link to this definition"></a></dt>
 <dd><p>graph object resulting from processing the query.</p>
 </dd></dl>
 
@@ -218,85 +218,85 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__ginit">
-<span class="sig-name descname"><span class="pre">__ginit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__ginit" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__ginit</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__ginit" title="Link to this definition"></a></dt>
 <dd><p>stores initial user-defined graph properties.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__vinit">
-<span class="sig-name descname"><span class="pre">__vinit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__vinit" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__vinit</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__vinit" title="Link to this definition"></a></dt>
 <dd><p>stores initial user-defined vertex properties.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__einit">
-<span class="sig-name descname"><span class="pre">__einit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__einit" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__einit</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__einit" title="Link to this definition"></a></dt>
 <dd><p>stores initial user-defined edge properties.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__vx_counter">
-<span class="sig-name descname"><span class="pre">__vx_counter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__vx_counter" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__vx_counter</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__vx_counter" title="Link to this definition"></a></dt>
 <dd><p>keeps track of the total number of vertices added to the graph. Each vertex gets a unique id generated from this counter.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__ivx">
-<span class="sig-name descname"><span class="pre">__ivx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__ivx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__ivx</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__ivx" title="Link to this definition"></a></dt>
 <dd><p>a dictionary that maps internal vertex IDs (as used by graph_tool) to persistent vertex IDs (as seen by users).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__vx">
-<span class="sig-name descname"><span class="pre">__vx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__vx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__vx</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__vx" title="Link to this definition"></a></dt>
 <dd><p>the reverse of __ivx, mapping persistent vertex IDs (as seen by users) to internal vertex IDs (as used by graph_tool).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__in">
-<span class="sig-name descname"><span class="pre">__in</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__in" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__in</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__in" title="Link to this definition"></a></dt>
 <dd><p>dictionary that stores incoming neighbors of each vertex.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__out">
-<span class="sig-name descname"><span class="pre">__out</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__out" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__out</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__out" title="Link to this definition"></a></dt>
 <dd><p>dictionary that stores outgoing neighbors of each vertex.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__properties">
-<span class="sig-name descname"><span class="pre">__properties</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__properties" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__properties</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__properties" title="Link to this definition"></a></dt>
 <dd><p>an instance of HGraphProps that manages property maps for graph, vertices and edges.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.read_only">
-<span class="sig-name descname"><span class="pre">read_only</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.read_only" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">read_only</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.read_only" title="Link to this definition"></a></dt>
 <dd><p>indicates whether the graph is in read-only mode. If True, any graph modification raises an error.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.igraph">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">igraph</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.igraph" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">igraph</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.igraph" title="Link to this definition"></a></dt>
 <dd><p>Returns the internal Graph (graph-tool) object.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.to_ivx">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_ivx</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.to_ivx" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">to_ivx</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.to_ivx" title="Link to this definition"></a></dt>
 <dd><p>Returns a dictionary mapping internal vertex IDs to persistent vertex IDs.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.to_vx">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_vx</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.to_vx" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">to_vx</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.to_vx" title="Link to this definition"></a></dt>
 <dd><p>Returns a dictionary mapping persistent vertex IDs to internal vertex IDs.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.style">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">style</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.style" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">style</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.style" title="Link to this definition"></a></dt>
 <dd><p>Get or set the <cite>graph</cite> style.</p>
 <p>When setting the style to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the current style is cleared.
 Otherwise, the provided style is added or updated.</p>
@@ -304,7 +304,7 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.vstyle">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vstyle</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.vstyle" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vstyle</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.vstyle" title="Link to this definition"></a></dt>
 <dd><p>Get or set the <cite>vertex</cite> style.</p>
 <p>When setting the style to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the current style is cleared.
 Otherwise, the provided style is added or updated.</p>
@@ -312,7 +312,7 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.estyle">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">estyle</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.estyle" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">estyle</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.estyle" title="Link to this definition"></a></dt>
 <dd><p>Get or set the <cite>edge</cite> style.</p>
 <p>When setting the style to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the current style is cleared.
 Otherwise, the provided style is added or updated.</p>
@@ -320,7 +320,7 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.pmap">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pmap</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.pmap" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pmap</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.pmap" title="Link to this definition"></a></dt>
 <dd><p>Gets/sets property maps of graph, vertices and edges.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">g.pmap</span></code>: get/set graph properties</p></li>
@@ -331,25 +331,25 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.num_vx">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_vx</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.num_vx" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_vx</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.num_vx" title="Link to this definition"></a></dt>
 <dd><p>This property returns the total number of vertices in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.vertices">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vertices</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.vertices" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vertices</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.vertices" title="Link to this definition"></a></dt>
 <dd><p>This property returns a list of all vertex IDs in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.source">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.source" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.source" title="Link to this definition"></a></dt>
 <dd><p>Get list of source vertices (vertices with no incoming edges) in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.sink">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sink</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.sink" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">sink</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.sink" title="Link to this definition"></a></dt>
 <dd><p>Get list of sink vertices (vertices with no outgoing edges) in the graph.</p>
 </dd></dl>
 
@@ -413,7 +413,7 @@ via outgoing edges.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.out_vx">
-<span class="sig-name descname"><span class="pre">out_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.out_vx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">out_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.out_vx" title="Link to this definition"></a></dt>
 <dd><p>Returns a list of vertices that are connected to vertex <cite>vx</cite> via outgoing edges.
 This includes all vertices that can be reached by following directed edges starting from <cite>vx</cite>.
 The ordering is controlled by the <cite>order</cite> parameter.</p>
@@ -428,13 +428,18 @@ then the <cite>anchor</cite> is assumed to be the last element.</p>
 <li><p><strong>after</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True and an anchor is provided, append the ordered neighbours to it,
 else prepend them. Defaults to True.</p></li>
 <li><p><strong>anchor</strong> (<em>int</em><em>, </em><em>optional</em>) -- The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, return a dictionary mapping port index to vertex ID. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list of vertices that are connected to the specified <cite>vx</cite> via outgoing edges in the requested order (if any).</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>A list of vertices that are connected to the specified <cite>vx</cite> via outgoing edges in the requested order (if any).</dt><dd><p>If <cite>get_ports</cite> is True, returns a dictionary mapping port index to vertex ID instead.</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list of ints</p>
+<dd class="field-odd"><p>list of ints or dict</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>RuntimeError</strong> -- If the vertex ID <cite>vx</cite> does not exist, or if the ordered neighbours provided in the ‘order’ argument do not form a subset of those connected to <cite>vx</cite>.
@@ -461,10 +466,10 @@ Also raised if an invalid anchor is specified (not an integer).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.in_vx">
-<span class="sig-name descname"><span class="pre">in_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.in_vx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">in_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.in_vx" title="Link to this definition"></a></dt>
 <dd><p>Returns a list of vertices that are connected to vertex <cite>vx</cite> via incoming edges.</p>
 <p>This includes all vertices from which directed edges point to <cite>vx</cite>. The ordering is
-controlled by the <cite>order</cite> parameter.</p>
+controlled by the <cite>order</cite> parameter, which sets the port index.</p>
 <p>If <cite>order</cite> is provided, this method will first remove the list of vertices specified in <cite>order</cite>, and then
 append after or before the <cite>anchor</cite> according to the value of <cite>after</cite>. If the <cite>anchor</cite> is None,
 then the <cite>anchor</cite> is assumed to be the last element.</p>
@@ -476,13 +481,18 @@ then the <cite>anchor</cite> is assumed to be the last element.</p>
 <li><p><strong>after</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True and an anchor is provided, append the ordered neighbours to it,
 else prepend them. Defaults to True.</p></li>
 <li><p><strong>anchor</strong> (<em>int</em><em>, </em><em>optional</em>) -- The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, return a dictionary mapping port index to vertex ID. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list of vertices that are connected to the specified <cite>vx</cite> via incoming edges in the requested order (if any).</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>A list of vertices that are connected to the specified <cite>vx</cite> via incoming edges in the requested order (if any).</dt><dd><p>If <cite>get_ports</cite> is True, returns a dictionary mapping port index to vertex ID instead.</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list of ints</p>
+<dd class="field-odd"><p>list of ints or dict</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>RuntimeError</strong> -- If the vertex ID <cite>vx</cite> does not exist, or if the ordered neighbours provided in the ‘order’ argument do not form a subset of those connected to <cite>vx</cite>.
@@ -605,13 +615,13 @@ ignored. Default is True.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.num_edges">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_edges</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.num_edges" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_edges</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.num_edges" title="Link to this definition"></a></dt>
 <dd><p>Returns the total number of edges present in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.edges">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.edges" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.edges" title="Link to this definition"></a></dt>
 <dd><p>Returns a list of all edges as tuples (v1, v2) where each tuple represents an edge
 connecting vertex v1 and v2 in the graph instance. The vertices are identified by their integer IDs.</p>
 </dd></dl>
@@ -665,6 +675,64 @@ Also, raised if any of the provided vertex IDs are invalid.</p>
 <span class="go">[(0, 1), (0, 2), (1, 0), (2, 0), (2, 3)]</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.src_edge">
+<span class="sig-name descname"><span class="pre">src_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.src_edge" title="Link to this definition"></a></dt>
+<dd><p>Return the source vertex or source port for a given edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>e</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) -- Edge specified as (source_vx, target_vx).</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If False (default), return the source vertex ID.
+If True, return the output port index on the source vertex
+corresponding to this edge.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Source vertex ID if get_ports is False.
+Output port index if get_ports is True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>RuntimeError</strong> -- If the edge does not exist.</p></li>
+<li><p><strong>TypeError</strong> -- If e is not a tuple of length 2.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.target_edge">
+<span class="sig-name descname"><span class="pre">target_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.target_edge" title="Link to this definition"></a></dt>
+<dd><p>Return the target vertex or target port for a given edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>e</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) -- Edge specified as (source_vx, target_vx).</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If False (default), return the target vertex ID.
+If True, return the input port index on the target vertex
+corresponding to this edge.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Target vertex ID if get_ports is False.
+Input port index if get_ports is True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>RuntimeError</strong> -- If the edge does not exist.</p></li>
+<li><p><strong>TypeError</strong> -- If e is not a tuple of length 2.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -910,8 +978,44 @@ Used by <a class="reference internal" href="#heterograph.query.processor_dfs.QGr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QGraph.__neighbours">
-<span class="sig-name descname"><span class="pre">__neighbours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__neighbours" title="Link to this definition"></a></dt>
-<dd><p>Private method which outputs and orders input/output neighbours. Used by <a class="reference internal" href="#heterograph.query.processor_dfs.QGraph.in_vx" title="heterograph.query.processor_dfs.QGraph.in_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">in_vx()</span></code></a> and <a class="reference internal" href="#heterograph.query.processor_dfs.QGraph.out_vx" title="heterograph.query.processor_dfs.QGraph.out_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">out_vx()</span></code></a> methods.</p>
+<span class="sig-name descname"><span class="pre">__neighbours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QGraph.__neighbours" title="Link to this definition"></a></dt>
+<dd><p>Retrieve and optionally reorder input or output neighbours of a vertex.</p>
+<p>This is a private helper used by <a class="reference internal" href="#heterograph.query.processor_dfs.QGraph.in_vx" title="heterograph.query.processor_dfs.QGraph.in_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">in_vx()</span></code></a> and <a class="reference internal" href="#heterograph.query.processor_dfs.QGraph.out_vx" title="heterograph.query.processor_dfs.QGraph.out_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">out_vx()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_in</strong> (<em>bool</em>) -- If True, return input neighbours. If False, return output neighbours.</p></li>
+<li><p><strong>vx</strong> (<em>int</em>) -- Vertex ID whose neighbours are requested.</p></li>
+<li><p><strong>order</strong> (<em>int</em><em> | </em><em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) -- A vertex or list of vertices to reorder within the neighbour list.</p></li>
+<li><p><strong>after</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, insert reordered vertices after the anchor (or at end if no anchor).
+If False, insert before anchor (or at beginning if no anchor).</p></li>
+<li><p><strong>anchor</strong> (<em>int</em><em>, </em><em>optional</em>) -- Vertex ID used as insertion anchor when reordering.</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- <p>If False (default), return a list of neighbour vertex IDs.
+If True, return a dictionary mapping:</p>
+<blockquote>
+<div><p>port_index -&gt; neighbour_vertex_id</p>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>If get_ports is False:</dt><dd><p>Ordered list of neighbour vertex IDs.</p>
+</dd>
+<dt>If get_ports is True:</dt><dd><p>Dictionary mapping port index to neighbour vertex ID.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int] | dict[int, int]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> -- If anchor is specified without order.
+If order contains vertices not in neighbour list.
+If anchor is invalid or not found.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1029,11 +1133,11 @@ An optional third argument <cite>synth</cite> can be added to receive synthesize
 
 <dl class="py class">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QueryProcessorDFS">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.query.processor_dfs.</span></span><span class="sig-name descname"><span class="pre">QueryProcessorDFS</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QueryProcessorDFS" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">heterograph.query.processor_dfs.</span></span><span class="sig-name descname"><span class="pre">QueryProcessorDFS</span></span><a class="headerlink" href="#heterograph.query.processor_dfs.QueryProcessorDFS" title="Link to this definition"></a></dt>
 <dd><p>This class employs Depth-First Search (DFS) to traverse a graph and identify matches corresponding to a specified query graph. Only works for graphs that are trees (i.e., no cycles).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QueryProcessorDFS.check_depth">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth_constr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QueryProcessorDFS.check_depth" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">check_depth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth_constr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QueryProcessorDFS.check_depth" title="Link to this definition"></a></dt>
 <dd><p>Checks if the vertex depth is within the given depth constraints.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1054,7 +1158,7 @@ An optional third argument <cite>synth</cite> can be added to receive synthesize
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.query.processor_dfs.QueryProcessorDFS.__find_match">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__find_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qchain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_check</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx_depths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QueryProcessorDFS.__find_match" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">__find_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qchain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_check</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx_depths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.query.processor_dfs.QueryProcessorDFS.__find_match" title="Link to this definition"></a></dt>
 <dd><p>Finds matches in the graph for the given query graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

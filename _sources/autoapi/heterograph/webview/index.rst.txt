@@ -250,7 +250,7 @@ Module Contents
 
 
 
-   .. py:method:: out_vx(vx, *, order=None, after=True, anchor=None)
+   .. py:method:: out_vx(vx, *, order=None, after=True, anchor=None, get_ports=False)
 
       Returns a list of vertices that are connected to vertex `vx` via outgoing edges.
       This includes all vertices that can be reached by following directed edges starting from `vx`.
@@ -269,9 +269,14 @@ Module Contents
       :type after: bool, optional
       :param anchor: The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
       :type anchor: int, optional
+      :param get_ports: If True, return a dictionary mapping port index to vertex ID. Defaults to False.
+      :type get_ports: bool, optional
 
-      :returns: A list of vertices that are connected to the specified `vx` via outgoing edges in the requested order (if any).
-      :rtype: list of ints
+      :returns:
+
+                A list of vertices that are connected to the specified `vx` via outgoing edges in the requested order (if any).
+                                       If `get_ports` is True, returns a dictionary mapping port index to vertex ID instead.
+      :rtype: list of ints or dict
 
       :raises RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
           Also raised if an invalid anchor is specified (not an integer).
@@ -294,12 +299,12 @@ Module Contents
 
 
 
-   .. py:method:: in_vx(vx, *, order=None, after=True, anchor=None)
+   .. py:method:: in_vx(vx, *, order=None, after=True, anchor=None, get_ports=False)
 
       Returns a list of vertices that are connected to vertex `vx` via incoming edges.
 
       This includes all vertices from which directed edges point to `vx`. The ordering is
-      controlled by the `order` parameter.
+      controlled by the `order` parameter, which sets the port index.
 
       If `order` is provided, this method will first remove the list of vertices specified in `order`, and then
       append after or before the `anchor` according to the value of `after`. If the `anchor` is None,
@@ -314,9 +319,14 @@ Module Contents
       :type after: bool, optional
       :param anchor: The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
       :type anchor: int, optional
+      :param get_ports: If True, return a dictionary mapping port index to vertex ID. Defaults to False.
+      :type get_ports: bool, optional
 
-      :returns: A list of vertices that are connected to the specified `vx` via incoming edges in the requested order (if any).
-      :rtype: list of ints
+      :returns:
+
+                A list of vertices that are connected to the specified `vx` via incoming edges in the requested order (if any).
+                                       If `get_ports` is True, returns a dictionary mapping port index to vertex ID instead.
+      :rtype: list of ints or dict
 
       :raises RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
           Also raised if an invalid anchor is specified (not an integer).
@@ -468,6 +478,46 @@ Module Contents
       [(2, 3)]
       >>> g.edges
       [(0, 1), (0, 2), (1, 0), (2, 0), (2, 3)]
+
+
+
+   .. py:method:: src_edge(e, get_ports=False)
+
+      Return the source vertex or source port for a given edge.
+
+      :param e: Edge specified as (source_vx, target_vx).
+      :type e: tuple[int, int]
+      :param get_ports: If False (default), return the source vertex ID.
+                        If True, return the output port index on the source vertex
+                        corresponding to this edge.
+      :type get_ports: bool, optional
+
+      :returns:     Source vertex ID if get_ports is False.
+                    Output port index if get_ports is True.
+      :rtype: int
+
+      :raises RuntimeError: If the edge does not exist.
+      :raises TypeError: If e is not a tuple of length 2.
+
+
+
+   .. py:method:: target_edge(e, get_ports=False)
+
+      Return the target vertex or target port for a given edge.
+
+      :param e: Edge specified as (source_vx, target_vx).
+      :type e: tuple[int, int]
+      :param get_ports: If False (default), return the target vertex ID.
+                        If True, return the input port index on the target vertex
+                        corresponding to this edge.
+      :type get_ports: bool, optional
+
+      :returns:     Target vertex ID if get_ports is False.
+                    Input port index if get_ports is True.
+      :rtype: int
+
+      :raises RuntimeError: If the edge does not exist.
+      :raises TypeError: If e is not a tuple of length 2.
 
 
 
@@ -685,9 +735,39 @@ Module Contents
 
 
 
-   .. py:method:: __neighbours(_in, vx, order=None, after=True, anchor=None)
+   .. py:method:: __neighbours(_in, vx, order=None, after=True, anchor=None, get_ports=False)
 
-      Private method which outputs and orders input/output neighbours. Used by :meth:`in_vx` and :meth:`out_vx` methods.
+      Retrieve and optionally reorder input or output neighbours of a vertex.
+
+      This is a private helper used by :meth:`in_vx` and :meth:`out_vx`.
+
+      :param _in: If True, return input neighbours. If False, return output neighbours.
+      :type _in: bool
+      :param vx: Vertex ID whose neighbours are requested.
+      :type vx: int
+      :param order: A vertex or list of vertices to reorder within the neighbour list.
+      :type order: int | list[int], optional
+      :param after: If True, insert reordered vertices after the anchor (or at end if no anchor).
+                    If False, insert before anchor (or at beginning if no anchor).
+      :type after: bool, optional
+      :param anchor: Vertex ID used as insertion anchor when reordering.
+      :type anchor: int, optional
+      :param get_ports: If False (default), return a list of neighbour vertex IDs.
+                        If True, return a dictionary mapping:
+                            port_index -> neighbour_vertex_id
+      :type get_ports: bool, optional
+
+      :returns:
+
+                    If get_ports is False:
+                        Ordered list of neighbour vertex IDs.
+                    If get_ports is True:
+                        Dictionary mapping port index to neighbour vertex ID.
+      :rtype: list[int] | dict[int, int]
+
+      :raises RuntimeError: If anchor is specified without order.
+          If order contains vertices not in neighbour list.
+          If anchor is invalid or not found.
 
 
 

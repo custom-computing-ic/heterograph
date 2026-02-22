@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>heterograph.webview &mdash; heterograph 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/label.css" />
@@ -17,8 +17,8 @@
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
-      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../_static/copybutton.js?v=f281be69"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -122,7 +122,7 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.webview.</span></span><span class="sig-name descname"><span class="pre">HGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ginit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vinit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">einit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">heterograph.webview.</span></span><span class="sig-name descname"><span class="pre">HGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ginit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vinit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">einit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph" title="Link to this definition"></a></dt>
 <dd><p>Provides a high-level interface to analyse and manipulate arbitrary graph data structures.</p>
 <p><a class="reference internal" href="#heterograph.webview.HGraph" title="heterograph.webview.HGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">HGraph</span></code></a> encapsulates complex functionalities of the <cite>graph-tool</cite> library, and adds additional features like property maps for vertices and edges to capture arbitrary data and styling options.  Unlike <cite>graph-tool</cite>, vertices and edges maintain their original references when the graph is manipulated.</p>
 <p>Here are some key benefits:</p>
@@ -158,85 +158,85 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__ginit">
-<span class="sig-name descname"><span class="pre">__ginit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__ginit" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__ginit</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__ginit" title="Link to this definition"></a></dt>
 <dd><p>stores initial user-defined graph properties.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__vinit">
-<span class="sig-name descname"><span class="pre">__vinit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__vinit" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__vinit</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__vinit" title="Link to this definition"></a></dt>
 <dd><p>stores initial user-defined vertex properties.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__einit">
-<span class="sig-name descname"><span class="pre">__einit</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__einit" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__einit</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__einit" title="Link to this definition"></a></dt>
 <dd><p>stores initial user-defined edge properties.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__vx_counter">
-<span class="sig-name descname"><span class="pre">__vx_counter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__vx_counter" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__vx_counter</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__vx_counter" title="Link to this definition"></a></dt>
 <dd><p>keeps track of the total number of vertices added to the graph. Each vertex gets a unique id generated from this counter.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__ivx">
-<span class="sig-name descname"><span class="pre">__ivx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__ivx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__ivx</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__ivx" title="Link to this definition"></a></dt>
 <dd><p>a dictionary that maps internal vertex IDs (as used by graph_tool) to persistent vertex IDs (as seen by users).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__vx">
-<span class="sig-name descname"><span class="pre">__vx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__vx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__vx</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__vx" title="Link to this definition"></a></dt>
 <dd><p>the reverse of __ivx, mapping persistent vertex IDs (as seen by users) to internal vertex IDs (as used by graph_tool).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__in">
-<span class="sig-name descname"><span class="pre">__in</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__in" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__in</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__in" title="Link to this definition"></a></dt>
 <dd><p>dictionary that stores incoming neighbors of each vertex.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__out">
-<span class="sig-name descname"><span class="pre">__out</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__out" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__out</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__out" title="Link to this definition"></a></dt>
 <dd><p>dictionary that stores outgoing neighbors of each vertex.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__properties">
-<span class="sig-name descname"><span class="pre">__properties</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.__properties" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__properties</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.__properties" title="Link to this definition"></a></dt>
 <dd><p>an instance of HGraphProps that manages property maps for graph, vertices and edges.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.read_only">
-<span class="sig-name descname"><span class="pre">read_only</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.HGraph.read_only" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">read_only</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.HGraph.read_only" title="Link to this definition"></a></dt>
 <dd><p>indicates whether the graph is in read-only mode. If True, any graph modification raises an error.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.igraph">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">igraph</span></span><a class="headerlink" href="#heterograph.webview.HGraph.igraph" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">igraph</span></span><a class="headerlink" href="#heterograph.webview.HGraph.igraph" title="Link to this definition"></a></dt>
 <dd><p>Returns the internal Graph (graph-tool) object.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.to_ivx">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_ivx</span></span><a class="headerlink" href="#heterograph.webview.HGraph.to_ivx" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">to_ivx</span></span><a class="headerlink" href="#heterograph.webview.HGraph.to_ivx" title="Link to this definition"></a></dt>
 <dd><p>Returns a dictionary mapping internal vertex IDs to persistent vertex IDs.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.to_vx">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_vx</span></span><a class="headerlink" href="#heterograph.webview.HGraph.to_vx" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">to_vx</span></span><a class="headerlink" href="#heterograph.webview.HGraph.to_vx" title="Link to this definition"></a></dt>
 <dd><p>Returns a dictionary mapping persistent vertex IDs to internal vertex IDs.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.style">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">style</span></span><a class="headerlink" href="#heterograph.webview.HGraph.style" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">style</span></span><a class="headerlink" href="#heterograph.webview.HGraph.style" title="Link to this definition"></a></dt>
 <dd><p>Get or set the <cite>graph</cite> style.</p>
 <p>When setting the style to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the current style is cleared.
 Otherwise, the provided style is added or updated.</p>
@@ -244,7 +244,7 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.vstyle">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vstyle</span></span><a class="headerlink" href="#heterograph.webview.HGraph.vstyle" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vstyle</span></span><a class="headerlink" href="#heterograph.webview.HGraph.vstyle" title="Link to this definition"></a></dt>
 <dd><p>Get or set the <cite>vertex</cite> style.</p>
 <p>When setting the style to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the current style is cleared.
 Otherwise, the provided style is added or updated.</p>
@@ -252,7 +252,7 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.estyle">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">estyle</span></span><a class="headerlink" href="#heterograph.webview.HGraph.estyle" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">estyle</span></span><a class="headerlink" href="#heterograph.webview.HGraph.estyle" title="Link to this definition"></a></dt>
 <dd><p>Get or set the <cite>edge</cite> style.</p>
 <p>When setting the style to <code class="docutils literal notranslate"><span class="pre">None</span></code>, the current style is cleared.
 Otherwise, the provided style is added or updated.</p>
@@ -260,7 +260,7 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.pmap">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pmap</span></span><a class="headerlink" href="#heterograph.webview.HGraph.pmap" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pmap</span></span><a class="headerlink" href="#heterograph.webview.HGraph.pmap" title="Link to this definition"></a></dt>
 <dd><p>Gets/sets property maps of graph, vertices and edges.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">g.pmap</span></code>: get/set graph properties</p></li>
@@ -271,25 +271,25 @@ Otherwise, the provided style is added or updated.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.num_vx">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_vx</span></span><a class="headerlink" href="#heterograph.webview.HGraph.num_vx" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_vx</span></span><a class="headerlink" href="#heterograph.webview.HGraph.num_vx" title="Link to this definition"></a></dt>
 <dd><p>This property returns the total number of vertices in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.vertices">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vertices</span></span><a class="headerlink" href="#heterograph.webview.HGraph.vertices" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vertices</span></span><a class="headerlink" href="#heterograph.webview.HGraph.vertices" title="Link to this definition"></a></dt>
 <dd><p>This property returns a list of all vertex IDs in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.source">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#heterograph.webview.HGraph.source" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#heterograph.webview.HGraph.source" title="Link to this definition"></a></dt>
 <dd><p>Get list of source vertices (vertices with no incoming edges) in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.sink">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sink</span></span><a class="headerlink" href="#heterograph.webview.HGraph.sink" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">sink</span></span><a class="headerlink" href="#heterograph.webview.HGraph.sink" title="Link to this definition"></a></dt>
 <dd><p>Get list of sink vertices (vertices with no outgoing edges) in the graph.</p>
 </dd></dl>
 
@@ -353,7 +353,7 @@ via outgoing edges.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.out_vx">
-<span class="sig-name descname"><span class="pre">out_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.out_vx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">out_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.out_vx" title="Link to this definition"></a></dt>
 <dd><p>Returns a list of vertices that are connected to vertex <cite>vx</cite> via outgoing edges.
 This includes all vertices that can be reached by following directed edges starting from <cite>vx</cite>.
 The ordering is controlled by the <cite>order</cite> parameter.</p>
@@ -368,13 +368,18 @@ then the <cite>anchor</cite> is assumed to be the last element.</p>
 <li><p><strong>after</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True and an anchor is provided, append the ordered neighbours to it,
 else prepend them. Defaults to True.</p></li>
 <li><p><strong>anchor</strong> (<em>int</em><em>, </em><em>optional</em>) -- The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, return a dictionary mapping port index to vertex ID. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list of vertices that are connected to the specified <cite>vx</cite> via outgoing edges in the requested order (if any).</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>A list of vertices that are connected to the specified <cite>vx</cite> via outgoing edges in the requested order (if any).</dt><dd><p>If <cite>get_ports</cite> is True, returns a dictionary mapping port index to vertex ID instead.</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list of ints</p>
+<dd class="field-odd"><p>list of ints or dict</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>RuntimeError</strong> -- If the vertex ID <cite>vx</cite> does not exist, or if the ordered neighbours provided in the ‘order’ argument do not form a subset of those connected to <cite>vx</cite>.
@@ -401,10 +406,10 @@ Also raised if an invalid anchor is specified (not an integer).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.in_vx">
-<span class="sig-name descname"><span class="pre">in_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.in_vx" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">in_vx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.in_vx" title="Link to this definition"></a></dt>
 <dd><p>Returns a list of vertices that are connected to vertex <cite>vx</cite> via incoming edges.</p>
 <p>This includes all vertices from which directed edges point to <cite>vx</cite>. The ordering is
-controlled by the <cite>order</cite> parameter.</p>
+controlled by the <cite>order</cite> parameter, which sets the port index.</p>
 <p>If <cite>order</cite> is provided, this method will first remove the list of vertices specified in <cite>order</cite>, and then
 append after or before the <cite>anchor</cite> according to the value of <cite>after</cite>. If the <cite>anchor</cite> is None,
 then the <cite>anchor</cite> is assumed to be the last element.</p>
@@ -416,13 +421,18 @@ then the <cite>anchor</cite> is assumed to be the last element.</p>
 <li><p><strong>after</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True and an anchor is provided, append the ordered neighbours to it,
 else prepend them. Defaults to True.</p></li>
 <li><p><strong>anchor</strong> (<em>int</em><em>, </em><em>optional</em>) -- The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, return a dictionary mapping port index to vertex ID. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list of vertices that are connected to the specified <cite>vx</cite> via incoming edges in the requested order (if any).</p>
+<dd class="field-even"><p><dl class="simple">
+<dt>A list of vertices that are connected to the specified <cite>vx</cite> via incoming edges in the requested order (if any).</dt><dd><p>If <cite>get_ports</cite> is True, returns a dictionary mapping port index to vertex ID instead.</p>
+</dd>
+</dl>
+</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list of ints</p>
+<dd class="field-odd"><p>list of ints or dict</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>RuntimeError</strong> -- If the vertex ID <cite>vx</cite> does not exist, or if the ordered neighbours provided in the ‘order’ argument do not form a subset of those connected to <cite>vx</cite>.
@@ -545,13 +555,13 @@ ignored. Default is True.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.num_edges">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_edges</span></span><a class="headerlink" href="#heterograph.webview.HGraph.num_edges" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">num_edges</span></span><a class="headerlink" href="#heterograph.webview.HGraph.num_edges" title="Link to this definition"></a></dt>
 <dd><p>Returns the total number of edges present in the graph.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.edges">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#heterograph.webview.HGraph.edges" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#heterograph.webview.HGraph.edges" title="Link to this definition"></a></dt>
 <dd><p>Returns a list of all edges as tuples (v1, v2) where each tuple represents an edge
 connecting vertex v1 and v2 in the graph instance. The vertices are identified by their integer IDs.</p>
 </dd></dl>
@@ -605,6 +615,64 @@ Also, raised if any of the provided vertex IDs are invalid.</p>
 <span class="go">[(0, 1), (0, 2), (1, 0), (2, 0), (2, 3)]</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.webview.HGraph.src_edge">
+<span class="sig-name descname"><span class="pre">src_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.src_edge" title="Link to this definition"></a></dt>
+<dd><p>Return the source vertex or source port for a given edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>e</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) -- Edge specified as (source_vx, target_vx).</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If False (default), return the source vertex ID.
+If True, return the output port index on the source vertex
+corresponding to this edge.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Source vertex ID if get_ports is False.
+Output port index if get_ports is True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>RuntimeError</strong> -- If the edge does not exist.</p></li>
+<li><p><strong>TypeError</strong> -- If e is not a tuple of length 2.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="heterograph.webview.HGraph.target_edge">
+<span class="sig-name descname"><span class="pre">target_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.target_edge" title="Link to this definition"></a></dt>
+<dd><p>Return the target vertex or target port for a given edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>e</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) -- Edge specified as (source_vx, target_vx).</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If False (default), return the target vertex ID.
+If True, return the input port index on the target vertex
+corresponding to this edge.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Target vertex ID if get_ports is False.
+Input port index if get_ports is True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>RuntimeError</strong> -- If the edge does not exist.</p></li>
+<li><p><strong>TypeError</strong> -- If e is not a tuple of length 2.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -850,8 +918,44 @@ Used by <a class="reference internal" href="#heterograph.webview.HGraph.__init__
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.HGraph.__neighbours">
-<span class="sig-name descname"><span class="pre">__neighbours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.__neighbours" title="Link to this definition"></a></dt>
-<dd><p>Private method which outputs and orders input/output neighbours. Used by <a class="reference internal" href="#heterograph.webview.HGraph.in_vx" title="heterograph.webview.HGraph.in_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">in_vx()</span></code></a> and <a class="reference internal" href="#heterograph.webview.HGraph.out_vx" title="heterograph.webview.HGraph.out_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">out_vx()</span></code></a> methods.</p>
+<span class="sig-name descname"><span class="pre">__neighbours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.HGraph.__neighbours" title="Link to this definition"></a></dt>
+<dd><p>Retrieve and optionally reorder input or output neighbours of a vertex.</p>
+<p>This is a private helper used by <a class="reference internal" href="#heterograph.webview.HGraph.in_vx" title="heterograph.webview.HGraph.in_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">in_vx()</span></code></a> and <a class="reference internal" href="#heterograph.webview.HGraph.out_vx" title="heterograph.webview.HGraph.out_vx"><code class="xref py py-meth docutils literal notranslate"><span class="pre">out_vx()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_in</strong> (<em>bool</em>) -- If True, return input neighbours. If False, return output neighbours.</p></li>
+<li><p><strong>vx</strong> (<em>int</em>) -- Vertex ID whose neighbours are requested.</p></li>
+<li><p><strong>order</strong> (<em>int</em><em> | </em><em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) -- A vertex or list of vertices to reorder within the neighbour list.</p></li>
+<li><p><strong>after</strong> (<em>bool</em><em>, </em><em>optional</em>) -- If True, insert reordered vertices after the anchor (or at end if no anchor).
+If False, insert before anchor (or at beginning if no anchor).</p></li>
+<li><p><strong>anchor</strong> (<em>int</em><em>, </em><em>optional</em>) -- Vertex ID used as insertion anchor when reordering.</p></li>
+<li><p><strong>get_ports</strong> (<em>bool</em><em>, </em><em>optional</em>) -- <p>If False (default), return a list of neighbour vertex IDs.
+If True, return a dictionary mapping:</p>
+<blockquote>
+<div><p>port_index -&gt; neighbour_vertex_id</p>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>If get_ports is False:</dt><dd><p>Ordered list of neighbour vertex IDs.</p>
+</dd>
+<dt>If get_ports is True:</dt><dd><p>Dictionary mapping port index to neighbour vertex ID.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int] | dict[int, int]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> -- If anchor is specified without order.
+If order contains vertices not in neighbour list.
+If anchor is invalid or not found.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -863,7 +967,7 @@ Used by <a class="reference internal" href="#heterograph.webview.HGraph.__init__
 
 <dl class="py class">
 <dt class="sig sig-object py" id="heterograph.webview.WebView">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">heterograph.webview.</span></span><span class="sig-name descname"><span class="pre">WebView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">heterograph.webview.</span></span><span class="sig-name descname"><span class="pre">WebView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView" title="Link to this definition"></a></dt>
 <dd><p>A Flask-based web app that provides a graphical interface to visualize and interact with heterographs.</p>
 <p>This class creates a web view of heterographs  using Flask, allowing users to navigate through different
 graphs, hover over elements in the graph, and shut down the server when they are done. It also handles user
@@ -871,7 +975,7 @@ interaction with the graphs by executing corresponding handler functions if one 
 graph.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.obj">
-<span class="sig-name descname"><span class="pre">obj</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.WebView.obj" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">obj</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.WebView.obj" title="Link to this definition"></a></dt>
 <dd><p>Class-level variable that stores an instance of this WebView class. This is used to access its properties and methods from within static methods.</p>
 <p>Type: WebView</p>
 <div class="admonition note">
@@ -897,27 +1001,27 @@ If not provided, it will default to the ‘assets’ folder in the same director
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.svg_graphs">
-<span class="sig-name descname"><span class="pre">svg_graphs</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.webview.WebView.svg_graphs" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">svg_graphs</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.webview.WebView.svg_graphs" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.titles">
-<span class="sig-name descname"><span class="pre">titles</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.webview.WebView.titles" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">titles</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.webview.WebView.titles" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.graphs">
-<span class="sig-name descname"><span class="pre">graphs</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.webview.WebView.graphs" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">graphs</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.webview.WebView.graphs" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.on_hovers">
-<span class="sig-name descname"><span class="pre">on_hovers</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#heterograph.webview.WebView.on_hovers" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">on_hovers</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></span><a class="headerlink" href="#heterograph.webview.WebView.on_hovers" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.hover_elem">
-<span class="sig-name descname"><span class="pre">hover_elem</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#heterograph.webview.WebView.hover_elem" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">hover_elem</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#heterograph.webview.WebView.hover_elem" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -927,12 +1031,12 @@ If not provided, it will default to the ‘assets’ folder in the same director
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.index">
-<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#heterograph.webview.WebView.index" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">index</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></span><a class="headerlink" href="#heterograph.webview.WebView.index" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.graph">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#heterograph.webview.WebView.graph" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#heterograph.webview.WebView.graph" title="Link to this definition"></a></dt>
 <dd><p>Returns the currently active graph in the WebView instance.</p>
 <p>This is a read-only property that returns the currently active graph in the WebView instance. If no graph is selected or an invalid index is being accessed, it will raise a RuntimeError.</p>
 <dl class="field-list simple">
@@ -1002,7 +1106,7 @@ If not, it starts the Flask web server on the specified host and port, or defaul
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.req_index">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_index" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_index" title="Link to this definition"></a></dt>
 <dd><p>Renders and returns the HTML template for the view page.</p>
 <p>This function is used to render and return the HTML template that represents the view page.
 The view page usually provides a graphical interface for users to visualize and interact with heterographs.</p>
@@ -1018,7 +1122,7 @@ The view page usually provides a graphical interface for users to visualize and 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.req_hover">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_hover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_hover" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_hover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_hover" title="Link to this definition"></a></dt>
 <dd><p>Handles user hover interaction with an element in the current graph.</p>
 <p>This function handles a request to hover over an element in the current active graph,
 executing a handler function if one exists for that specific graph. The element is specified as
@@ -1044,7 +1148,7 @@ If the handler does not exist, the method will do nothing but still return an em
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.req_first">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_first" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_first" title="Link to this definition"></a></dt>
 <dd><p>Resets and returns the next graph payload.</p>
 <p>This function resets the index of the active graph to -1, then calls <cite>req_next()</cite> to get the next graph’s payload.
 The result is a dictionary containing the SVG representation of the current graph, its title, total number of graphs in the viewer, and whether or not there is an hover function for the current graph.</p>
@@ -1060,7 +1164,7 @@ The result is a dictionary containing the SVG representation of the current grap
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.req_next">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_next" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_next" title="Link to this definition"></a></dt>
 <dd><p>Requests the next graph and returns its payload.</p>
 <p>This function calls a private method <cite>_next_graph()</cite> to get the next graph in the viewer, then uses the <cite>payload()</cite>
 static method to generate a dictionary containing information about that graph.</p>
@@ -1077,7 +1181,7 @@ and whether or not there is a hover function for the current graph.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.req_prev">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_prev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_prev" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_prev</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_prev" title="Link to this definition"></a></dt>
 <dd><p>Requests the previous graph and returns its payload.</p>
 <p>This function calls a private method <cite>_next_graph()</cite> to get the previous graph in the viewer,
 then uses the <cite>payload()</cite> static method to generate a dictionary containing information about that graph.</p>
@@ -1097,7 +1201,7 @@ then uses the <cite>payload()</cite> static method to generate a dictionary cont
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.req_shutdown">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">req_shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_shutdown" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">req_shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.req_shutdown" title="Link to this definition"></a></dt>
 <dd><p>Shuts down the server when user interaction is done.</p>
 <p>This function handles a request to shut down the server, usually initiated by the user once they’re done with their interactions.
 The method will retrieve the shutdown function from the Flask app environment and execute it if available. If not, an error will be raised.</p>
@@ -1120,7 +1224,7 @@ The method will retrieve the shutdown function from the Flask app environment an
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.webview.WebView.payload">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.payload" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.webview.WebView.payload" title="Link to this definition"></a></dt>
 <dd><p>Generates a dictionary containing the SVG representation of a graph, its index, title,
 total number of graphs in the viewer, and whether or not there is an hover
 function for the current graph.</p>

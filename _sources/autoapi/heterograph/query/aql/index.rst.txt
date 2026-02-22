@@ -284,9 +284,29 @@ Module Contents
       :classmethod:
 
 
+      Parameterizes a generic class.
+
+      At least, parameterizing a generic class is the *main* thing this method
+      does. For example, for some generic class `Foo`, this is called when we
+      do `Foo[int]` - there, with `cls=Foo` and `params=int`.
+
+      However, note that this method is also called when defining generic
+      classes in the first place with `class Foo(Generic[T]): ...`.
+
+
 
    .. py:attribute:: __slots__
       :value: ()
+
+
+
+   .. py:attribute:: _is_protocol
+      :value: False
+
+
+
+   .. py:method:: __init_subclass__(*args, **kwargs)
+      :classmethod:
 
 
 
