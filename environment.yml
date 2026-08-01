@@ -4,12 +4,10 @@ channels:
    - conda-forge
 
 dependencies:
-   - python=3.12 
+   - python>=3.10 
    - pip
-   - graph-tool
+   - graph-tool=3.0=*_301 # compatibility with zen3
    - graphviz
-   - libboost
-   - libboost-headers
    - python-graphviz
    - pandoc
 

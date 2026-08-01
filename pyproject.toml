@@ -10,7 +10,7 @@ authors = [
 ]
 description = "A graph library to support high-level software descriptions (AST), neural-networks and dataflow graphs."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: Apache Software License",
@@ -18,8 +18,6 @@ classifiers = [
 ]
 
 dependencies = [
-#    "typing_extensions==4.5", # because of tensorflow/qkeras
-#    "ipython==8.18.1", # because of typing_extensions
     "notebook",
     "colorama",
     "flask",

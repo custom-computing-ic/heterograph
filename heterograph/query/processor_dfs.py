@@ -145,8 +145,14 @@ class QueryProcessorDFS:
         for vx in vs:
             dfs_traversal(g=g, vx=vx, pre=pre_depth, inh=0)
 
+
         for vx in vs:
             for path in paths:
+                g.pmap['dfs.depths'] = vx_depths
+                g.pmap['dfs.root_depth'] = vx_depths[vx]
+                g.pmap['dfs.fd'] = fd
+                g.pmap['dfs.gd'] = gd
+
                 match=[ m for m in QueryProcessorDFS.__find_match(g=g,
                                                                   qgraph=qgraph,
                                                                   chain=(None, vx),
@@ -158,5 +164,9 @@ class QueryProcessorDFS:
                                                                   gd=gd)
                         if match_filter(g, qgraph, m)
                       ]
+                g.pmap.pop('dfs.depths')
+                g.pmap.pop('dfs.root_depth')
+                g.pmap.pop('dfs.fd')
+                g.pmap.pop('dfs.gd')
                 matches.extend(match)
         return matches

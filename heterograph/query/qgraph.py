@@ -32,6 +32,17 @@ class QGraph(HGraph):
             eg_args (dict): The edge arguments. Defaults to None.
         """
 
+        """
+           Note that vg_args(qgraph, vx, *args, **kwargs) and eg_args(qgraph, eg, *args, **kwargs) are functions that are 
+           invoked during the qgraph building process, and are used to set the arguments from the pattern into the corresponding 
+           vertices and edges of the qgraph.
+
+           vg_args(qgraph, vx, type=None) - the node will have a default argument 'type'
+           vg_args(qgraph, vx, type=None, **kwargs) - the node will have a default argument 'type' 
+                       and any additional arguments passed in the pattern (e.g., a{gab, test1:20, test2:543} 
+                       will have arguments 'type'='gab', 'test1'=20, 'test2'=543)
+        """
+
         def ginit(graph):
             graph.pmap['ids'] = { }
             graph.vstyle['label'] = lambda g, vx: r'''<<TABLE CELLBORDER="0" CELLSPACING="0" border="0"><TR align="right"><TD><B>%s:</B>%d %s</TD></TR></TABLE>>''' % (g.pmap[vx]['id'], vx,  g.pmap[vx]['args'] )
@@ -55,7 +66,7 @@ class QGraph(HGraph):
         try:
             self.graph_def = self._process(vx_args=vx_args, eg_args=eg_args)
         except Exception as e:
-            raise SyntaxError(f"[x] error processing AQL pattern: '{self.pattern}'") from None
+            raise SyntaxError(f"[x] error processing AQL pattern: '{self.pattern}'\nReason: {e}") from None
 
     def _process(self, vx_args, eg_args):
         """

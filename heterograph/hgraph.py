@@ -265,7 +265,7 @@ class HGraph:
         ret = self.__out.get(vx, [])
         return len(ret)
 
-    def out_vx(self, vx, *, order=None, after=True, anchor=None):
+    def out_vx(self, vx, *, order=None, after=True, anchor=None, get_ports=False):
         """
         Returns a list of vertices that are connected to vertex `vx` via outgoing edges.
         This includes all vertices that can be reached by following directed edges starting from `vx`.
@@ -281,10 +281,11 @@ class HGraph:
             after (bool, optional): If True and an anchor is provided, append the ordered neighbours to it,
                                     else prepend them. Defaults to True.
             anchor (int, optional): The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
+            get_ports (bool, optional): If True, return a dictionary mapping port index to vertex ID. Defaults to False.
 
         Returns:
-            list of ints: A list of vertices that are connected to the specified `vx` via outgoing edges in the requested order (if any).
-
+            list of ints or dict: A list of vertices that are connected to the specified `vx` via outgoing edges in the requested order (if any).
+                                   If `get_ports` is True, returns a dictionary mapping port index to vertex ID instead.
         Raises:
             RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
                         Also raised if an invalid anchor is specified (not an integer).
@@ -306,15 +307,15 @@ class HGraph:
         """
         if order is not None and self.read_only:
            raise RuntimeError("cannot modify read-only graph!")
-        return self.__neighbours(_in=False, vx=vx, order=order, after=after, anchor=anchor)
+        return self.__neighbours(_in=False, vx=vx, order=order, after=after, anchor=anchor, get_ports=get_ports)
 
 
-    def in_vx(self, vx, *, order=None, after=True, anchor=None):
+    def in_vx(self, vx, *, order=None, after=True, anchor=None, get_ports=False):
         """
         Returns a list of vertices that are connected to vertex `vx` via incoming edges.
 
         This includes all vertices from which directed edges point to `vx`. The ordering is
-        controlled by the `order` parameter.
+        controlled by the `order` parameter, which sets the port index.
 
         If `order` is provided, this method will first remove the list of vertices specified in `order`, and then
         append after or before the `anchor` according to the value of `after`. If the `anchor` is None,
@@ -326,9 +327,11 @@ class HGraph:
             after (bool, optional): If True and an anchor is provided, append the ordered neighbours to it,
                                     else prepend them. Defaults to True.
             anchor (int, optional): The vertex ID around which we should arrange our neighbours. Ignored if order is not provided. Defaults to None.
+            get_ports (bool, optional): If True, return a dictionary mapping port index to vertex ID. Defaults to False.
 
         Returns:
-            list of ints: A list of vertices that are connected to the specified `vx` via incoming edges in the requested order (if any).
+            list of ints or dict: A list of vertices that are connected to the specified `vx` via incoming edges in the requested order (if any).
+                                   If `get_ports` is True, returns a dictionary mapping port index to vertex ID instead.
 
         Raises:
             RuntimeError: If the vertex ID `vx` does not exist, or if the ordered neighbours provided in the 'order' argument do not form a subset of those connected to `vx`.
@@ -348,7 +351,8 @@ class HGraph:
 
         if order is not None and self.read_only:
            raise RuntimeError("cannot modify read-only graph!")
-        return self.__neighbours(_in=True, vx=vx, order=order, after=after, anchor=anchor)
+        return self.__neighbours(_in=True, vx=vx, order=order, after=after, anchor=anchor, get_ports=get_ports)
+    
 
     @modifies_graph
     def add_vx(self, n=1):
@@ -387,7 +391,7 @@ class HGraph:
         ret = []
         for _ivx in _ivs:
             ivx = int(_ivx)
-            vx = self.__gen_vx_id()
+            vx = self.__gen_vx_id() 
 
             self.__ivx[vx] = ivx
             self.__vx[ivx] = vx
@@ -600,6 +604,97 @@ class HGraph:
                     self.__out[_s].append(_t)
 
         return edges
+    
+    def src_edge(self, e, get_ports=False):
+        """
+        Return the source vertex or source port for a given edge.
+
+        Args:
+            e (tuple[int, int]):
+                Edge specified as (source_vx, target_vx).
+            get_ports (bool, optional):
+                If False (default), return the source vertex ID.
+                If True, return the output port index on the source vertex
+                corresponding to this edge.
+
+        Returns:
+            int:
+                Source vertex ID if get_ports is False.
+                Output port index if get_ports is True.
+
+        Raises:
+            RuntimeError:
+                If the edge does not exist.
+            TypeError:
+                If e is not a tuple of length 2.
+        """
+        if not (isinstance(e, tuple) and len(e) == 2):
+            raise TypeError("edge must be a tuple (source_vx, target_vx)")
+
+        s, t = e
+
+        # verify edge exists
+        self.check_edge(e, verify=True)
+
+        if not get_ports:
+            return s
+
+        # port is index of t in out neighbours of s
+        out_ports = self.__neighbours(False, s, get_ports=True)
+
+        for port, vx in out_ports.items():
+            if vx == t:
+                return port
+
+        # Should not happen if adjacency and edge storage are consistent
+        raise RuntimeError(
+            "edge (%d, %d) not found in out-neighbours of %d!" % (s, t, s)
+        )
+
+    def target_edge(self, e, get_ports=False):
+        """
+        Return the target vertex or target port for a given edge.
+
+        Args:
+            e (tuple[int, int]):
+                Edge specified as (source_vx, target_vx).
+            get_ports (bool, optional):
+                If False (default), return the target vertex ID.
+                If True, return the input port index on the target vertex
+                corresponding to this edge.
+
+        Returns:
+            int:
+                Target vertex ID if get_ports is False.
+                Input port index if get_ports is True.
+
+        Raises:
+            RuntimeError:
+                If the edge does not exist.
+            TypeError:
+                If e is not a tuple of length 2.
+        """
+        if not (isinstance(e, tuple) and len(e) == 2):
+            raise TypeError("edge must be a tuple (source_vx, target_vx)")
+
+        s, t = e
+
+        # verify edge exists
+        self.check_edge(e, verify=True)
+
+        if not get_ports:
+            return t
+
+        # port is index of s in in neighbours of t
+        in_ports = self.__neighbours(True, t, get_ports=True)
+
+        for port, vx in in_ports.items():
+            if vx == s:
+                return port
+
+        raise RuntimeError(
+            "edge (%d, %d) not found in in-neighbours of %d!" % (s, t, t)
+        )
 
     def check_edge(self, edge, verify=False):
         """
@@ -1050,8 +1145,42 @@ class HGraph:
             ret[ivx] = vx
         return ret
 
-    def __neighbours(self, _in, vx, order=None, after=True, anchor=None):
-        """Private method which outputs and orders input/output neighbours. Used by :meth:`in_vx` and :meth:`out_vx` methods. """
+    def __neighbours(self, _in, vx, order=None, after=True, anchor=None, get_ports=False):
+        """
+        Retrieve and optionally reorder input or output neighbours of a vertex.
+
+        This is a private helper used by :meth:`in_vx` and :meth:`out_vx`.
+
+        Args:
+            _in (bool):
+                If True, return input neighbours. If False, return output neighbours.
+            vx (int):
+                Vertex ID whose neighbours are requested.
+            order (int | list[int], optional):
+                A vertex or list of vertices to reorder within the neighbour list.
+            after (bool, optional):
+                If True, insert reordered vertices after the anchor (or at end if no anchor).
+                If False, insert before anchor (or at beginning if no anchor).
+            anchor (int, optional):
+                Vertex ID used as insertion anchor when reordering.
+            get_ports (bool, optional):
+                If False (default), return a list of neighbour vertex IDs.
+                If True, return a dictionary mapping:
+                    port_index -> neighbour_vertex_id
+
+        Returns:
+            list[int] | dict[int, int]:
+                If get_ports is False:
+                    Ordered list of neighbour vertex IDs.
+                If get_ports is True:
+                    Dictionary mapping port index to neighbour vertex ID.
+
+        Raises:
+            RuntimeError:
+                If anchor is specified without order.
+                If order contains vertices not in neighbour list.
+                If anchor is invalid or not found.
+        """
         # check if vx exists
         self.check_vx(vx, verify=True)
 
@@ -1097,4 +1226,11 @@ class HGraph:
             else:
                 self.__out[vx] = nb
 
-        return nb
+        if not get_ports:
+            # prevent from returning a reference to the internal list
+            return list(nb)
+        else:
+            # Explicit port mapping
+            return {i: n for i, n in enumerate(nb)}
+
+        

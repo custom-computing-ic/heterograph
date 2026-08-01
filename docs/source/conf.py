@@ -7,9 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'heterograph'
-copyright = '2025, Custom Computing Group'
+copyright = '2026, Custom Computing Group'
 author = 'Custom Computing Group'
-release = '1.0'
+release = '1.2'
 
 
 # -- General configuration ---------------------------------------------------

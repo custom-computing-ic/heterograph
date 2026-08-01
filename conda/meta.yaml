@@ -23,11 +23,12 @@ requirements:
 
   build:
     - pip
+    - setuptools
     - toml
 {% for dep in conda_deps %}
 {% set trimmed_dep = dep | trim %}
-{% if dep is string and trimmed_dep[:7] == 'python=' %}
-    - {{ dep }}
+{% if dep is string and (trimmed_dep.startswith('python=') or trimmed_dep.startswith('python>=')) %}
+    - python {{ python }}
 {% endif %}
 {% endfor %}    
 
