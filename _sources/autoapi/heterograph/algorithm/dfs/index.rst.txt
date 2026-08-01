@@ -35,14 +35,8 @@ Module Contents
 
    .. py:class:: __cause__
 
-      exception cause
-
-
 
    .. py:class:: __context__
-
-      exception context
-
 
 
    .. py:method:: __delattr__()
@@ -66,6 +60,8 @@ Module Contents
    .. py:method:: __format__()
 
       Default object formatter.
+
+      Return str(self) if format_spec is empty. Raise TypeError otherwise.
 
 
 
@@ -184,8 +180,7 @@ Module Contents
 
    .. py:method:: add_note()
 
-      Exception.add_note(note) --
-      add a note to the exception
+      Add a note to the exception
 
 
 
@@ -194,8 +189,7 @@ Module Contents
 
    .. py:method:: with_traceback()
 
-      Exception.with_traceback(tb) --
-      set self.__traceback__ to tb and return self.
+      Set self.__traceback__ to tb and return self.
 
 
 
