@@ -147,7 +147,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.query.qgraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">QGraph</span>
 
-<span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">&#39;A =&gt; B&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">'A =&gt; B'</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -162,7 +162,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">&#39;(A | B) =&gt; C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">'(A | B) =&gt; C'</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -177,7 +177,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">&#39;X=&gt;(A|B)=&gt;(C|D)=&gt;E&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">'X=&gt;(A|B)=&gt;(C|D)=&gt;E'</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -192,7 +192,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">&#39;a{name:&quot;A&quot;} ={d:True}&gt;b{name:&quot;B&quot;}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">'a{name:"A"} ={d:True}&gt;b{name:"B"}'</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -227,11 +227,11 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <span class="n">g</span> <span class="o">=</span> <span class="n">HGraph</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
     <span class="n">vx</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">add_vx</span><span class="p">()</span>
-    <span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
-    <span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;circle&quot;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;rect&quot;</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'A'</span><span class="p">))</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"circle"</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"rect"</span>
 
-    <span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="p">[</span><span class="s1">'shape'</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">'type'</span><span class="p">]</span>
 
 <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
@@ -254,8 +254,8 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we will pass this function when we create a QGraph</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">vx_args</span><span class="p">(</span><span class="n">qg</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">qg</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-    <span class="n">qg</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
+    <span class="n">qg</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">'name'</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="n">qg</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">vx</span><span class="p">][</span><span class="s1">'type'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">type</span>
 </pre></div>
 </div>
 </div>
@@ -276,7 +276,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
     <span class="n">vx</span> <span class="o">=</span> <span class="n">gchain</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">qvx</span> <span class="o">=</span> <span class="n">qgchain</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'type'</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">qg</span><span class="o">.</span><span class="n">pmap</span><span class="p">[</span><span class="n">qvx</span><span class="p">][</span><span class="n">attr</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># match the exact attribute value, we could</span>
             <span class="c1"># use regex or other matching</span>
@@ -294,7 +294,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qg</span><span class="o">=</span><span class="n">QGraph</span><span class="p">(</span><span class="s1">&#39;x{type:&quot;circle&quot;}&#39;</span><span class="p">,</span> <span class="n">vx_args</span><span class="o">=</span><span class="n">vx_args</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qg</span><span class="o">=</span><span class="n">QGraph</span><span class="p">(</span><span class="s1">'x{type:"circle"}'</span><span class="p">,</span> <span class="n">vx_args</span><span class="o">=</span><span class="n">vx_args</span><span class="p">)</span>
 
 <span class="n">matches</span><span class="o">=</span><span class="n">processor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">path_check</span><span class="o">=</span><span class="n">path_check</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
@@ -340,7 +340,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qg</span><span class="o">=</span><span class="n">QGraph</span><span class="p">(</span><span class="s1">&#39;x{type:&quot;circle&quot;}=&gt;y&#39;</span><span class="p">,</span> <span class="n">vx_args</span><span class="o">=</span><span class="n">vx_args</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qg</span><span class="o">=</span><span class="n">QGraph</span><span class="p">(</span><span class="s1">'x{type:"circle"}=&gt;y'</span><span class="p">,</span> <span class="n">vx_args</span><span class="o">=</span><span class="n">vx_args</span><span class="p">)</span>
 
 <span class="n">matches</span><span class="o">=</span><span class="n">processor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">path_check</span><span class="o">=</span><span class="n">path_check</span><span class="p">)</span>
 <span class="n">RSet</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">QueryResultSet</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">matches</span><span class="p">))</span>
@@ -373,7 +373,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># without &quot;fd&quot; constraint</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># without "fd" constraint</span>
 <span class="n">matches</span><span class="o">=</span><span class="n">processor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">path_check</span><span class="o">=</span><span class="n">path_check</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">RSet</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">QueryResultSet</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">matches</span><span class="p">)))</span>
 
@@ -417,7 +417,7 @@ known as ‘AQL’. We use this facility in Artisan, but it is kept generic for 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># without &quot;gd&quot; constraint</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># without "gd" constraint</span>
 <span class="n">matches</span><span class="o">=</span><span class="n">processor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">path_check</span><span class="o">=</span><span class="n">path_check</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">RSet</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="n">QueryResultSet</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">qg</span><span class="p">,</span> <span class="n">matches</span><span class="p">)))</span>
 

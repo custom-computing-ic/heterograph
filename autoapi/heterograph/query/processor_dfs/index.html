@@ -140,11 +140,11 @@
 </div>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.query.qgraph</span><span class="w"> </span><span class="kn">import</span> <span class="n">QGraph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">qgraph</span> <span class="o">=</span> <span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;A</span><span class="si">{1}</span><span class="s2"> ={ weight: 3.14 }&gt; B</span><span class="si">{2}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qgraph</span> <span class="o">=</span> <span class="n">QGraph</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">"A</span><span class="si">{1}</span><span class="s2"> ={ weight: 3.14 }&gt; B</span><span class="si">{2}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">qgraph</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span>
 <span class="go">A{1} ={ weight: 3.14 }&gt; B{2}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">qgraph</span><span class="o">.</span><span class="n">graph_def</span><span class="p">)</span>
-<span class="go">QueryGraphDef (src: {&#39;A&#39;}, snk: {&#39;B&#39;}, steps: [(&#39;A&#39;, ([1], {})), (&#39;B&#39;, ([2], {})), (&#39;A&#39;, &#39;B&#39;, ([], {&#39;weight&#39;: 3.14}))])</span>
+<span class="go">QueryGraphDef (src: {'A'}, snk: {'B'}, steps: [('A', ([1], {})), ('B', ([2], {})), ('A', 'B', ([], {'weight': 3.14}))])</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -1060,10 +1060,10 @@ An optional third argument <cite>synth</cite> can be added to receive synthesize
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="n">HGraph</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_traversal</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">pre_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">inh</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">... </span>  <span class="k">return</span> <span class="n">inh</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">post_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">synth</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">... </span>  <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">synth</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>

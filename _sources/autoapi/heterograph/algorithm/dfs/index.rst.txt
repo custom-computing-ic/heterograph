@@ -33,12 +33,6 @@ Module Contents
    If this exception is raised from inside any search visitor object, the search is aborted.
 
 
-   .. py:class:: __cause__
-
-
-   .. py:class:: __context__
-
-
    .. py:method:: __delattr__()
 
       Implement delattr(self, name).
@@ -172,24 +166,17 @@ Module Contents
 
 
 
-   .. py:class:: __suppress_context__
-
-
-   .. py:class:: __traceback__
-
-
    .. py:method:: add_note()
 
-      Add a note to the exception
+      Exception.add_note(note) --
+      add a note to the exception
 
-
-
-   .. py:class:: args
 
 
    .. py:method:: with_traceback()
 
-      Set self.__traceback__ to tb and return self.
+      Exception.with_traceback(tb) --
+      set self.__traceback__ to tb and return self.
 
 
 

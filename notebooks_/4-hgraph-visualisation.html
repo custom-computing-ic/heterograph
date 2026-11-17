@@ -155,8 +155,8 @@
 <span class="n">h</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 
 <span class="n">viewer</span><span class="o">=</span><span class="n">WebView</span><span class="p">()</span>
-<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;graph g&quot;</span><span class="p">)</span>
-<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;graph h&quot;</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"graph g"</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"graph h"</span><span class="p">)</span>
 <span class="n">viewer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -188,7 +188,7 @@
 </div>
 </div>
 <p>When running this code on a web browser (default: <a class="reference external" href="http://localhost:8888">http://localhost:8888</a>), the following screen appears:</p>
-<p><img alt="0f854d07633d484798ffd6bf2d61d622" class="no-scaled-link" src="notebooks_/images/webapp.png" width="500" /></p>
+<p><img alt="fed47f3e662448899d30ad3220561308" class="no-scaled-link" src="notebooks_/images/webapp.png" width="500" /></p>
 </section>
 </section>
 <section id="graph-styles">
@@ -207,9 +207,9 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;default graph styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;default vertex styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;default edge styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"default graph styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"default vertex styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"default edge styles:</span><span class="se">\n\t</span><span class="s2">=&gt; </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <br/></pre></div>
 </div>
 </div>
@@ -221,7 +221,7 @@
 default graph styles:
         =&gt; {&#39;layout&#39;: &#39;dot&#39;, &#39;rankdir&#39;: &#39;TD&#39;}
 default vertex styles:
-        =&gt; {&#39;shape&#39;: &#39;Mrecord&#39;, &#39;style&#39;: &#39;filled&#39;, &#39;fillcolor&#39;: &#39;#99CCFF&#39;, &#39;label&#39;: &lt;function HGraph.__reset.&lt;locals&gt;.&lt;lambda&gt; at 0x7f5070ee7740&gt;}
+        =&gt; {&#39;shape&#39;: &#39;Mrecord&#39;, &#39;style&#39;: &#39;filled&#39;, &#39;fillcolor&#39;: &#39;#99CCFF&#39;, &#39;label&#39;: &lt;function HGraph.__reset.&lt;locals&gt;.&lt;lambda&gt; at 0x7f0d2391db20&gt;}
 default edge styles:
         =&gt; {&#39;color&#39;: &#39;#777777&#39;, &#39;arrowhead&#39;: &#39;open&#39;}
 </pre></div></div>
@@ -236,7 +236,7 @@ default edge styles:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;penwidth&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">}</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span><span class="s1">'red'</span><span class="p">,</span> <span class="s1">'penwidth'</span><span class="p">:</span> <span class="s1">'3'</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">estyle</span><span class="p">)</span> <span class="c1"># arrowhead is still present</span>
 <span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
@@ -266,8 +266,8 @@ default edge styles:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span><span class="s1">&#39;node&#39;</span><span class="p">}</span>
-<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;penwidth&#39;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'label'</span><span class="p">:</span><span class="s1">'node'</span><span class="p">}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'color'</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">'penwidth'</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}</span>
 <span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -295,10 +295,10 @@ default edge styles:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">id_to_label</span><span class="p">(</span><span class="n">vx</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="n">vx</span><span class="o">+</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="n">vx</span><span class="o">+</span><span class="nb">ord</span><span class="p">(</span><span class="s1">'A'</span><span class="p">))</span>
 
-<span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="n">id_to_label</span><span class="p">(</span><span class="n">vx</span><span class="p">)}</span>
-<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">→</span><span class="si">{</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'label'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="n">id_to_label</span><span class="p">(</span><span class="n">vx</span><span class="p">)}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'label'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">→</span><span class="si">{</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
 
 <span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
@@ -320,7 +320,7 @@ label <code class="docutils literal notranslate"><span class="pre">&quot;A</span
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">|{in:</span><span class="si">%d</span><span class="s2">|out:</span><span class="si">%d</span><span class="s2">}|id:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">vstyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'label'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">|{in:</span><span class="si">%d</span><span class="s2">|out:</span><span class="si">%d</span><span class="s2">}|id:</span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span>
                                    <span class="p">(</span><span class="n">id_to_label</span><span class="p">(</span><span class="n">vx</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">num_in_vx</span><span class="p">(</span><span class="n">vx</span><span class="p">),</span> <span class="n">g</span><span class="o">.</span><span class="n">num_out_vx</span><span class="p">(</span><span class="n">vx</span><span class="p">),</span> <span class="n">vx</span><span class="p">)}</span>
 <span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
@@ -346,14 +346,14 @@ label <code class="docutils literal notranslate"><span class="pre">&quot;A</span
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;nclusters&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="p">[</span><span class="s1">'nclusters'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'2'</span>
 <span class="c1"># cluster 0: bgcolor: gray</span>
 <span class="c1"># cluster 1: bgcolor: red</span>
-<span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;cluster: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s2">&quot;bgcolor&quot;</span><span class="p">:</span> <span class="s2">&quot;gray&quot;</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;red&quot;</span><span class="p">}</span>
+<span class="n">g</span><span class="o">.</span><span class="n">style</span><span class="p">[</span><span class="s1">'cluster'</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">{</span><span class="s2">"label"</span><span class="p">:</span> <span class="sa">f</span><span class="s1">'cluster: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="s2">"bgcolor"</span><span class="p">:</span> <span class="s2">"gray"</span> <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"red"</span><span class="p">}</span>
 <span class="c1"># 0: None</span>
 <span class="c1"># 1--4: cluster 0</span>
 <span class="c1"># 5: cluster 1</span>
-<span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">vx</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">vx</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="k">else</span> <span class="mi">1</span>
+<span class="n">g</span><span class="o">.</span><span class="n">vstyle</span><span class="p">[</span><span class="s1">'cluster'</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">vx</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">vx</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="k">else</span> <span class="mi">1</span>
 <span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -376,8 +376,8 @@ label <code class="docutils literal notranslate"><span class="pre">&quot;A</span
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;nclusters&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;custom rendering&#39;</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;internal style rendering&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">'nclusters'</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">title</span><span class="o">=</span><span class="s1">'custom rendering'</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">'internal style rendering'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -412,9 +412,9 @@ label <code class="docutils literal notranslate"><span class="pre">&quot;A</span
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cluster&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">{}},</span> <span class="c1"># remove cluster style</span>
-       <span class="n">estyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="kc">None</span> <span class="p">},</span> <span class="c1"># remove label from edges</span>
-       <span class="n">vstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;#label&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1"> | cluster: %s&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;0&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="k">else</span> <span class="s2">&quot;1&quot;</span><span class="p">)})</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">gstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">'cluster'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="p">{}},</span> <span class="c1"># remove cluster style</span>
+       <span class="n">estyle</span><span class="o">=</span><span class="p">{</span><span class="s1">'label'</span><span class="p">:</span> <span class="kc">None</span> <span class="p">},</span> <span class="c1"># remove label from edges</span>
+       <span class="n">vstyle</span><span class="o">=</span><span class="p">{</span><span class="s1">'#label'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1"> | cluster: %s'</span> <span class="o">%</span> <span class="p">(</span><span class="s2">"-"</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"0"</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="k">else</span> <span class="s2">"1"</span><span class="p">)})</span>
 </pre></div>
 </div>
 </div>
@@ -438,9 +438,9 @@ label <code class="docutils literal notranslate"><span class="pre">&quot;A</span
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">WebView</span><span class="p">()</span>
-<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
-<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">induced</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;subgraph (induced=False)&quot;</span><span class="p">)</span>
-<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">induced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;subgraph (induced=True)&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">estyle</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'label'</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">induced</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"subgraph (induced=False)"</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">induced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"subgraph (induced=True)"</span><span class="p">)</span>
 
 <span class="n">viewer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>

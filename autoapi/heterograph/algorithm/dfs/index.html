@@ -129,16 +129,6 @@
 <span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">heterograph.algorithm.dfs.</span></span><span class="sig-name descname"><span class="pre">StopSearch</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_tool.search.StopSearch</span></code></p>
 <p>If this exception is raised from inside any search visitor object, the search is aborted.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__cause__">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">__cause__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__cause__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__context__">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">__context__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__context__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__delattr__">
 <span class="sig-name descname"><span class="pre">__delattr__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__delattr__" title="Link to this definition"></a></dt>
@@ -274,31 +264,18 @@ NotImplemented, the normal algorithm is used.  Otherwise, it
 overrides the normal algorithm (and the outcome is cached).</p>
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__suppress_context__">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">__suppress_context__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__suppress_context__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.__traceback__">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">__traceback__</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.__traceback__" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.add_note">
 <span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.add_note" title="Link to this definition"></a></dt>
-<dd><p>Add a note to the exception</p>
+<dd><p>Exception.add_note(note) --
+add a note to the exception</p>
 </dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.args">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">args</span></span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.args" title="Link to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="heterograph.algorithm.dfs.StopSearch.with_traceback">
 <span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#heterograph.algorithm.dfs.StopSearch.with_traceback" title="Link to this definition"></a></dt>
-<dd><p>Set self.__traceback__ to tb and return self.</p>
+<dd><p>Exception.with_traceback(tb) --
+set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 </dd></dl>
@@ -370,9 +347,9 @@ overrides the normal algorithm (and the outcome is cached).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
 <span class="go">[(2, 4), (3, 4)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">pre</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hello vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bye vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Bye vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dfs_visitor</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">)</span>
 <span class="go">Hello vertex 0</span>
 <span class="go">Hello vertex 1</span>
@@ -430,10 +407,10 @@ An optional third argument <cite>synth</cite> can be added to receive synthesize
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph</span><span class="w"> </span><span class="kn">import</span> <span class="n">HGraph</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_traversal</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">pre_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">inh</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">... </span>  <span class="k">return</span> <span class="n">inh</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">post_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">synth</span><span class="p">):</span>
-<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">... </span>  <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">synth</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>

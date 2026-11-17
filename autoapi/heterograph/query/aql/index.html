@@ -469,37 +469,37 @@
 <p>This class takes in queries and transforms them into graph definitions. The attributes associated with nodes and edges can be either key-value pairs or arguments.</p>
 <dl>
 <dt>The AQL grammar in BNF format:</dt><dd><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;id&gt; ::= /[a-zA-Z][a-zA-Z0-9_]*/
-&lt;pair&gt; ::= &lt;id&gt; &quot;:&quot; &lt;value&gt;
+&lt;pair&gt; ::= &lt;id&gt; ":" &lt;value&gt;
 
 &lt;value&gt; ::= &lt;pair&gt;             -- map
         | ESCAPED_STRING     -- string
         | SIGNED_INT         -- number_int
         | SIGNED_FLOAT       -- number_float
-        | &quot;True&quot;             -- true_val
-        | &quot;False&quot;            -- false_val
+        | "True"             -- true_val
+        | "False"            -- false_val
         | &lt;id&gt;               -- string
 
 &lt;args&gt; ::= &lt;value&gt;
-        | &lt;args&gt; (&quot;,&quot; &lt;value&gt;)*
+        | &lt;args&gt; ("," &lt;value&gt;)*
 
 &lt;node&gt; ::= &lt;id&gt;
-        | &lt;id&gt; &quot;{&quot; &lt;args&gt; &quot;}&quot;
+        | &lt;id&gt; "{" &lt;args&gt; "}"
 
-&lt;edge&gt; ::= &quot;=&gt;&quot;
-        | &quot;={&quot; &lt;args&gt; &quot;}&gt;&quot;
+&lt;edge&gt; ::= "=&gt;"
+        | "={" &lt;args&gt; "}&gt;"
 
-&lt;graph&gt; ::= &quot;(&quot; &lt;graph&gt; (&quot;|&quot; &lt;graph&gt;)* &quot;)&quot;   -- group_graph
-        | &quot;0&quot;                             -- empty_graph
+&lt;graph&gt; ::= "(" &lt;graph&gt; ("|" &lt;graph&gt;)* ")"   -- group_graph
+        | "0"                             -- empty_graph
         | &lt;node&gt;                          -- node_graph
         | &lt;graph&gt; &lt;edge&gt; &lt;graph&gt;          -- edge_graph
 
-&lt;WS&gt; ::= &quot; &quot;  -- whitespace
+&lt;WS&gt; ::= " "  -- whitespace
 
-&lt;ESCAPED_STRING&gt; ::= &quot;&quot;&quot; ( &quot;\&quot; . | ~[&quot;\])* &quot;&quot;&quot;
+&lt;ESCAPED_STRING&gt; ::= """ ( "\" . | ~["\])* """
 
-&lt;SIGNED_INT&gt; ::= [&quot;-&quot;] [0-9]+
+&lt;SIGNED_INT&gt; ::= ["-"] [0-9]+
 
-&lt;SIGNED_FLOAT&gt; ::= [&quot;-&quot;] [0-9]+ &quot;.&quot; [0-9]+
+&lt;SIGNED_FLOAT&gt; ::= ["-"] [0-9]+ "." [0-9]+
 </pre></div>
 </div>
 </dd>
@@ -518,13 +518,13 @@
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.query.aql</span><span class="w"> </span><span class="kn">import</span> <span class="n">QueryAQL</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">aql</span> <span class="o">=</span> <span class="n">QueryAQL</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="s2">&quot;0&quot;</span><span class="p">,</span>   <span class="c1"># empty graph</span>
-<span class="gp">... </span>    <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="c1"># single node</span>
-<span class="gp">... </span>    <span class="s1">&#39;abc { a: 1, b: 2.4, c: &quot;3&quot;}&#39;</span><span class="p">,</span> <span class="c1"># node with key-value arguments</span>
-<span class="gp">... </span>    <span class="s1">&#39;abc { a, b, c}&#39;</span><span class="p">,</span> <span class="c1"># node with arguments</span>
-<span class="gp">... </span>    <span class="s1">&#39;abc ={ weight: 3.14 }&gt; def&#39;</span><span class="p">,</span> <span class="c1"># edge with key-value arguments</span>
-<span class="gp">... </span>    <span class="s1">&#39;abc ={ weight: 3.14, color: &quot;black&quot; }&gt; def{ a: 1, b: 2.4, c: &quot;3&quot;}&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s1">&#39;q =&gt; (a|b|c)=&gt;d&#39;</span> <span class="c1"># graph with nodes and edges</span>
+<span class="gp">... </span>    <span class="s2">"0"</span><span class="p">,</span>   <span class="c1"># empty graph</span>
+<span class="gp">... </span>    <span class="s2">"abc"</span><span class="p">,</span> <span class="c1"># single node</span>
+<span class="gp">... </span>    <span class="s1">'abc { a: 1, b: 2.4, c: "3"}'</span><span class="p">,</span> <span class="c1"># node with key-value arguments</span>
+<span class="gp">... </span>    <span class="s1">'abc { a, b, c}'</span><span class="p">,</span> <span class="c1"># node with arguments</span>
+<span class="gp">... </span>    <span class="s1">'abc ={ weight: 3.14 }&gt; def'</span><span class="p">,</span> <span class="c1"># edge with key-value arguments</span>
+<span class="gp">... </span>    <span class="s1">'abc ={ weight: 3.14, color: "black" }&gt; def{ a: 1, b: 2.4, c: "3"}'</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">'q =&gt; (a|b|c)=&gt;d'</span> <span class="c1"># graph with nodes and edges</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">r</span> <span class="o">=</span> <span class="n">aql</span><span class="o">.</span><span class="n">grammar</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>

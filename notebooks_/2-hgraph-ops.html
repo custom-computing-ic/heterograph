@@ -419,22 +419,22 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_visitor</span><span class="p">,</span> <span class="n">StopSearch</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">pre</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    <span class="n">counter</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'n'</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hello vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">counter</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">'n'</span><span class="p">]</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bye vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Bye vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">pre_stops_at_3</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello again vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hello again vertex </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">vx</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">StopSearch</span><span class="p">()</span>
 
-<span class="n">counter</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'n'</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
 <span class="c1"># pass data as reference instead of value in order to change it</span>
 <span class="n">dfs_visitor</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">counter</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"==="</span><span class="p">)</span>
 <span class="n">dfs_visitor</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre_stops_at_3</span><span class="p">)</span>
 <br/></pre></div>
 </div>
@@ -482,11 +482,11 @@ Hello again vertex 3
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">heterograph.algorithm.dfs</span><span class="w"> </span><span class="kn">import</span> <span class="n">dfs_traversal</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">pre_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">inh</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pre-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, inherited: </span><span class="si">{</span><span class="n">inh</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">inh</span> <span class="o">+</span> <span class="mi">1</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">post_visit</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">vx</span><span class="p">,</span> <span class="n">synth</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Post-visit: </span><span class="si">{</span><span class="n">vx</span><span class="si">}</span><span class="s2">, synthesized: </span><span class="si">{</span><span class="n">synth</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">synth</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 
 <span class="n">dfs_traversal</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="n">pre_visit</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post_visit</span><span class="p">,</span> <span class="n">inh</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
