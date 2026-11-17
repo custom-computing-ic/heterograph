@@ -9,23 +9,19 @@
 ## Key Features
 
 * **Heterogeneous directed graphs**
-
   * Vertices and edges with arbitrary, typed properties
   * Explicit in-/out-neighbour management
 
 * **Graph algorithms**
-
   * Depth-first search (DFS) traversal utilities
   * Topology and neighbourhood queries
 
 * **Visualization**
-
   * Interactive **web-based viewer** (Flask + D3)
   * Notebook-friendly display helpers
   * Optional Graphviz export for static diagrams
 
 * **Extensible design**
-
   * Custom initialization hooks for graphs, vertices, and edges
   * Property system (`HGraphProps`) for clean metadata handling
 
@@ -52,12 +48,54 @@ heterograph/
 
 ## Installation
 
-### Create the Conda environment (recommended)
+### Development environment
+
+Clone this repository, then create the environment from the repository root:
 
 ```bash
 conda env create -f environment.yml
 conda activate heterograph
 ```
+
+This installs Heterograph in editable mode, so changes to the source are available
+in the environment.
+
+### Use the published Conda package
+
+To install Heterograph in a separate environment, create one directly:
+
+```bash
+conda create -n my-heterograph -c ckiddo74 -c conda-forge python=3.12 heterograph
+conda activate my-heterograph
+```
+
+Alternatively, define an `environment.yml` for your project:
+
+```yaml
+name: my-heterograph
+channels:
+  - ckiddo74
+  - conda-forge
+dependencies:
+  - python=3.12
+  - heterograph
+```
+
+These examples pin Python to version 3.12; choose a version supported by the
+published Heterograph builds if needed.
+
+Then create and activate the environment:
+
+```bash
+conda env create -f environment.yml
+conda activate my-heterograph
+```
+
+The published package currently targets Linux x86-64.
+
+### Build and publish the Conda package
+
+See [conda/README.md](conda/README.md) for build and publishing instructions.
 
 ---
 
@@ -130,6 +168,22 @@ Tests cover:
 * Neighbour queries
 * DFS traversal
 * Graph initialization and topology
+
+---
+
+## Documentation
+
+Read the [Heterograph documentation](https://custom-computing-ic.github.io/heterograph/).
+To build the HTML documentation locally, activate the development environment
+and run from the repository root:
+
+```bash
+cd docs
+make html
+```
+
+Open `docs/build/html/index.html` in a browser. The build executes the
+documentation notebooks and may take some time.
 
 ---
 
